@@ -10,9 +10,9 @@ export default function IntroPage() {
       {
         //javascript code in here! returning something
         //puts that element on the page
-        obj.map((i) => {
+        obj.map((i) =>
           <div>Div {i}</div>
-        })
+        )
       }
     </div>
   )
