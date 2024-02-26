@@ -1,8 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
 const Vis2 = () => {
   const chartRef = useRef();
+  // marked points saved here
+  const [markedPoints, setMarkedPoints] = useState([]);
 
   useEffect(() => {
     const width = 300;
@@ -52,11 +54,12 @@ const Vis2 = () => {
       .attr('stroke-width', 2);
 
     // Randomly select two data points to mark
-    const markedPoints = d3.shuffle(data).slice(0, 2);
+    const randomlyMarkedPoints = d3.shuffle(data).slice(0, 2);
+    setMarkedPoints(randomlyMarkedPoints);
 
     // Add a dot to indicate marked datapoints
     arc
-      .filter((d) => markedPoints.includes(d.data))
+      .filter((d) => randomlyMarkedPoints.includes(d.data))
       .append('circle')
       .attr('cx', (d) => path.centroid(d)[0])
       .attr('cy', (d) => path.centroid(d)[1])
