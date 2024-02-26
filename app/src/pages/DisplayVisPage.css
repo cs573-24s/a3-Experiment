@@ -1,0 +1,26 @@
+#progress-bar{
+  width: 75vh;
+  height: 30px;
+  margin: auto;
+  border-radius: 50px;
+  background-color: red;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+#inner-progress{
+  height: 30px;
+  border-radius: 50px;
+  background-color: blue;
+
+}
+#main-flex{
+  display: flex;
+  justify-content: space-around;
+}
+#main-area {
+  width: 75vw;
+  height: 80vh;
+  background-color: LightGray;
+  margin-bottom: 20px;
+
+}
