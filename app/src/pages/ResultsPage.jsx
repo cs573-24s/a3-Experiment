@@ -1,6 +1,7 @@
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
+import AnswerSelection from "../components/AnswerSelection";
 
 export default function ResultsPage() {
   const [results, setResults] = useState([]);
@@ -25,6 +26,9 @@ export default function ResultsPage() {
       {results.map((r) => (
         <div>{JSON.stringify(r)}</div>
       ))}
+      <AnswerSelection options={["1", "2"]} ></AnswerSelection>
+
+
     </div>
   );
 }
