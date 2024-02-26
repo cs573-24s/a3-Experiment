@@ -13,7 +13,9 @@ export default function NavBar() {
       <Link to="/results" className="link">
         Results
       </Link>
-      <Link className="link"></Link>
+      <Link to="/test" className="link">
+        Test
+      </Link>
     </div>
   );
 }

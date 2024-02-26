@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import IntroPage from "./pages/IntroPage";
 import Vis1 from "./pages/Vis1";
 import ResultsPage from "./pages/ResultsPage";
+import DisplayVisPage from "./pages/DisplayVisPage";
 function App() {
   return (
     <div>
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<IntroPage />} />
         <Route path="/vis1" element={<Vis1 />} />
         <Route path="/results" element={<ResultsPage />} />
+        <Route path="/test" element={<DisplayVisPage><div>hello</div></DisplayVisPage>} />
       </Routes>
     </div>
   );
