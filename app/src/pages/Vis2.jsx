@@ -47,9 +47,21 @@ const Vis2 = () => {
     arc
       .append('path')
       .attr('d', path)
-      .attr('fill', '#fff')
-      .attr('stroke', '#000')
+      .attr('fill', 'white')
+      .attr('stroke', 'black')
       .attr('stroke-width', 2);
+
+    // Randomly select two data points to mark
+    const markedPoints = d3.shuffle(data).slice(0, 2);
+
+    // Add a dot to indicate marked datapoints
+    arc
+      .filter((d) => markedPoints.includes(d.data))
+      .append('circle')
+      .attr('cx', (d) => path.centroid(d)[0])
+      .attr('cy', (d) => path.centroid(d)[1])
+      .attr('r', 5)
+      .attr('fill', 'black');
 
     arc
       .append('text')
