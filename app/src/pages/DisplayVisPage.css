@@ -1,14 +1,14 @@
 #progress-bar{
-  width: 75vh;
-  height: 30px;
+  width: 75vw;
+  height: 20px;
   margin: auto;
   border-radius: 50px;
-  background-color: red;
+  background-color: LightGray;
   margin-bottom: 20px;
   margin-top: 20px;
 }
 #inner-progress{
-  height: 30px;
+  height: 100%;
   border-radius: 50px;
   background-color: blue;
 
@@ -17,10 +17,27 @@
   display: flex;
   justify-content: space-around;
 }
+
 #main-area {
-  width: 75vw;
-  height: 80vh;
+  width: 80vw;
+  height: 85vh;
   background-color: LightGray;
   margin-bottom: 20px;
 
+}
+#question-area{
+  text-align: center;
+}
+
+#prompt {
+  padding: 15px;
+}
+
+#input-area {
+  width: 100%;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
 }

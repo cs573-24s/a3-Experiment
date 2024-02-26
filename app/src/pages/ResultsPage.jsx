@@ -1,6 +1,7 @@
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
+import "./ResultsPage.css"
 import AnswerSelection from "../components/AnswerSelection";
 
 export default function ResultsPage() {
@@ -22,13 +23,17 @@ export default function ResultsPage() {
 
   return (
     <div>
-      do some calculations here lol
-      {results.map((r) => (
-        <div>{JSON.stringify(r)}</div>
-      ))}
-      <AnswerSelection options={["1", "2"]} ></AnswerSelection>
-
-
+      <h2>
+        Thank you for participating!
+      </h2>
+      <p>
+        Below are the current results for our experiment
+      </p>
+      {
+        results.map((r) => (
+          <p>{JSON.stringify(r)}</p>
+        ))
+      }
     </div>
   );
 }
