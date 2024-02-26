@@ -3,8 +3,8 @@ import * as d3 from 'd3';
 
 const Vis2 = () => {
   const chartRef = useRef();
-  // marked points saved here
-  const [markedPoints, setMarkedPoints] = useState([]);
+  // percent difference between marked points is saved here
+  const [percentDifference, setPercentDifference] = useState(null);
 
   useEffect(() => {
     const width = 300;
@@ -53,9 +53,19 @@ const Vis2 = () => {
       .attr('stroke', 'black')
       .attr('stroke-width', 2);
 
-    // Randomly select two data points to mark
+    // Randomly select two data points to mark with a dot
     const randomlyMarkedPoints = d3.shuffle(data).slice(0, 2);
-    setMarkedPoints(randomlyMarkedPoints);
+
+    // Sort the marked points to find which is smaller and which is larger
+    const sortedMarkedPoints = randomlyMarkedPoints.sort((a, b) => a.value - b.value);
+    const [smallerValue, largerValue] = sortedMarkedPoints.map((point) => point.value);
+
+    // Calculate the rounded percent difference between the two points
+    const calculatedPercentDifference =
+      Math.round((smallerValue/largerValue) * 100);
+
+    setPercentDifference(calculatedPercentDifference);
+
 
     // Add a dot to indicate marked datapoints
     arc
@@ -73,7 +83,13 @@ const Vis2 = () => {
       .style('text-anchor', 'middle');
   }, []);
 
-  return <div ref={chartRef}></div>;
+  return <div>
+            <div ref={chartRef}></div> 
+         <div>
+            {/* Display the calculated percent difference */}
+            Percent Difference: {percentDifference}%
+        </div>
+        </div>;
 };
 
 export default Vis2;
