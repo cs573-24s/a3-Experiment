@@ -19,3 +19,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
+## Debug Token ##
+## 7f8fe553-e732-41d7-bd7d-ecbf9660d597 ##
