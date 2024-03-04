@@ -1,32 +1,58 @@
 import "./DisplayVisPage.css"
-import { useState, Children, useEffect } from "react"
-import AnswerSelectoin from "../components/AnswerSelection"
-import AnswerSelection from "../components/AnswerSelection"
+import { useState, Children, useEffect, useRef } from "react"
+import Vis1 from "./Vis1"
+import Vis2 from "./Vis2"
 export default function DisplayVisPage({ children }) {
   const childrenArray = Children.toArray(children)
-  const [currVis, changeVis] = useState(childrenArray[0])
+  const [visNum, changeVis] = useState(0);
 
 
   //TODO: REMOVE
   const [showChange, changeChange] = useState(0)
+  const [currVis, setCurrVis] = useState(null);
 
 
   //iterate over children 
-  const options = [1, 2, 3, 4, 5]
+  const generateRandomData = () => {
+    const data = [];
+    for (let i = 0; i < 5; i++) {
+      data.push({
+        label: `Data ${i + 1}`,
+        value: Math.round(Math.random() * 100)
+      });
+    }
+
+    // Randomly select two indices to highlight
+    const indicesToHighlight = [];
+    while (indicesToHighlight.length < 2) {
+      const index = Math.floor(Math.random() * 5);
+      if (!indicesToHighlight.includes(index)) {
+        indicesToHighlight.push(index);
+      }
+    }
+
+    for (let i = 0; i < 5; i++) {
+      data[i].highlighted = indicesToHighlight.includes(i);
+    }
+
+    return data;
+  };
+
+
 
 
   useEffect(() => {
+    const randomData = generateRandomData()
 
-
-
-  }, [currVis, showChange])
+    setCurrVis(visNum < 4 ? <Vis1 randomData={randomData} /> : <Vis2 randomData={randomData} />)
+    console.log(randomData)
+  }, [visNum])
   //dummy code
   const updateVis = () => {
     changeChange(showChange + 1)
+    changeVis(visNum + 1)
+
   }
-
-
-
 
 
 

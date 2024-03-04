@@ -1,46 +1,22 @@
-import React, { useEffect, useRef , useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
-export default function Vis1() {
+export default function Vis1(props) {
 
   //store the actual answer as a variable here
   const [percentDifference, setPercentDifference] = useState(null);
   const chartContainer = useRef(null);
 
   useEffect(() => {
-    const generateRandomData = () => {
-      const data = [];
-      for (let i = 0; i < 5; i++) {
-        data.push({
-          label: `Data ${i + 1}`,
-          value: Math.round(Math.random() * 100)
-        });
-      }
-      
-      // Randomly select two indices to highlight
-      const indicesToHighlight = [];
-      while (indicesToHighlight.length < 2) {
-        const index = Math.floor(Math.random() * 5);
-        if (!indicesToHighlight.includes(index)) {
-          indicesToHighlight.push(index);
-        }
-      }
-
-      for (let i = 0; i < 5; i++) {
-        data[i].highlighted = indicesToHighlight.includes(i);
-      }
-
-      return data;
-    };
-
-    const randomData = generateRandomData();
+    d3.select('svg').remove();
+    const randomData = props.randomData//generateRandomData();
 
     const chosen_values = randomData.filter(d => d.highlighted);
 
     const smallerHighlightedSum = Math.min(...chosen_values.map(d => d.value));
     const largerHighlightedSum = Math.max(...chosen_values.map(d => d.value));
 
-    const percentDiff = Math.round((smallerHighlightedSum/largerHighlightedSum) * 100);
+    const percentDiff = Math.round((smallerHighlightedSum / largerHighlightedSum) * 100);
     setPercentDifference(percentDiff);
 
     const width = 400;
@@ -75,15 +51,15 @@ export default function Vis1() {
       .attr('stroke', 'black')
       .attr('stroke-width', 1);
 
-      const highlightedData = randomData.filter(d => d.highlighted);
-      svg.selectAll('circle')
-        .data(highlightedData)
-        .enter()
-        .append('circle')
-        .attr('cx', d => xScale(d.label) + xScale.bandwidth() / 2) 
-        .attr('cy', d => yScale(d.value) + (height - yScale(d.value)) / 2)
-        .attr('r', 3) 
-        .attr('fill', 'black'); 
+    const highlightedData = randomData.filter(d => d.highlighted);
+    svg.selectAll('circle')
+      .data(highlightedData)
+      .enter()
+      .append('circle')
+      .attr('cx', d => xScale(d.label) + xScale.bandwidth() / 2)
+      .attr('cy', d => yScale(d.value) + (height - yScale(d.value)) / 2)
+      .attr('r', 3)
+      .attr('fill', 'black');
 
     const xAxis = d3.axisBottom(xScale);
     svg.append('g')
@@ -117,7 +93,7 @@ export default function Vis1() {
       .attr('stroke', 'black')
       .attr('stroke-width', 1);
 
-  }, []);
+  }, [props.randomData]);
 
   return (
     <div>

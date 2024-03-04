@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
-const Vis2 = () => {
+const Vis2 = (props) => {
   const chartRef = useRef();
   // percent difference between marked points is saved here
   const [percentDifference, setPercentDifference] = useState(null);
@@ -11,6 +11,8 @@ const Vis2 = () => {
     const height = 300;
     const radius = Math.min(width, height) / 2;
 
+    d3.select('svg').remove();
+
     const svg = d3
       .select(chartRef.current)
       .append('svg')
@@ -19,18 +21,7 @@ const Vis2 = () => {
       .append('g')
       .attr('transform', `translate(${width / 2},${height / 2})`);
 
-    const generateRandomData = () => {
-      const data = [];
-      for (let i = 0; i < 5; i++) {
-        data.push({
-          label: `Data ${i + 1}`,
-          value: Math.round(Math.random() * 100),
-        });
-      }
-      return data;
-    };
-
-    const data = generateRandomData();
+    const data = props.randomData
 
     const pie = d3
       .pie()
@@ -62,7 +53,7 @@ const Vis2 = () => {
 
     // Calculate the rounded percent difference between the two points
     const calculatedPercentDifference =
-      Math.round((smallerValue/largerValue) * 100);
+      Math.round((smallerValue / largerValue) * 100);
 
     setPercentDifference(calculatedPercentDifference);
 
@@ -81,15 +72,15 @@ const Vis2 = () => {
       .attr('transform', (d) => `translate(${path.centroid(d)})`)
       .attr('dy', '0.35em')
       .style('text-anchor', 'middle');
-  }, []);
+  }, [props.randomData]);
 
   return <div>
-            <div ref={chartRef}></div> 
-         <div>
-            {/* Display the calculated percent difference */}
-            Percent Difference: {percentDifference}%
-        </div>
-        </div>;
+    <div ref={chartRef}></div>
+    <div>
+      {/* Display the calculated percent difference */}
+      Percent Difference: {percentDifference}%
+    </div>
+  </div>;
 };
 
 export default Vis2;
