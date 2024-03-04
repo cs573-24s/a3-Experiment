@@ -1,7 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef , useState} from 'react';
 import * as d3 from 'd3';
 
 export default function Vis1() {
+
+  //store the actual answer as a variable here
+  const [percentDifference, setPercentDifference] = useState(null);
   const chartContainer = useRef(null);
 
   useEffect(() => {
@@ -31,6 +34,14 @@ export default function Vis1() {
     };
 
     const randomData = generateRandomData();
+
+    const chosen_values = randomData.filter(d => d.highlighted);
+
+    const smallerHighlightedSum = Math.min(...chosen_values.map(d => d.value));
+    const largerHighlightedSum = Math.max(...chosen_values.map(d => d.value));
+
+    const percentDiff = Math.round((smallerHighlightedSum/largerHighlightedSum) * 100);
+    setPercentDifference(percentDiff);
 
     const width = 400;
     const height = 400;
@@ -108,5 +119,10 @@ export default function Vis1() {
 
   }, []);
 
-  return <div ref={chartContainer} style={{ margin: 'auto' }}></div>;
+  return (
+    <div>
+      <div ref={chartContainer} style={{ margin: 'auto' }}></div>
+      {percentDifference !== null && <p>Percent Difference: {percentDifference}%</p>}
+    </div>
+  );
 }
