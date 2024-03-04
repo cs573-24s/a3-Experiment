@@ -45,8 +45,8 @@ const Vis2 = (props) => {
       .attr('stroke-width', 2);
 
     // Randomly select two data points to mark with a dot
-    const randomlyMarkedPoints = d3.shuffle(data).slice(0, 2);
 
+    const randomlyMarkedPoints = data.filter(d => d.highlighted);
     // Sort the marked points to find which is smaller and which is larger
     const sortedMarkedPoints = randomlyMarkedPoints.sort((a, b) => a.value - b.value);
     const [smallerValue, largerValue] = sortedMarkedPoints.map((point) => point.value);

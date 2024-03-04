@@ -5,6 +5,7 @@ import Vis2 from "./Vis2"
 export default function DisplayVisPage({ children }) {
   const childrenArray = Children.toArray(children)
   const [visNum, changeVis] = useState(0);
+  const [percentDiff, setPercentDiff] = useState(null);
 
 
   //TODO: REMOVE
@@ -35,16 +36,22 @@ export default function DisplayVisPage({ children }) {
       data[i].highlighted = indicesToHighlight.includes(i);
     }
 
-    return data;
+    const chosen_values = data.filter(d => d.highlighted);
+    const smallerHighlightedSum = Math.min(...chosen_values.map(d => d.value));
+    const largerHighlightedSum = Math.max(...chosen_values.map(d => d.value));
+
+    const percentDiff = Math.round((smallerHighlightedSum / largerHighlightedSum) * 100);
+    return [data, percentDiff]
   };
 
 
 
 
   useEffect(() => {
-    const randomData = generateRandomData()
+    const [randomData, percentDiff] = generateRandomData();
 
     setCurrVis(visNum < 4 ? <Vis1 randomData={randomData} /> : <Vis2 randomData={randomData} />)
+    setPercentDiff(percentDiff)
     console.log(randomData)
   }, [visNum])
   //dummy code
@@ -78,7 +85,7 @@ export default function DisplayVisPage({ children }) {
         </div>
         <div id="main-area">
           {currVis}
-          {showChange}
+          {percentDiff}
         </div>
       </div>
     </div>

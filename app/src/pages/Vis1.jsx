@@ -8,7 +8,7 @@ export default function Vis1(props) {
   const chartContainer = useRef(null);
 
   useEffect(() => {
-    d3.select('svg').remove();
+    d3.select('svg').remove()
     const randomData = props.randomData//generateRandomData();
 
     const chosen_values = randomData.filter(d => d.highlighted);
