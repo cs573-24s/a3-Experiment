@@ -50,7 +50,7 @@ export default function DisplayVisPage({ children }) {
   useEffect(() => {
     const [randomData, percentDiff] = generateRandomData();
 
-    setCurrVis(visNum < 4 ? <Vis1 randomData={randomData} /> : <Vis2 randomData={randomData} />)
+    setCurrVis(visNum < 15 ? <Vis1 randomData={randomData} /> : <Vis2 randomData={randomData} />)
     setPercentDiff(percentDiff)
     console.log(randomData)
   }, [visNum])
@@ -62,6 +62,12 @@ export default function DisplayVisPage({ children }) {
   }
 
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      updateVis()
+      event.target.value = "";
+    }
+  }
 
 
   //TODO: make look pretty
@@ -69,16 +75,17 @@ export default function DisplayVisPage({ children }) {
   return (
     <div>
       <div id="progress-bar">
-        <div id="inner-progress" style={{ width: "10%" }} />
+        <div id="inner-progress" style={{ width: (visNum / 45) * 100 + "%" }} />
       </div>
       <div id="main-flex">
         <div id="question-area">
+          <h4>Visualization {visNum} / 45</h4>
           <div id="prompt">
             What percentage difference is the smaller marked element from the larger?
           </div>
           <div id="input-area">
             <div style={{ display: 'inline-block', margin: 'auto' }}>
-              <input type="number" />
+              <input type="number" onKeyDown={handleKeyDown} />
               <button onClick={updateVis}>submit</button>
             </div>
           </div>
