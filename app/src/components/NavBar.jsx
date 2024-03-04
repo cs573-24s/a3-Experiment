@@ -10,6 +10,9 @@ export default function NavBar() {
       <Link to="/vis1" className="link">
         Vis1
       </Link>
+      <Link to="/vis2" className="link">
+        Vis2
+      </Link>
       <Link to="/results" className="link">
         Results
       </Link>
