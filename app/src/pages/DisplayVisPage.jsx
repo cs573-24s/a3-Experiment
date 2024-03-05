@@ -2,15 +2,14 @@ import "./DisplayVisPage.css"
 import { useState, Children, useEffect, useRef } from "react"
 import Vis1 from "./Vis1"
 import Vis2 from "./Vis2"
-export default function DisplayVisPage({ children }) {
-  const childrenArray = Children.toArray(children)
+export default function DisplayVisPage() {
   const [visNum, changeVis] = useState(0);
   const [percentDiff, setPercentDiff] = useState(null);
-
-
   //TODO: REMOVE
   const [showChange, changeChange] = useState(0)
   const [currVis, setCurrVis] = useState(null);
+  const [userAnswers, setUserAnswers] = useState({})
+
 
 
   //iterate over children 
@@ -46,6 +45,7 @@ export default function DisplayVisPage({ children }) {
 
 
 
+  const currType = visNum < 15 ? "bar" : "pie";
 
   useEffect(() => {
     const [randomData, percentDiff] = generateRandomData();
@@ -54,17 +54,24 @@ export default function DisplayVisPage({ children }) {
     setPercentDiff(percentDiff)
     console.log(randomData)
   }, [visNum])
-  //dummy code
-  const updateVis = () => {
-    changeChange(showChange + 1)
+
+
+
+  const submit = () => {
+    const input = document.getElementById("input")
+    let j = userAnswers;
+    j['vis' + visNum] = { type: currType, user_answer: Number(input.value), correct: percentDiff, difference: Math.abs(input.value - percentDiff) }
+    setUserAnswers(j)
+    input.value = "";
     changeVis(visNum + 1)
 
   }
 
 
   const handleKeyDown = (event) => {
+    console.log(userAnswers)
     if (event.key === 'Enter') {
-      updateVis()
+      submit()
       event.target.value = "";
     }
   }
@@ -81,12 +88,14 @@ export default function DisplayVisPage({ children }) {
         <div id="question-area">
           <h4>Visualization {visNum} / 45</h4>
           <div id="prompt">
-            What percentage difference is the smaller marked element from the larger?
+            What percentage of the larger element is the smaller element in area?
+            <br />
+            (Round to the nearest percent)
           </div>
           <div id="input-area">
             <div style={{ display: 'inline-block', margin: 'auto' }}>
-              <input type="number" onKeyDown={handleKeyDown} />
-              <button onClick={updateVis}>submit</button>
+              <input id="input" type="number" onKeyDown={handleKeyDown} />
+              <button onClick={submit}>submit</button>
             </div>
           </div>
         </div>
