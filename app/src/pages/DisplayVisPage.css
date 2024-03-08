@@ -22,9 +22,9 @@
   width: 80vw;
   height: 85vh;
   background-color: LightGray;
-  margin-bottom: 20px;
-
+  text-align: center;
 }
+
 #question-area{
   text-align: center;
 }

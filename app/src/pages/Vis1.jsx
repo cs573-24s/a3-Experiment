@@ -98,7 +98,6 @@ export default function Vis1(props) {
   return (
     <div>
       <div ref={chartContainer} style={{ margin: 'auto' }}></div>
-      {percentDifference !== null && <p>Percent Difference: {percentDifference}%</p>}
     </div>
   );
 }

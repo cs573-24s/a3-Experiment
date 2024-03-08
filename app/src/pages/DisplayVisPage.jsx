@@ -1,12 +1,10 @@
 import "./DisplayVisPage.css"
-import { useState, Children, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import Vis1 from "./Vis1"
 import Vis2 from "./Vis2"
 export default function DisplayVisPage() {
   const [visNum, changeVis] = useState(0);
   const [percentDiff, setPercentDiff] = useState(null);
-  //TODO: REMOVE
-  const [showChange, changeChange] = useState(0)
   const [currVis, setCurrVis] = useState(null);
   const [userAnswers, setUserAnswers] = useState({})
 
@@ -43,33 +41,27 @@ export default function DisplayVisPage() {
     return [data, percentDiff]
   };
 
-
-
   const currType = visNum < 15 ? "bar" : "pie";
 
   useEffect(() => {
     const [randomData, percentDiff] = generateRandomData();
 
     setCurrVis(visNum < 15 ? <Vis1 randomData={randomData} /> : <Vis2 randomData={randomData} />)
-    setPercentDiff(percentDiff)
-    console.log(randomData)
+    setPercentDiff(percentDiff);
   }, [visNum])
-
 
 
   const submit = () => {
     const input = document.getElementById("input")
-    let j = userAnswers;
-    j['vis' + visNum] = { type: currType, user_answer: Number(input.value), correct: percentDiff, difference: Math.abs(input.value - percentDiff) }
-    setUserAnswers(j)
+    let currAnswers = userAnswers;
+    currAnswers['vis' + visNum] = { type: currType, user_answer: Number(input.value), correct: percentDiff, difference: Math.abs(input.value - percentDiff) }
+    setUserAnswers(currAnswers)
     input.value = "";
     changeVis(visNum + 1)
-
   }
 
 
   const handleKeyDown = (event) => {
-    console.log(userAnswers)
     if (event.key === 'Enter') {
       submit()
       event.target.value = "";
@@ -78,7 +70,6 @@ export default function DisplayVisPage() {
 
 
   //TODO: make look pretty
-
   return (
     <div>
       <div id="progress-bar">

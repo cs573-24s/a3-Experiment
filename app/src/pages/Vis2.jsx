@@ -76,10 +76,6 @@ const Vis2 = (props) => {
 
   return <div>
     <div ref={chartRef}></div>
-    <div>
-      {/* Display the calculated percent difference */}
-      Percent Difference: {percentDifference}%
-    </div>
   </div>;
 };
 
