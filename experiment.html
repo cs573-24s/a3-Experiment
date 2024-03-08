@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>A3 Experiment</title>
+
+<body>
+    <div id="vis"></div>
+
+    <div id="prompt"></div>
+</body>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://rawcdn.githack.com/Kcnarf/d3-weighted-voronoi/v1.1.3/build/d3-weighted-voronoi.js"></script>
+<script src="https://rawcdn.githack.com/Kcnarf/d3-voronoi-map/v2.1.1/build/d3-voronoi-map.js"></script>
+<script src="https://rawcdn.githack.com/Kcnarf/d3-voronoi-treemap/v1.1.2/build/d3-voronoi-treemap.js"></script>
+<script>
+
+    console.log(d3);
+
+    const margin = {top: 30, right: 30, bottom: 30, left: 30};
+    const width = 600 - margin.left - margin.right;
+    const height = 600 - margin.top - margin.bottom;
+
+    var vis_types = Array('bar', 'bubble', 'voronoi', 'treemap');
+
+    function run() {
+        var type = vis_types[Math.floor(Math.random() * 4)];
+
+        switch(type) {
+            case 'voronoi':
+                makeVoronoi();
+                break;
+
+            case 'bubble': 
+                makeBubble();
+                break;
+
+            case 'treemap': 
+                makeTreeMap();
+                break;
+
+            default:
+                makeBar();
+        }
+    }
+
+    window.onload = run();
+
+    function Entry(id, val, dot) {
+        this.id = id;
+        this.val = val;
+        this.dot = dot;
+    }
+
+    function TreeEntry(name, parent, value, dot) {
+        this.name = name;
+        this.parent = parent;
+        this.value = value;
+        this.dot = dot;
+    }
+
+    function shuffle(array) {
+        let currentIndex = array.length,  randomIndex;
+
+        // While there remain elements to shuffle.
+        while (currentIndex > 0) {
+
+            // Pick a remaining element.
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+
+        return array;
+    }
+
+    function getData() {
+        let data = [];
+        let dots = [true, true, false, false, false, false]
+        for(let i = 0; i < 6; i++) {
+            var aVal = Math.floor(Math.random() * 100) + 1;
+            data.push(new Entry(i, aVal, dots[i]))
+        }
+
+        return shuffle(data);
+    }
+
+    function getTreeData() {
+        let data = [];
+        let dots = [true, true, false, false, false, false]
+        data.push(new TreeEntry("Origin", '', '', false))
+        for(let i = 0; i < 6; i++) {
+            var aVal = Math.floor(Math.random() * 100) + 1;
+            data.push(new TreeEntry(i, 'Origin', String(aVal), dots[i]))
+        }
+
+        return shuffle(data);
+    }
+
+    function makeBar() {
+        var data = getData()
+        d3.select('#vis').selectAll().remove();
+
+        var svg = d3.select("#vis")
+            .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+                .attr("transform",
+                    "translate(" + margin.left + "," + margin.top + ")");
+        
+        // X axis
+        var x = d3.scaleBand()
+            .range([ 0, width ])
+            .domain(data.map(function(d) { return d.id; }))
+            .padding(0.2);
+        var xAxis = svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x))
+                .attr("stroke-width", 2)
+
+        // Add Y axis
+        var y = d3.scaleLinear()
+            .domain([0, 100])
+            .range([ height, 0]);
+        var yAxis = svg.append("g")
+            .call(d3.axisLeft(y));
+
+        // Bars
+        svg.selectAll("mybar")
+            .data(data)
+            .enter()
+            .append("rect")
+                .attr("x", function(d) { return x(d.id); })
+                .attr("y", function(d) { return y(d.val); })
+                .attr("width", x.bandwidth())
+                .attr("height", function(d) { return height - y(d.val); })
+                .attr("fill", "none")
+                .style("stroke", "black")
+                .style("stroke-width", 2);
+
+        // Circles
+        svg.selectAll("circle")
+            .data(data)
+            .enter()
+            .append("circle")
+                .attr("cx", function(d){ return ((2 * x(d.id)) + x.bandwidth())/2})    // put dots in middle of rect
+                .attr("cy", function(d){ return (y(d.val) + height)/2})  
+                .attr("r", 4)
+                .attr("fill", function(d){ return (d.dot ? 'black' : 'none'); });    // only fill if one of the selected entries 
+
+        yAxis.selectAll("path,line").remove();
+        yAxis.selectAll("text").remove();
+        xAxis.selectAll("line").remove();
+        xAxis.selectAll("text").remove();
+                
+    }
+
+    function makeTreeMap() {
+
+        var data = getTreeData()
+        d3.select('#vis').selectAll().remove();
+
+        var svg = d3.select("#vis")
+            .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+                .attr("transform",
+                    "translate(" + margin.left + "," + margin.top + ")");
+
+        // stratify the data: reformatting for d3.js
+        var root = d3.stratify()
+            .id(function(d) { return d.name; })   // Name of the entity (column name is name in csv)
+            .parentId(function(d) { return d.parent; })   // Name of the parent (column name is parent in csv)
+            (data);
+        root.sum(function(d) { return +d.value })   // Compute the numeric value for each entity
+
+        // Then d3.treemap computes the position of each element of the hierarchy
+        // The coordinates are added to the root object above
+        d3.treemap()
+            .size([width, height])
+            .padding(4)
+            (root)
+
+
+        // use this information to add rectangles:
+        svg
+            .selectAll("rect")
+            .data(root.leaves())
+            .enter()
+            .append("rect")
+                .attr('x', function (d) { return d.x0; })
+                .attr('y', function (d) { return d.y0; })
+                .attr('width', function (d) { return d.x1 - d.x0; })
+                .attr('height', function (d) { return d.y1 - d.y0; })
+                .style("fill", "none")
+                .style("stroke", "black")
+                .style("stroke-width", 2);
+
+        // add circles to selected entries
+        svg
+            .selectAll("circle")
+            .data(root.leaves())
+            .enter()
+            .append("circle")
+                .attr("cx", function(d){ return (d.x0+d.x1)/2})    // put dots in middle of rect
+                .attr("cy", function(d){ return (d.y0+d.y1)/2})  
+                .attr("r", 4)
+                .attr("fill", function(d){ return (d.data.dot ? 'black' : 'none'); });    // only fill if one of the selected entries  
+    }
+
+    function makeVoronoi() {
+
+        var data = getData()
+        d3.select('#vis').selectAll().remove();
+
+        var svg = d3.select("#vis")
+            .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+
+        var treeContainer = svg.append("g")
+            .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")")
+
+        const _voronoiTreemap = d3.voronoiTreemap();
+
+        hierarchy = d3.hierarchy({ children: data }).sum((d) => d.val);
+        var circlingPolygon = [[0,0], [width, 0], [width, height], [0, height]];
+        _voronoiTreemap.clip(circlingPolygon)(hierarchy);
+
+        const leaves = hierarchy.leaves();
+
+        treeContainer.append("g")
+            .classed("cells", true)
+            .selectAll(".cell")
+            .data(leaves)
+            .enter()
+            .append("path")
+            .classed("cell", true)
+            .attr("d", (d) => `M${d.polygon.join(",")}z`)
+            .attr("fill", "none")
+            .attr("stroke", "black")
+            .attr("stroke-weight", 2);
+
+        treeContainer.selectAll("circle")
+            .data(leaves)
+            .enter()
+            .append("circle")
+                .attr("cx", d => d.polygon.site.x)    // put dots in middle of rect
+                .attr("cy", d => d.polygon.site.y)  
+                .attr("r", 4)
+                .attr("fill", function(d){ return (d.data.dot ? 'black' : 'none'); });    // only fill if one of the selected entries 
+
+
+    }
+
+    function makeBubble() {
+
+        var data = getData()
+        d3.select('#vis').selectAll().remove();
+
+        const hierarchy = d3.hierarchy({children: data}).sum(d => d.val);
+
+        const pack = d3.pack()
+            .size([width, height])
+            .padding(3);
+
+        const root = pack(hierarchy);
+        
+        var svg = d3.select("#vis")
+            .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+                .attr("transform",
+                    "translate(" + margin.left + "," + margin.top + ")");
+
+        svg.selectAll('circle')
+            // slice(1) skips the root node
+            .data(root.descendants().slice(1))
+            .enter()
+            .append('circle')
+                .attr('r', d => d.r)
+                .attr('cx', d => d.x)
+                .attr('cy', d => d.y)
+                .attr('stroke', 'black')
+                .attr('stroke-width', 2)
+                .attr('fill', 'none');
+
+        svg.selectAll('dot')
+            .data(root.descendants().slice(1))
+            .enter()
+            .append('circle')
+                .attr('r', 4)
+                .attr('cx', d => d.x)
+                .attr('cy', d => d.y)
+                .attr("fill", function(d){ return (d.data.dot ? 'black' : 'none'); });    // only fill if one of the selected entries  
+
+
+    }
+
+
+
+
+</script>
+
