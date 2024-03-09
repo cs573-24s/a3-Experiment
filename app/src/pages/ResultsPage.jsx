@@ -6,6 +6,7 @@ import "./ResultsPage.css"
 
 export default function ResultsPage() {
   const [results, setResults] = useState([]);
+  const [rawData, setRawData] = useState([]);
   const [range, setRange] = useState([])
 
   const fetchResults = async () => {
@@ -15,19 +16,32 @@ export default function ResultsPage() {
       }));
       const visResults = new Map()
 
+      let csvData = "data:text/csv;charset=utf-8,"
+      csvData += "type,correct,user_answer,difference,error\r\n"
+
+
       //parse results 
       for (let trial of newData) {
         for (let field in trial) {
           const vis = trial[field]
+
           if (visResults.has(vis.type)) {
             const curr = visResults.get(vis.type)
             curr.push(vis.error)
           } else {
             visResults.set(vis.type, [vis.error])
           }
+
+          let currRow = "";
+          currRow += vis.type + ",";
+          currRow += vis.correct + ",";
+          currRow += vis.user_answer + ",";
+          currRow += vis.difference + ",";
+          currRow += vis.error + "\r\n";
+          csvData += currRow;
         }
       }
-
+      setRawData(encodeURI(csvData))
 
       const resultsMap = new Map()
       let min = 99999
@@ -57,7 +71,7 @@ export default function ResultsPage() {
     d3.select('svg').remove()
     var margin = { top: 10, right: 30, bottom: 30, left: 40 },
       width = 800 - margin.left - margin.right,
-      height = 400 - margin.top - margin.bottom;
+      height = 200 - margin.top - margin.bottom;
     //    const svg = d3.select("svg")
     var svg = d3.select("#vis")
       .append("svg")
@@ -124,12 +138,17 @@ export default function ResultsPage() {
         Thank you for participating!
       </h2>
       <p>
-        Below are the current results for our experiment
+        Below are the current results for our experiment:
       </p>
       <p>
-        The following graph shows a 95% confidence interval of participant accuracy, with accuracy being calculated with the equation: log<sub>2</sub>( | judged percent - true percent | + 1/8)
+        The following graph shows a 95% confidence interval of participant accuracy.
       </p>
-      <div id="vis"></div>
+      <p>
+        Accuracy is calculated with the equation: log<sub>2</sub>( | judged percent - true percent | + 1/8)
+      </p>
+      <div id="vis">
+      </div>
+      <a id="download" download="raw_data.csv" href={rawData}>Download Raw Data</a>
     </div>
   );
 }
