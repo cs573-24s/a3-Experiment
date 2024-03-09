@@ -2,7 +2,6 @@ import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import "./ResultsPage.css"
-import AnswerSelection from "../components/AnswerSelection";
 
 export default function ResultsPage() {
   const [results, setResults] = useState([]);
