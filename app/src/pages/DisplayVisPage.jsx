@@ -1,9 +1,11 @@
 import "./DisplayVisPage.css"
 import { useState, useEffect } from "react"
+import { collection, addDoc } from "firebase/firestore"
+import { db } from "../firebase"
 import Vis1 from "./Vis1"
 import Vis2 from "./Vis2"
 export default function DisplayVisPage() {
-  const [visNum, changeVis] = useState(0);
+  const [visNum, changeVis] = useState(1);
   const [percentDiff, setPercentDiff] = useState(null);
   const [currVis, setCurrVis] = useState(null);
   const [userAnswers, setUserAnswers] = useState({})
@@ -44,10 +46,16 @@ export default function DisplayVisPage() {
   const currType = visNum < 15 ? "bar" : "pie";
 
   useEffect(() => {
-    const [randomData, percentDiff] = generateRandomData();
-
-    setCurrVis(visNum < 15 ? <Vis1 randomData={randomData} /> : <Vis2 randomData={randomData} />)
-    setPercentDiff(percentDiff);
+    //if no more vis needed
+    if (visNum > 45) {
+      //TODO: send to 
+      const docRef = addDoc(collection(db, "results"), userAnswers)
+      console.log(docRef.id)
+    } else {
+      const [randomData, percentDiff] = generateRandomData();
+      setCurrVis(visNum < 15 ? <Vis1 randomData={randomData} /> : <Vis2 randomData={randomData} />)
+      setPercentDiff(percentDiff);
+    }
   }, [visNum])
 
 
@@ -72,29 +80,35 @@ export default function DisplayVisPage() {
   //TODO: make look pretty
   return (
     <div>
-      <div id="progress-bar">
-        <div id="inner-progress" style={{ width: (visNum / 45) * 100 + "%" }} />
-      </div>
-      <div id="main-flex">
-        <div id="question-area">
-          <h4>Visualization {visNum} / 45</h4>
-          <div id="prompt">
-            What percentage of the larger element is the smaller element in area?
-            <br />
-            (Round to the nearest percent)
+      {visNum <= 45 ?
+        <div>
+          <div id="progress-bar">
+            <div id="inner-progress" style={{ width: (visNum / 45) * 100 + "%" }} />
           </div>
-          <div id="input-area">
-            <div style={{ display: 'inline-block', margin: 'auto' }}>
-              <input id="input" type="number" onKeyDown={handleKeyDown} />
-              <button onClick={submit}>submit</button>
+          <div id="main-flex">
+            <div id="question-area">
+              <h4>Visualization {visNum} / 45</h4>
+              <div id="prompt">
+                What percentage of the larger element is the smaller element in area?
+                <br />
+                (Round to the nearest percent)
+              </div>
+              <div id="input-area">
+                <div style={{ display: 'inline-block', margin: 'auto' }}>
+                  <input id="input" type="number" onKeyDown={handleKeyDown} />
+                  <button onClick={submit}>submit</button>
+                </div>
+              </div>
+            </div>
+            <div id="main-area">
+              {currVis}
+              {percentDiff}
             </div>
           </div>
         </div>
-        <div id="main-area">
-          {currVis}
-          {percentDiff}
-        </div>
-      </div>
+        :
+        <div></div>
+      }
     </div>
   )
 }
