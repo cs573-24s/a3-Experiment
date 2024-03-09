@@ -64,7 +64,7 @@ export default function DisplayVisPage() {
     let currAnswers = userAnswers;
     const diff = Math.abs(input.value - percentDiff)
     const calcError = Math.log2(diff + (1 / 8))
-    currAnswers['vis' + visNum] = { type: currType, user_answer: Number(input.value), correct: percentDiff, difference: diff, calcError: calcError }
+    currAnswers['vis' + visNum] = { type: currType, user_answer: Number(input.value), correct: percentDiff, difference: diff, error: calcError > 0 ? calcError : 0 }
     setUserAnswers(currAnswers)
     input.value = "";
     changeVis(visNum + 1)
