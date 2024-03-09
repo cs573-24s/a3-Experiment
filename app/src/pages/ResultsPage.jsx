@@ -70,7 +70,7 @@ export default function ResultsPage() {
 
     const y = d3.scaleLinear()
       .domain(range)
-      .range([height, 0]);
+      .range([width, 0]);
     svg.call(d3.axisBottom(y))
 
 
@@ -126,15 +126,9 @@ export default function ResultsPage() {
       <p>
         Below are the current results for our experiment
       </p>
-      <p>Error:</p>
-      {
-        Array.from(results).map((r) => (
-          <div>
-            <p>{r[0]}</p>
-            <p>Mean: {r[1][0]}, Std Dev: {r[1][1]}</p>
-          </div>
-        ))
-      }
+      <p>
+        The following graph shows a 95% confidence interval of participant accuracy, with accuracy being calculated with the equation: log<sub>2</sub>( | judged percent - true percent | + 1/8)
+      </p>
       <div id="vis"></div>
     </div>
   );
