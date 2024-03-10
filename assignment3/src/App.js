@@ -115,6 +115,23 @@ function App() {
       </div>
 
     </div>
+
+    // <div className="App">
+    //   <div style={{display: 'flex', alignItems: 'center'}}>
+    //     <div id="container" style={{width: '300px', height: '300px'}}>
+    //         {canGo 
+    //         && <img key={imageNo} style={{cursor: 'pointer'}} src={imageList[imageNo]} alt={`${imageNo}`} onClick={mouseClicked} />}
+    //     </div>
+    //     {canGo 
+    //     && <div style={{"margin": "50px", width: '125px', 'fontSize': '25px'}}>
+    //       Click the red circle to continue.
+    //     </div> }
+    //     {!canGo 
+    //     // && <h1>Click continue when you're ready for the next graph.</h1>
+    //     && <Button variant="primary"  style={{marginLeft: 'auto', marginRight: 'auto', marginTop:'auto', marginBottom:'auto'}} onClick={()=>setCanGo(true)}>Continue</Button> 
+    //     }
+    //   </div>
+    // </div>
   );
 }
 

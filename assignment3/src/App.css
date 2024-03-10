@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+.App{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#graph{
+  display: none;
+}
+
+#break{
+  display: none;
+}
+
+#end{
+  display: none;
+}
