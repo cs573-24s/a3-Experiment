@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { HashRouter } from 'react-router-dom'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+document.title = "Classic Experiment";
+
 root.render(
   <HashRouter>
     <App />
