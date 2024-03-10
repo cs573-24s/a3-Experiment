@@ -25,7 +25,7 @@ const Scatterplot = ({ x, y, width, height, data, datapoint }) => {
   return (
     <g transform={`translate(${x}, ${y})`}>
       {data.map(d => (
-        <circle key={d.id} cx={xScale(d.x)} cy={yScale(d.y)} r={3} fill={d.color} />
+        <circle key={d.id} cx={xScale(d.x)} cy={yScale(d.y)} r={5} fill={d.color} />
       ))}
       <Axis x={0} y={height} scale={xScale} />
       <Axis x={0} y={0} scale={yScale} type={"Left"} />
