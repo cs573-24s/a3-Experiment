@@ -5,13 +5,13 @@ export default function NavBar() {
   return (
     <div id="nav">
       <Link to="/" className="link">
-        IntroPage
+        Intro Page
+      </Link>
+      <Link to="/test" className="link">
+        Participate
       </Link>
       <Link to="/results" className="link">
         Results
-      </Link>
-      <Link to="/test" className="link">
-        Test
       </Link>
     </div>
   );

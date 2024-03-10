@@ -1,4 +1,4 @@
-#progress-bar{
+#progress-bar {
   width: 75vw;
   height: 20px;
   margin: auto;
@@ -7,13 +7,14 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
-#inner-progress{
+
+#inner-progress {
   height: 100%;
   border-radius: 50px;
   background-color: blue;
-
 }
-#main-flex{
+
+#main-flex {
   display: flex;
   justify-content: space-around;
 }
@@ -21,11 +22,14 @@
 #main-area {
   width: 80vw;
   height: 85vh;
-  background-color: LightGray;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid black;
 }
 
-#question-area{
+#question-area {
   text-align: center;
 }
 
@@ -33,11 +37,24 @@
   padding: 15px;
 }
 
+#submit {
+  margin-left: 10px;
+  background-color: #bad7e4;
+  border: none;
+  border-radius: 8px;
+  padding: 4px 7px 4px 7px;
+}
+
+#submit:hover {
+  background-color: #a1c8e1;
+  cursor: pointer;
+}
+
 #input-area {
   width: 100%;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button {  
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
    opacity: 1;
 }

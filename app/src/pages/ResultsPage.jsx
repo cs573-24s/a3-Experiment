@@ -69,6 +69,11 @@ export default function ResultsPage() {
 
   useEffect(() => {
     d3.select('svg').remove()
+
+    if (results.size === 0) {
+      return
+    }
+
     var margin = { top: 10, right: 30, bottom: 30, left: 40 },
       width = 800 - margin.left - margin.right,
       height = 200 - margin.top - margin.bottom;
@@ -135,6 +140,8 @@ export default function ResultsPage() {
   return (
     <div>
       <h2>
+        <br />
+        <br />
         Thank you for participating!
       </h2>
       <p>
@@ -146,9 +153,14 @@ export default function ResultsPage() {
       <p>
         Accuracy is calculated with the equation: log<sub>2</sub>( | judged percent - true percent | + 1/8)
       </p>
+      {
+        results.size === 0 ? <div><p style={{ color: "red" }}><br /><br />[no results recorded yet]</p></div> : null
+      }
       <div id="vis">
       </div>
-      <a id="download" download="raw_data.csv" href={rawData}>Download Raw Data</a>
+      {
+        results.size === 0 ? null : <a id="download" download="raw_data.csv" href={rawData}>Download Raw Data</a>
+      }
     </div>
   );
 }

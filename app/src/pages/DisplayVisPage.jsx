@@ -10,8 +10,6 @@ export default function DisplayVisPage() {
   const [currVis, setCurrVis] = useState(null);
   const [userAnswers, setUserAnswers] = useState({})
 
-
-
   //iterate over children 
   const generateRandomData = () => {
     const data = [];
@@ -44,9 +42,9 @@ export default function DisplayVisPage() {
   };
 
   const currType = visNum < 15 ? "bar" : "pie";
-
   useEffect(() => {
     //if no more vis needed
+    console.log(userAnswers)
     if (visNum > 45) {
       //TODO: send to 
       const docRef = addDoc(collection(db, "results"), userAnswers)
@@ -60,14 +58,19 @@ export default function DisplayVisPage() {
 
 
   const submit = () => {
-    const input = document.getElementById("input")
-    let currAnswers = userAnswers;
-    const diff = Math.abs(input.value - percentDiff)
-    const calcError = Math.log2(diff + (1 / 8))
-    currAnswers['vis' + visNum] = { type: currType, user_answer: Number(input.value), correct: percentDiff, difference: diff, error: calcError > 0 ? calcError : 0 }
-    setUserAnswers(currAnswers)
-    input.value = "";
-    changeVis(visNum + 1)
+    const input = document.getElementById("input").value
+    console.log(input)
+    if (input === "") {
+      alert("please enter a percentage")
+    } else {
+      let currAnswers = userAnswers;
+      const diff = Math.abs(input - percentDiff)
+      const calcError = Math.log2(diff + (1 / 8))
+      currAnswers['vis' + visNum] = { type: currType, user_answer: Number(input), correct: percentDiff, difference: diff, error: calcError > 0 ? calcError : 0 }
+      setUserAnswers(currAnswers)
+      input.value = "";
+      changeVis(visNum + 1)
+    }
   }
 
 
@@ -91,25 +94,27 @@ export default function DisplayVisPage() {
             <div id="question-area">
               <h4>Visualization {visNum} / 45</h4>
               <div id="prompt">
-                What percentage of the larger element is the smaller element in area?
+                What percentage of the larger element is the smaller element?
                 <br />
                 (Round to the nearest percent)
               </div>
               <div id="input-area">
                 <div style={{ display: 'inline-block', margin: 'auto' }}>
                   <input id="input" type="number" onKeyDown={handleKeyDown} />
-                  <button onClick={submit}>submit</button>
+                  <button id="submit" onClick={submit}>submit</button>
                 </div>
               </div>
             </div>
             <div id="main-area">
               {currVis}
-              {percentDiff}
             </div>
           </div>
         </div>
         :
-        <div></div>
+        <div>
+          <p><br /><br /><br />Thank you for participating, your answers have been logged.</p>
+          <p>Please visit "Results" to see live results of our study</p>
+        </div>
       }
     </div>
   )
