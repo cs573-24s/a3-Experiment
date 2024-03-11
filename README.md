@@ -1,8 +1,6 @@
-For the bubble chart, according to the principle of displaying the bubble scale, it should follow the order of gradual increasement, due to the limit of human sight perciption, this can help human capture the accurate scale in the best way.
-Depending on how you are creating your bubble chart, you may need to scale your data to account for how data values are mapped to point sizes. Many visualization tools will automatically match value to area, but be careful of those cases where value is matched to diameter or radius instead.
-
-I create two bubble charts, one follows the principle, another doesn't and mark the target bubble as "a" and "b". I ask people to decide which one is bigger. (They are the same size actually)
-
+When constructing a bubble chart, it is essential to adhere to the principle of displaying bubble scale in a gradual increment to optimize human perception. 
+This ensures that viewers can accurately perceive and interpret the scale. Depending on your chart creation method, you might need to scale your data to align with how values are translated into point sizes. Some visualization tools automatically correlate values with areas, but caution is warranted when dealing with cases where values correspond to diameter or radius. 
+As an experiment, I generated two bubble charts—one adhering to the principle and another deviating from it—designating them as "a" and "b." I then asked participants to determine which bubble appeared larger, even though they were, in fact, identical in size.
 
 
 
