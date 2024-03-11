@@ -3,9 +3,19 @@
 <title>A3 Experiment</title>
 
 <body>
+    <div id="count">
+        <h1 id="count-display"></h1>
+    </div>
+
     <div id="vis"></div>
 
-    <div id="prompt"></div>
+    <div id="prompt">
+        <form>
+            <label for="pguess">Percentage Guess (Whole Number No % Sign):</label><br>
+            <input type="text" id="pguess" name="pguess"><br>
+            <button type="button" id="pguess-enter" onclick="enter()">Enter</button>
+        </form>
+    </div>
 </body>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -16,14 +26,68 @@
 
     console.log(d3);
 
+    var count = 0;
+
+    let outputCollection = [];
+
     const margin = {top: 30, right: 30, bottom: 30, left: 30};
     const width = 600 - margin.left - margin.right;
     const height = 600 - margin.top - margin.bottom;
 
     var vis_types = Array('bar', 'bubble', 'voronoi', 'treemap');
+    var cur_types = vis_types.slice();
+    let cur_vis, data;
 
-    function run() {
-        var type = vis_types[Math.floor(Math.random() * 4)];
+    function main() {
+        count = count + 1;
+        if(count > 80) {
+            collect();
+            count = 1;
+            outputCollection = [];
+        }
+        var countString = count.toString().concat(" /20");
+        document.getElementById("count-display").innerHTML = countString;
+
+        if(cur_types.length < 1) {
+            cur_types = vis_types.slice();
+        }
+        shuffle(cur_types);
+        cur_vis = cur_types.shift();
+        document.getElementById("pguess").value = '';
+        run(cur_vis);
+    }
+
+    function enter() {
+        var guess = document.getElementById("pguess").value;
+        var trueGuess = getTruePercent(data).toString();
+        const row = [count.toString(), cur_vis, trueGuess, guess];
+        outputCollection.push(row);
+        console.log(outputCollection);
+        main();
+    }
+
+    function getTruePercent(data) {
+        let val1 = 0, val2 = 0;
+        for(var i = 0; i < data.length; i++) {
+            if(data[i].dot == true) {
+                if(val1 == 0) {
+                    val1 = data[i].value;
+                } else {
+                    val2 = data[i].value;
+                }
+            }
+        }
+        var percent = val1/val2;
+        if(percent > 1) {
+            percent = 1/percent;
+        }
+        percent = Math.round(percent * 100);
+        return percent;
+    }
+
+    function run(type) {
+
+        d3.select('svg').remove();
 
         switch(type) {
             case 'voronoi':
@@ -43,12 +107,49 @@
         }
     }
 
-    window.onload = run();
+    function collect() {
+        let csvContent = '';
+        outputCollection.forEach(row => {
+            csvContent += row.join(',') + '\n';
+        })
 
-    function Entry(id, val, dot) {
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8,' });
+        const objUrl = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.setAttribute('href', objUrl);
+        link.setAttribute('download', 'output.csv');
+        link.click();
+    }
+
+    function start() {
+        const input = document.getElementById("pguess");
+        const button = document.getElementById("pguess-enter");
+        button.disabled = true;
+
+        input.addEventListener("input", () => {
+            if(input.value.length > 0) {
+                button.disabled = false;
+            } else {
+                button.disabled = true;
+            }
+        });
+
+        main();
+    }
+
+    window.onload = start();
+
+    function Entry(id, value, dot) {
         this.id = id;
-        this.val = val;
+        this.value = value;
         this.dot = dot;
+    }
+
+    function OutputEntry(trialNum, vis, truePercent, reportedPercent) {
+        this.trialNum = trialNum;
+        this.vis = vis;
+        this.truePercent = truePercent;
+        this.reportedPercent = reportedPercent;
     }
 
     function TreeEntry(name, parent, value, dot) {
@@ -81,6 +182,7 @@
         let dots = [true, true, false, false, false, false]
         for(let i = 0; i < 6; i++) {
             var aVal = Math.floor(Math.random() * 100) + 1;
+            aVal = Math.ceil(aVal/5) * 5;
             data.push(new Entry(i, aVal, dots[i]))
         }
 
@@ -93,6 +195,7 @@
         data.push(new TreeEntry("Origin", '', '', false))
         for(let i = 0; i < 6; i++) {
             var aVal = Math.floor(Math.random() * 100) + 1;
+            aVal = Math.ceil(aVal/5) * 5;
             data.push(new TreeEntry(i, 'Origin', String(aVal), dots[i]))
         }
 
@@ -100,7 +203,7 @@
     }
 
     function makeBar() {
-        var data = getData()
+        data = getData()
         d3.select('#vis').selectAll().remove();
 
         var svg = d3.select("#vis")
@@ -134,9 +237,9 @@
             .enter()
             .append("rect")
                 .attr("x", function(d) { return x(d.id); })
-                .attr("y", function(d) { return y(d.val); })
+                .attr("y", function(d) { return y(d.value); })
                 .attr("width", x.bandwidth())
-                .attr("height", function(d) { return height - y(d.val); })
+                .attr("height", function(d) { return height - y(d.value); })
                 .attr("fill", "none")
                 .style("stroke", "black")
                 .style("stroke-width", 2);
@@ -147,7 +250,7 @@
             .enter()
             .append("circle")
                 .attr("cx", function(d){ return ((2 * x(d.id)) + x.bandwidth())/2})    // put dots in middle of rect
-                .attr("cy", function(d){ return (y(d.val) + height)/2})  
+                .attr("cy", function(d){ return (y(d.value) + height)/2})  
                 .attr("r", 4)
                 .attr("fill", function(d){ return (d.dot ? 'black' : 'none'); });    // only fill if one of the selected entries 
 
@@ -160,7 +263,7 @@
 
     function makeTreeMap() {
 
-        var data = getTreeData()
+        data = getTreeData()
         d3.select('#vis').selectAll().remove();
 
         var svg = d3.select("#vis")
@@ -214,7 +317,7 @@
 
     function makeVoronoi() {
 
-        var data = getData()
+        data = getData()
         d3.select('#vis').selectAll().remove();
 
         var svg = d3.select("#vis")
@@ -228,7 +331,7 @@
 
         const _voronoiTreemap = d3.voronoiTreemap();
 
-        hierarchy = d3.hierarchy({ children: data }).sum((d) => d.val);
+        hierarchy = d3.hierarchy({ children: data }).sum((d) => d.value);
         var circlingPolygon = [[0,0], [width, 0], [width, height], [0, height]];
         _voronoiTreemap.clip(circlingPolygon)(hierarchy);
 
@@ -260,10 +363,10 @@
 
     function makeBubble() {
 
-        var data = getData()
+        data = getData()
         d3.select('#vis').selectAll().remove();
 
-        const hierarchy = d3.hierarchy({children: data}).sum(d => d.val);
+        const hierarchy = d3.hierarchy({children: data}).sum(d => d.value);
 
         const pack = d3.pack()
             .size([width, height])
