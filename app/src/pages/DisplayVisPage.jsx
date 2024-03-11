@@ -44,11 +44,9 @@ export default function DisplayVisPage() {
   const currType = visNum < 15 ? "bar" : "pie";
   useEffect(() => {
     //if no more vis needed
-    console.log(userAnswers)
     if (visNum > 45) {
       //TODO: send to 
       const docRef = addDoc(collection(db, "results"), userAnswers)
-      console.log(docRef.id)
     } else {
       const [randomData, percentDiff] = generateRandomData();
       setCurrVis(visNum < 15 ? <Vis1 randomData={randomData} /> : <Vis2 randomData={randomData} />)
@@ -59,7 +57,6 @@ export default function DisplayVisPage() {
 
   const submit = () => {
     const input = document.getElementById("input").value
-    console.log(input)
     if (input === "") {
       alert("please enter a percentage")
     } else {
