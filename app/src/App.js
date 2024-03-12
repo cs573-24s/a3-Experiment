@@ -16,7 +16,6 @@ function App() {
         <Route path="/" element={<IntroPage />} />
         <Route path="/results" element={<ResultsPage />} />
         <Route path="/test" element={<DisplayVisPage><div>hello</div></DisplayVisPage>} />
-        <Route path="/try" element={<Vis3 />} />
       </Routes>
     </div>
   );
