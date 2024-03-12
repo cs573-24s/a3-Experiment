@@ -4,6 +4,8 @@ import { collection, addDoc } from "firebase/firestore"
 import { db } from "../firebase"
 import Vis1 from "./Vis1"
 import Vis2 from "./Vis2"
+import Vis3 from "./Vis3"
+
 export default function DisplayVisPage() {
   const [visNum, changeVis] = useState(1);
   const [percentDiff, setPercentDiff] = useState(null);
@@ -14,9 +16,13 @@ export default function DisplayVisPage() {
   const generateRandomData = () => {
     const data = [];
     for (let i = 0; i < 5; i++) {
+      const val = Math.max(Math.round(Math.random() * 100), 10);
       data.push({
         label: `Data ${i + 1}`,
-        value: Math.round(Math.random() * 100)
+        value: val,
+        x: Math.random() * (300 - 100) + 100,
+        y: Math.random() * (150 - 100) + 100,
+        r: val,
       });
     }
 
@@ -41,7 +47,7 @@ export default function DisplayVisPage() {
     return [data, percentDiff]
   };
 
-  const currType = visNum < 15 ? "bar" : "pie";
+  const currType = visNum <= 15 ? "bar" : visNum <= 30 ? "pie" : "bubble";
   useEffect(() => {
     //if no more vis needed
     if (visNum > 45) {
@@ -49,21 +55,22 @@ export default function DisplayVisPage() {
       const docRef = addDoc(collection(db, "results"), userAnswers)
     } else {
       const [randomData, percentDiff] = generateRandomData();
-      setCurrVis(visNum < 15 ? <Vis1 randomData={randomData} /> : <Vis2 randomData={randomData} />)
+      setCurrVis(visNum <= 15 ? <Vis1 randomData={randomData} /> : visNum <= 30 ? <Vis2 randomData={randomData} /> : <Vis3 randomData={randomData} />)
       setPercentDiff(percentDiff);
     }
   }, [visNum])
 
 
   const submit = () => {
-    const input = document.getElementById("input").value
-    if (input === "") {
+    const input = document.getElementById("input")
+    if (input.value === "") {
       alert("please enter a percentage")
     } else {
+      const inputNum = Number(input.value)
       let currAnswers = userAnswers;
-      const diff = Math.abs(input - percentDiff)
+      const diff = Math.abs(inputNum - percentDiff)
       const calcError = Math.log2(diff + (1 / 8))
-      currAnswers['vis' + visNum] = { type: currType, user_answer: Number(input), correct: percentDiff, difference: diff, error: calcError > 0 ? calcError : 0 }
+      currAnswers['vis' + visNum] = { type: currType, user_answer: inputNum, correct: percentDiff, difference: diff, error: calcError > 0 ? calcError : 0 }
       setUserAnswers(currAnswers)
       input.value = "";
       changeVis(visNum + 1)
