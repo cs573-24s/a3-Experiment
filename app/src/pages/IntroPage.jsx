@@ -1,19 +1,17 @@
-export default function IntroPage() {
+import instructions from './intro-page.png'
 
-  //can add whatever you want in here as regular javascript
-  let obj = [1, 2, 4, 5]
 
   //return must be ONE element (just wrap in div)
-  return (
-    <div>IntroPage!
+ console.log(instructions); // /logo.84287d09.png
 
-      {
-        //javascript code in here! returning something
-        //puts that element on the page
-        obj.map((i) =>
-          <div>Div {i}</div>
-        )
-      }
+export default function IntroPage() {
+
+return (
+    <div>
+      <h2>Thank you for participating in our experiment! The following graphic provides instructions for completing the assesment. Once you are ready, click on the "Participate" button!</h2>
+      <img src={instructions} alt="Instructions" />
     </div>
-  )
+  );  
+
 }
+
