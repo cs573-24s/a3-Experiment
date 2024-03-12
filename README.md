@@ -1,16 +1,36 @@
+**Experiment Link: **
+
+Assignment 3 - Replicating a Classic Experiment  
+===
+
+1) concise description and screenshot of experiment
+For our experiment, we sought to compare users' ability to differentiate the sizes of points when viewing **Bar Charts**, **Pie Charts**, and **Bubble Charts**. We developed an application in React to host the experiment and display the results after each assessment. We had ____ people participate in the experiment for a total of ____ trials for each type of visualization. 
+
+3) figures that shows the visualizations you tested and results, ordered by best performance to worst performance
+
+4) report average log2Error for each vis across all trials and participants
+
+Technical Achievements 
+===
+
+Design Achievements 
+===
+For design achievements for this assignment, we utilized React to create an app that was simple and appealing to view. We also included an introduction page with instructions for completing the experiment to make it clear to the users how the app works. 
+
+<img width="956" alt="image" src="https://github.com/chikpea123/a3-Experiment/assets/51792257/8df84b9a-8038-41ae-a510-4a088e50764f">
+
+We also made this page accessible at any point during the assessment, allowing users to reference it whenever they may get confused without having to start over.
+
+**Additional Notes: **
+
 When constructing a bubble chart, it is essential to adhere to the principle of displaying bubble scale in a gradual increment to optimize human perception. 
 
 This ensures that viewers can accurately perceive and interpret the scale. Depending on your chart creation method, you might need to scale your data to align with how values are translated into point sizes. Some visualization tools automatically correlate values with areas, but caution is warranted when dealing with cases where values correspond to diameter or radius. 
 
 As an experiment, I generated two bubble charts—one adhering to the principle and another deviating from it—designating them as "a" and "b." I then asked participants to determine which bubble appeared larger, even though they were, in fact, identical in size.
 
-
-
-
-
-
-
-
+Instructions: 
+===
 
 Assignment 3 - Replicating a Classic Experiment  
 ===
