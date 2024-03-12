@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
+
 
 // Function to generate random data for the bubble charts
 function generateRandomData() {
@@ -11,8 +12,8 @@ function generateRandomData() {
   }));
 }
 
-const MyComponent = () => {
-  // State for perceived difference input
+const Vis3 = () => {
+  // State for percent difference input
   const [perceivedDifference, setPerceivedDifference] = useState('');
 
   // Sample data for the first chart
@@ -73,12 +74,12 @@ const MyComponent = () => {
   const calculateAndDisplayError = () => {
     const perceivedDifferenceValue = parseFloat(perceivedDifference);
 
-    const markedData1 = data1.filter((d) => d.e === 'a'); // Assuming 'a' represents the red bubble
+    const markedData1 = data1.filter((d) => d.e === 'a'); 
     const markedData2 = data1.filter((d) => d.e === 'b');
 
     // Check if there is marked data for both charts
     if (markedData1.length === 1 && markedData2.length === 1) {
-      // Calculate the true difference between the two red bubbles' radii
+      
       const trueDifference = Math.abs((markedData1[0].r / markedData2[0].r) * 50);
 
       // Calculate the error as the absolute difference between perceived and true difference
@@ -122,4 +123,4 @@ const MyComponent = () => {
   );
 };
 
-export default MyComponent;
+export default Vis3;
