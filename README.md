@@ -8,10 +8,26 @@ For our experiment, we sought to compare users' ability to differentiate the siz
 
 <img width="957" alt="image" src="https://github.com/chikpea123/a3-Experiment/assets/51792257/aa514358-baf1-4f65-b8a3-cb8d9c900d11">
 
+First Place Chart Type
+===
+screenshot of chart
+**Results**
+report average log2Error across all trials and participants
+screenshot of confidence interval graph
 
-3) figures that shows the visualizations you tested and results, ordered by best performance to worst performance
+Second Place Chart Type
+===
+screenshot of chart
+**Results**
+report average log2Error across all trials and participants
+screenshot of confidence interval graph
 
-4) report average log2Error for each vis across all trials and participants
+Third Place Chart Type
+===
+screenshot of chart
+**Results**
+report average log2Error across all trials and participants
+screenshot of confidence interval graph
 
 Technical Achievements 
 ===
