@@ -17,10 +17,7 @@
       height: 200px;
       margin: 20px;
     }
-    .bubble {
-      fill: steelblue;
-      opacity: 0.7;
-    }
+
   </style>
 </head>
 <body>
@@ -30,52 +27,38 @@
   <div class="chart" id="chart2"></div>
 </div>
 
+<div id="input-container">
+  <label for="perceived-difference">Perceived Difference:</label>
+  <input type="number" id="perceived-difference" placeholder="Enter perceived difference">
+  <button onclick="calculateAndDisplayError()">Calculate Error</button>
+  <p id="perceived-output"></p>
+  <p id="true-output"></p>
+  <p id="scaled-error-output"></p>
+
+</div>
+
 <script>
-  // Sample data for the first chart
-  const data1 = [
-    { x: 100, y: 105, r: 20, t: 0.3 },
-    { x: 200, y: 150, r: 45, t: 0.9 ,e:"a"},
-    { x: 330, y: 120, r: 30, t: 0.3 },
-  ];
+  // Function to generate random data for the bubble charts
+  function generateRandomData() {
+   return Array.from({ length: Math.random() * (10 - 5) + 5 }, (_, index) => ({
+     x: Math.random() * (300 - 100) + 100,
+     y: Math.random() * (150 - 100) + 100,
+     r: Math.random() * 20,
+     e: index === 1 ? "a" : index === 2 ? "b" : undefined,
+   }));
+  }
 
-  // Sample data for the second chart
-  const data2 = [
-    { x: 150, y: 120, r: 21, t: 0.7 },
-    { x: 220, y: 150, r: 30, t: 0.4, },
-    { x: 300, y: 100, r: 45, t: 0.2,e:"b"},
-  ];
+// Sample data for the first chart
+  const data1 = generateRandomData();
 
-  // Set up the SVG container for the rectangle
+// Set up the SVG container for the rectangle
   const rectWidth = 700;
   const rectHeight = 250;
   const rectSvg = d3.select('body')
-    .append('svg')
-    .attr('width', rectWidth)
+   .append('svg') .attr('width', rectWidth)
     .attr('height', rectHeight)
-    .style('border', '1px solid black'); // Add border for visualization
+   .style('border', '1px solid black'); // Add border for visualization
 
-  // Create a rectangle inside the SVG
-  rectSvg.append('rect')
-    .attr('width', rectWidth)
-    .attr('height', rectHeight)
-    .attr('fill', 'none')
-    .attr('stroke', 'black');
-
-  // Set up the first SVG container inside the rectangle
-  const svg1 = rectSvg.append('svg')
-    .attr('x', 10)
-    .attr('y', 10)
-    .attr('width', (rectWidth - 30) / 2)
-    .attr('height', rectHeight - 20);
-
-  // Set up the second SVG container inside the rectangle
-  const svg2 = rectSvg.append('svg')
-    .attr('x', 20 + (rectWidth - 30) / 2)
-    .attr('y', 10)
-    .attr('width', (rectWidth - 30) / 2)
-    .attr('height', rectHeight - 20);
-
-  // Create scales for x and y axes based on the rectangle's dimensions
   const xScale = d3.scaleLinear()
     .domain([0, rectWidth])
     .range([0, (rectWidth - 30) / 2]);
@@ -84,47 +67,75 @@
     .domain([0, rectHeight])
     .range([rectHeight - 20, 0]);
 
-  // Create circles for the first chart inside the rectangle
-  const circles1 = svg1.selectAll('circle')
-    .data(data1)
-    .enter().append('circle')
-    .attr('class', 'bubble')
-    .attr('cx', d => xScale(d.x))
-    .attr('cy', d => yScale(d.y))
-    .attr('r', d => d.r)
-    .attr('opacity', d => d.t);
 
-  const text1 = svg1.selectAll('text')
-    .data(data1)
-    .enter().append('text')
-    .attr('class', 'label')
-    .attr('x', d => xScale(d.x))
-    .attr('y', d => yScale(d.y))
-    .text(d => d.e)
-    .attr('dy', -15);
+// Set up the first SVG container inside the rectangle
+const svg1 = rectSvg.append('svg')
+  .attr('x', 150)
+  .attr('y', 10)
+  .attr('width', (rectWidth - 30) / 2)
+  .attr('height', rectHeight - 20);
+
+// Create circles for the first chart inside the rectangle using pack layout
+const pack1 = d3.pack()
+  .size([(rectWidth - 30) / 2, rectHeight - 20])
+  .padding(2);
+
+const root1 = d3.hierarchy({ children: data1 })
+  .sum(d => d.r);
+
+const nodes1 = pack1(root1).descendants();
+  
+// Create circles for the bubbles
+const circles1 = svg1.selectAll('circle')
+  .data(nodes1)
+  .enter().append('circle')
+  .attr('cx', d => d.x)
+  .attr('cy', d => d.y)
+  .attr('r', d => d.r)
+  .attr('fill', 'none')
+  .attr('stroke', 'black')
+
+const dots1 = svg1.selectAll('.dot')
+  .data(nodes1)
+  .enter().append('circle')
+  .attr('class', 'dot') // Add the class 'dot' to these circles for easier selection and styling
+  .attr('cx', d => d.x)  // Use the same x property as circles
+  .attr('cy', d => d.y)  // Use the same y property as circles
+  .attr('r', 3) // Set the radius of the dots to 3 pixels
+  .attr('fill', d => d.data.e === 'a' ? 'black' : d.data.e === 'b' ? 'black' :'none');
 
 
 
-  // Create circles for the second chart inside the rectangle
-  const circles2 = svg2.selectAll('circle')
-    .data(data2)
-    .enter().append('circle')
-    .attr('class', 'bubble')
-    .attr('cx', d => xScale(d.x))
-    .attr('cy', d => yScale(d.y))
-    .attr('r', d => d.r)
-    .attr('opacity', d => d.t);
 
-  const text2 = svg2.selectAll('text')
-    .data(data2)
-    .enter().append('text')
-    .attr('class', 'label')
-    .attr('x', d => xScale(d.x))
-    .attr('y', d => yScale(d.y))
-    .text(d => d.e)
-    .attr('dy', -15);
+  function calculateAndDisplayError() {
+    const perceivedDifference = parseFloat(document.getElementById('perceived-difference').value);
 
+    const markedData1 = data1.filter(d => d.e === 'a'); // Assuming 'a' represents the red bubble
+    const markedData2 = data1.filter(d => d.e === 'b');
+
+
+  // Check if there is marked data for both charts
+  if (markedData1.length === 1 && markedData2.length === 1) {
+    // Calculate the true difference between the two red bubbles' radii
+    const trueDifference = Math.abs((markedData1[0].r / markedData2[0].r)*50) ;
+
+    // Calculate the error as the absolute difference between perceived and true difference
+    const error = Math.abs(perceivedDifference- trueDifference);
+
+    // Scale the error using Cleveland and McGill’s log-base-2 error equation
+    const scaledError = Math.log2(1/8+ error);
+
+    // Display the result
+    document.getElementById('perceived-output').innerText = `Perceived Difference: ${perceivedDifference}`;
+    document.getElementById('true-output').innerText = `True Difference: ${trueDifference}`;
+    document.getElementById('scaled-error-output').innerText = `Scaled Error: ${scaledError}`;
+  } else {
+    // Handle the case where the marked data is not available for both charts
+    console.error("Error: Unable to find marked data for both charts.");
+  }
+}
 </script>
 
 </body>
 </html>
+
