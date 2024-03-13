@@ -6,7 +6,7 @@ by: Andrew Kerekon, Aviv Nur, Bijesh Shrestha, Yihan Wang
 
 ## Link to our study page
 
-Link: https://github.com/BijeshShrestha/revisit
+Link: https://bijeshshrestha.github.io/revisit/
 
 ## Link to our study repository 
 
