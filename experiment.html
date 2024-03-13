@@ -1,8 +1,23 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<title>A3 Experiment</title>
+<head>
+    <meta charset="utf-8">
+    <title>A3 Experiment</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
 
 <body>
+
+    <div id="topnav">
+
+        <nav id="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experiment.html">Experiment</a></li>
+            </ul>
+        </nav>
+
+    </div>
+
     <div id="count">
         <h1 id="count-display"></h1>
     </div>
@@ -10,12 +25,12 @@
     <div id="vis"></div>
 
     <div id="prompt">
-        <form>
-            <label for="pguess">Percentage Guess (Whole Number No % Sign):</label><br>
-            <input type="text" id="pguess" name="pguess"><br>
-            <button type="button" id="pguess-enter" onclick="enter()">Enter</button>
-        </form>
+        <label for="pguess">Percentage Guess (Whole Number No % Sign):</label><br>
+        <input type="text" id="pguess" name="pguess">
+        <button type="button" id="pguess-enter" onclick="enter()">Enter</button>
     </div>
+
+    <footer><h3>CS 573</h3></footer>
 </body>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -31,8 +46,8 @@
     let outputCollection = [];
 
     const margin = {top: 30, right: 30, bottom: 30, left: 30};
-    const width = 600 - margin.left - margin.right;
-    const height = 600 - margin.top - margin.bottom;
+    const width = 500 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
 
     var vis_types = Array('bar', 'bubble', 'voronoi', 'treemap');
     var cur_types = vis_types.slice();
@@ -45,7 +60,7 @@
             count = 1;
             outputCollection = [];
         }
-        var countString = count.toString().concat(" /20");
+        var countString = count.toString().concat(" /80");
         document.getElementById("count-display").innerHTML = countString;
 
         if(cur_types.length < 1) {
@@ -61,8 +76,8 @@
         var guess = document.getElementById("pguess").value;
         var trueGuess = getTruePercent(data).toString();
         const row = [count.toString(), cur_vis, trueGuess, guess];
+        console.log(row);
         outputCollection.push(row);
-        console.log(outputCollection);
         main();
     }
 
@@ -134,6 +149,22 @@
             }
         });
 
+        input.addEventListener("click", () => {
+            if(input.value.length > 0) {
+                button.disabled = false;
+            } else {
+                button.disabled = true;
+            }
+        });
+
+        input.addEventListener("keyup", function(event) {
+            event.preventDefault();
+            if (event.keyCode === 13 & input.value.length > 0) {
+                button.click();
+                input.click();
+            }
+        });
+
         main();
     }
 
@@ -181,8 +212,7 @@
         let data = [];
         let dots = [true, true, false, false, false, false]
         for(let i = 0; i < 6; i++) {
-            var aVal = Math.floor(Math.random() * 100) + 1;
-            aVal = Math.ceil(aVal/5) * 5;
+            var aVal = Math.floor((Math.random() * 100) + 1);
             data.push(new Entry(i, aVal, dots[i]))
         }
 
@@ -194,8 +224,7 @@
         let dots = [true, true, false, false, false, false]
         data.push(new TreeEntry("Origin", '', '', false))
         for(let i = 0; i < 6; i++) {
-            var aVal = Math.floor(Math.random() * 100) + 1;
-            aVal = Math.ceil(aVal/5) * 5;
+            var aVal = Math.floor((Math.random() * 100) + 1);
             data.push(new TreeEntry(i, 'Origin', String(aVal), dots[i]))
         }
 
