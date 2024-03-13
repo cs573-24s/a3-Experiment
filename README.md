@@ -2,11 +2,11 @@
 
 by: Andrew Kerekon, Aviv Nur, Bijesh Shrestha, Yihan Wang
 
-Link: https://github.com/BijeshShrestha/Revisit
+Link to Survey: https://bijeshshrestha.github.io/revisit/
 
 # About our study
 
-In the original study, subjects were asked to judge bar graphs and pie charts. In the first experiment, subjects made five judgments, two were length judgments and three were position judgments on a common scale. Subjects had to visually assess the percentage of a value to a larger value. All values recorded were between 0 and 100. There were 51 subjects with available data. In the second experiment, subjects made two judgments, position and angle.
+In the original study [1], subjects were asked to judge bar graphs and pie charts. In the first experiment, subjects made five judgments, two were length judgments and three were position judgments on a common scale. Subjects had to visually assess the percentage of a value to a larger value. All values recorded were between 0 and 100. There were 51 subjects with available data. In the second experiment, subjects made two judgments, position and angle.
 
 We based our modifications and refinements on the original experiments. In order to compare different visualizations, we conducted a controlled experiment using four charts, namely bar chart, stacked bar, bubble chart, and packed circle. Since the first two are more similar and the last two are more similar, this allows us to see how the experimenters perform in similar charts. And their responses or interpretations of these visualizations were recorded and analyzed. We conducted the experiment with 20 participants and with 200 trials for each chart. Participants' responses will be scored and stored after each trial, and the data will then be compiled into a master CSV file for analysis. Error measurement is an important part of this process, and Cleveland-McGill error scores are used to compare the performance of the test charts.
 
@@ -24,7 +24,7 @@ Pack circle: Circle packed diagrams are a visualization method for displaying hi
 
 # Platform used
 
-We used Visual Studio Code to write the four diagrams and later connected the diagrams to the Revisit platform for our study and testing.
+We used Visual Studio Code to write the four diagrams and later connected the diagrams to the Revisit [2] platform for our study and testing.
 
 reVISit allows you to create interactive, web-based study setups using a JSON Domain Specific Language (DSL), called reVISit.spec, and a set of stimuli specified in the DSL. After creating the specification and stimuli, you can build your study and deploy it to the Web. You can use stimuli such as images, (interactive) html pages, or response components.
 
@@ -34,7 +34,7 @@ URL to our GIT for revisit clone: https://github.com/BijeshShrestha/Revisit.git
 
 # Study Protocol
 
-We use D3 objects for the creation of four different graphs, bar chart, stacked chart, bubble and packed circle, where the first two are similar and the last two are similar, making it easier to compare and analyze the data at a later stage. We connect the four charts to revisit developments.
+We use D3 objects for the creation of four different graphs, bar chart, stacked bar chart, bubble chart and packed circle chart, where the first two are similar and the last two are similar, making it easier to compare and analyze the data at a later stage. We connect the four charts to revisit developments.
 
 We used 5 questions for each chart, for a total of 20 questions. A total of 20 participants were enrolled in the trial.
 
@@ -91,3 +91,8 @@ We use pandas to clean the data and we use a variety of libraries such as matplo
 # Lessons learned and Feedback from Participants
 
 More than half of the participants found the bar chart and stacked bar easier to see the percentage, while the bubble and packed circle had some difficulty seeing the size of the percentage.
+
+# References
+
+[1] Cleveland WS, McGill R. Graphical perception: Theory, experimentation, and application to the development of graphical methods. Journal of the American statistical association. 1984 Sep 1;79(387):531-54.
+[2] https://revisit.dev/
