@@ -1,16 +1,32 @@
 # Assignment 3 - Replicating a Classic Experiment
 
+## Team Insight Explorers
+
 by: Andrew Kerekon, Aviv Nur, Bijesh Shrestha, Yihan Wang
 
-Link to the survey: https://bijeshshrestha.github.io/revisit/
+## Link to our study page
+
+Link: https://github.com/BijeshShrestha/revisit
+
+## Link to our study repository 
+
+Link: https://github.com/BijeshShrestha/revisit
 
 # About our study
 
-In the original study [1], subjects were asked to judge bar graphs and pie charts. In the first experiment, subjects made five judgments, two were length judgments and three were position judgments on a common scale. Subjects had to visually assess the percentage of a value to a larger value. All values recorded were between 0 and 100. There were 51 subjects with available data. In the second experiment, subjects made two judgments, position and angle.
+## Original study:
+In the original study by Cleveland and McGill [CITE], subjects were asked to judge bar graphs and pie charts. In the first experiment, subjects made five judgments, two were length judgments and three were position judgments on a common scale. Subjects had to visually assess the percentage of a value to a larger value. All values recorded were between 0 and 100. There were 51 subjects with available data. In the second experiment, subjects made two judgments, position and angle.
+
+## Our study's research questions and Hypothesis:
+
+
+
+## Study Protocol
+
 
 We based our modifications and refinements on the original experiments. In order to compare different visualizations, we conducted a controlled experiment using four charts, namely bar chart, stacked bar, bubble chart, and packed circle. Since the first two are more similar and the last two are more similar, this allows us to see how the experimenters perform in similar charts. And their responses or interpretations of these visualizations were recorded and analyzed. We conducted the experiment with 20 participants and with 200 trials for each chart. Participants' responses will be scored and stored after each trial, and the data will then be compiled into a master CSV file for analysis. Error measurement is an important part of this process, and Cleveland-McGill error scores are used to compare the performance of the test charts.
 
-# Visualization types used
+## Visualization types used
 
 We used D3 for editing and we chose four different charts.
 
@@ -22,19 +38,19 @@ Bubble chart: A bubble chart is a type of chart used to present three-dimensiona
 
 Pack circle: Circle packed diagrams are a visualization method for displaying hierarchical data, where each circle represents an element in the dataset, the size of the circle is usually proportional to some numerical quantity, and the nested structure of the circles demonstrates the hierarchical relationship of the data. The benefits of circle packing diagrams include intuitive display of hierarchical structure excellent use of space, and so on.
 
-# Platform used
+## Platform used
 
-We used Visual Studio Code to write the four diagrams and later connected the diagrams to the Revisit [2] platform for our study and testing.
+We used Visual Studio Code to write the four diagrams and later connected the diagrams to the Revisit platform for our study and testing.
 
 reVISit allows you to create interactive, web-based study setups using a JSON Domain Specific Language (DSL), called reVISit.spec, and a set of stimuli specified in the DSL. After creating the specification and stimuli, you can build your study and deploy it to the Web. You can use stimuli such as images, (interactive) html pages, or response components.
 
 The ReVISit framework uses declarative DSL (Domain Specific Language) to specify visualization experiments. Configuration files are compiled into the ReVISit platform using JSON format.The ReVISit framework provides an environment that allows researchers to build web-based visual user studies by cloning/forking github repositories. Users can then customize the properties of the configuration file to specify the desired study components (consent, training, practice, trial, stimulus, and survey).
 
-URL to our GIT for revisit clone: https://github.com/BijeshShrestha/Revisit.git
+URL to our GIT for revisit clone: https://github.com/BijeshShrestha/revisit.git
 
-# Study Protocol
+## Study Protocol
 
-We use D3 objects for the creation of four different graphs, bar chart, stacked bar chart, bubble chart and packed circle chart, where the first two are similar and the last two are similar, making it easier to compare and analyze the data at a later stage. We connect the four charts to revisit developments.
+We use D3 objects for the creation of four different graphs, bar chart, stacked chart, bubble and packed circle, where the first two are similar and the last two are similar, making it easier to compare and analyze the data at a later stage. We connect the four charts to revisit developments.
 
 We used 5 questions for each chart, for a total of 20 questions. A total of 20 participants were enrolled in the trial.
 
@@ -56,11 +72,25 @@ This screen appears after all surveys have been completed!
 
 After conducting the survey, the collected data was organized and analyzed, and the data results were visualized in Jupyter.
 
-# Analysis result
+## Data Collection and Cleaning for Analysis
+
+We used the Revisit platform for data collection in our D3.js experiments, where we collected data while the participants conducted their trials. We collected all data by downloading a csv file of the relevant data after the participants completed the experiment. The experiments were conducted in a controlled environment where participants' participation could be closely monitored. During the data cleaning process, we meticulously removed any test values that could have biased the results. We also took care to confirm that the correct values were accurately recorded, thus creating a reliable dataset with which to compare test values. This rigorous approach ensured the integrity and validity of the data for our subsequent analysis.
+
+We use pandas to clean the data and we use a variety of libraries such as matplotlib and numpy.
+
+## Data Analysis Method
+- Types of tests we will perform and why.
+
+
+# Results and Analysis 
+
+## By chart type
 
 Table 1. Accuracy by Chart Type with Bootstrapped 95% CI
 
 ![T1](img/T1.png)
+
+## By participants
 
 Table 2. Accuracy by Participants with Bootstrapped 95% CI
 
@@ -82,15 +112,12 @@ This chart compares proportions, but it is not clear if it is the same "true" va
 
 ![G4](img/G4.png)
 
-# Data Collection and Cleaning for Analysis
 
-We used the Revisit platform for data collection in our D3.js experiments, where we collected data while the participants conducted their trials. We collected all data by downloading a csv file of the relevant data after the participants completed the experiment. The experiments were conducted in a controlled environment where participants' participation could be closely monitored. During the data cleaning process, we meticulously removed any test values that could have biased the results. We also took care to confirm that the correct values were accurately recorded, thus creating a reliable dataset with which to compare test values. This rigorous approach ensured the integrity and validity of the data for our subsequent analysis.
-
-We use pandas to clean the data and we use a variety of libraries such as matplotlib and numpy.
 
 # Lessons learned and Feedback from Participants
 
 More than half of the participants found the bar chart and stacked bar easier to see the percentage, while the bubble and packed circle had some difficulty seeing the size of the percentage.
+
 
 # References
 
