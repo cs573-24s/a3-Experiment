@@ -2,7 +2,7 @@
 
 by: Andrew Kerekon, Aviv Nur, Bijesh Shrestha, Yihan Wang
 
-Link to Survey: https://bijeshshrestha.github.io/revisit/
+Link to the survey: https://bijeshshrestha.github.io/revisit/
 
 # About our study
 
