@@ -86,7 +86,7 @@ This chart compares proportions, but it is not clear if it is the same "true" va
 
 We used the Revisit platform for data collection in our D3.js experiments, where we collected data while the participants conducted their trials. We collected all data by downloading a csv file of the relevant data after the participants completed the experiment. The experiments were conducted in a controlled environment where participants' participation could be closely monitored. During the data cleaning process, we meticulously removed any test values that could have biased the results. We also took care to confirm that the correct values were accurately recorded, thus creating a reliable dataset with which to compare test values. This rigorous approach ensured the integrity and validity of the data for our subsequent analysis.
 
-We use pandas to clean the data and we use a variety of libraries such as matplotlib, R language, and so on.
+We use pandas to clean the data and we use a variety of libraries such as matplotlib and numpy.
 
 # Lessons learned and Feedback from Participants
 
