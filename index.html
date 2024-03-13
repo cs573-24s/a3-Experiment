@@ -209,55 +209,22 @@ Read the html below
     }
 
     function randomOrder() {
-        var barNum = 0;
-        var pieNum = 0;
-        var stackNum = 0;
-        var donutNum = 0;
-        var order = [];
+    var counts = [0, 0, 0, 0, 0, 0]; // Updated for 6 chart types
+    var order = [];
 
-        while (barNum < 20 || pieNum < 20 || stackNum < 20 || donutNum < 20) {
-            let num = Math.floor(Math.random()*4) + 1;
+    while (counts.some(count => count < 20)) {
+        let num = Math.floor(Math.random() * 6) + 1; // Range updated to 1-6
 
-if (num == 1) {
-    if (barNum < 20) {
-        order.push(num);
-        barNum++;
+        if (counts[num - 1] < 20) {
+            order.push(num);
+            counts[num - 1]++;
+        }
     }
-    else {
-        continue;
-    }
+
+    console.log(order);
+    return order;
 }
-else if (num == 2) {
-    if (pieNum < 20) {
-        order.push(num);
-        pieNum++;
-    }
-    else {
-        continue;
-    }
-}
-else if (num == 3) {
-    if (stackNum < 20) {
-        order.push(num);
-        stackNum++;
-    }
-    else {
-        continue;
-    }
-}
-else {
-    if (donutNum < 20) {
-        order.push(num);
-        donutNum++;
-    }
-    else {
-        continue;
-    }
-}
-}
-console.log(order);
-return order;
-}
+
 
 function makeTest(num) {
     count++;
@@ -277,23 +244,36 @@ function makeTest(num) {
     currSvg.remove();
     document.getElementById('count').innerHTML = "Question " + (count) + "/80"
 
-    if (graph[num] == 1) {
-        vis = "Bar Chart";
-        makeBarChart(dataset);
+    switch (graph[num]) {
+        case 1:
+            vis = "Bar Chart";
+            // Assume makeBarChart is correctly implemented
+            makeBarChart(dataset);
+            break;
+        case 2:
+            vis = "Pie Chart";
+            // Assume makePieChart is correctly implemented
+            makePieChart(dataset);
+            break;
+        case 3:
+            vis = "Stack Chart";
+            makeStackChart(dataset);
+            break;
+        case 4:
+            vis = "Donut Chart";
+            makeDonutChart(dataset);
+            break;
+        case 5:
+            vis = "Tree Map";
+            makeTreeMap(dataset);
+            break;
+        case 6:
+            vis = "Bubble Chart";
+            makeBubbleChart(dataset);
+            break;
     }
-    else if (graph[num] == 2) {
-        vis = "Pie Chart";
-        makePieChart(dataset);
-    }
-    else if (graph[num] == 3) {
-        vis = "Stack Chart";
-        makeStackChart(dataset);
-    }   
-    else {
-        vis = "Donut Chart";
-        makeDonutChart(dataset);
-    }
-    }
+}
+
 
 function saveTest() {
     let result = {
@@ -379,6 +359,7 @@ function saveTest() {
         .attr('r', dotRadius)
         .style('fill', 'black');
 }
+
 
 
 // // bar chart
@@ -470,95 +451,81 @@ function makeDonutChart(dataset) {
 
 
 // tree map
-function makeTreeMap(data) {
+function makeTreeMap(dataset) {
     const width = 960, height = 500;
     const format = d3.format(",d");
     const color = d3.scaleOrdinal(d3.schemeCategory10);
 
+    // Convert flat data to hierarchical structure
+    const root = d3.hierarchy({children: dataset.data})
+        .sum(d => d.val)
+        .sort((a, b) => b.value - a.value);
+
+    const svg = d3.select("#vis").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("class", "tree-map");
+
     const treemap = d3.treemap()
         .size([width, height])
         .padding(1)
-        .round(true);
+        .round(true)(root);
 
-    const root = d3.hierarchy({children: data})
-        .sum(d => d.value)
-        .each(d => {
-            if (id = d.data.name) {
-                var id, i = id.lastIndexOf(".");
-                d.id = id;
-                d.package = id.slice(0, i);
-                d.class = id.slice(i + 1);
-            }
-        });
-
-    const svg = d3.select("#treeMap").append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .style("font", "10px sans-serif");
-
-    const leaf = svg.selectAll("g")
-        .data(treemap(root).leaves())
+    const cell = svg.selectAll("g")
+        .data(root.leaves())
         .enter().append("g")
         .attr("transform", d => `translate(${d.x0},${d.y0})`);
 
-    leaf.append("rect")
-        .attr("id", d => (d.leafUid = "leaf" + d.data.name))
+    cell.append("rect")
+        .attr("id", d => (d.data.id))
         .attr("width", d => d.x1 - d.x0)
         .attr("height", d => d.y1 - d.y0)
-        .attr("fill", d => color(d.package));
+        .attr("fill", d => color(d.parent.data.id));
 
-    leaf.append("clipPath")
-        .attr("id", d => (d.clipUid = "clip" + d.data.name))
-      .append("use")
-        .attr("xlink:href", d => d.leafUid.href);
-
-    leaf.append("text")
-        .attr("clip-path", d => d.clipUid)
-      .selectAll("tspan")
-      .data(d => d.data.name.split(/(?=[A-Z][^A-Z])/g))
-      .enter().append("tspan")
-        .attr("x", 3)
-        .attr("y", (d, i) => 13 + i * 10)
-        .text(d => d);
-
-    leaf.append("title")
-        .text(d => `${d.data.name}\n${format(d.value)}`);
+    cell.append("text")
+        .attr("x", 5)
+        .attr("y", 20)
+        .text(d => d.data.idx);
 }
 
 
-//bubble chart
-function makeBubbleChart(data) {
-    const width = 960, height = 500;
 
-    const bubble = d3.pack(data)
+//bubble chart
+function makeBubbleChart(dataset) {
+    const width = 960, height = 500;
+    const format = d3.format(",d");
+    const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+    // Transform data for bubble chart
+    const root = d3.hierarchy({children: dataset.data})
+        .sum(d => d.val)
+        .sort((a, b) => b.value - a.value);
+
+    const bubble = d3.pack()
         .size([width, height])
         .padding(1.5);
 
-    const svg = d3.select("#bubbleChart")
-        .append("svg")
+    const svg = d3.select("#vis").append("svg")
         .attr("width", width)
         .attr("height", height)
         .attr("class", "bubble");
 
-    const nodes = d3.hierarchy({children: data})
-        .sum(d => d.value);
-
     const node = svg.selectAll(".node")
-        .data(bubble(nodes).descendants())
-        .enter().filter(d => !d.children)
-        .append("g")
+        .data(bubble(root).leaves())
+        .enter().append("g")
         .attr("class", "node")
-        .attr("transform", d => "translate(" + d.x + "," + d.y + ")");
+        .attr("transform", d => `translate(${d.x},${d.y})`);
 
     node.append("circle")
         .attr("r", d => d.r)
-        .style("fill", (d, i) => d3.schemeCategory10[i % 10]);
+        .style("fill", (d, i) => color(i));
 
     node.append("text")
         .attr("dy", ".2em")
         .style("text-anchor", "middle")
-        .text(d => d.data.name.substring(0, d.r / 3));
+        .text(d => d.data.idx);
 }
+
 
 
 function starttest() {
