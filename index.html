@@ -8,7 +8,7 @@ console.log(d3);
 
 </script> -->
 
-Read the html below
+<!-- Read the html below -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -209,11 +209,11 @@ Read the html below
     }
 
     function randomOrder() {
-    var counts = [0, 0, 0, 0, 0, 0]; // Updated for 6 chart types
+    var counts = [0, 0, 0, 0]; // Updated for 6 chart types
     var order = [];
 
     while (counts.some(count => count < 20)) {
-        let num = Math.floor(Math.random() * 6) + 1; // Range updated to 1-6
+        let num = Math.floor(Math.random() * 4) + 1; // Range updated to 1-4
 
         if (counts[num - 1] < 20) {
             order.push(num);
@@ -244,30 +244,49 @@ function makeTest(num) {
     currSvg.remove();
     document.getElementById('count').innerHTML = "Question " + (count) + "/80"
 
+    // switch (graph[num]) {
+    //     case 1:
+    //         vis = "Bar Chart";
+    //         // Assume makeBarChart is correctly implemented
+    //         makeBarChart(dataset);
+    //         break;
+    //     case 2:
+    //         vis = "Pie Chart";
+    //         // Assume makePieChart is correctly implemented
+    //         makePieChart(dataset);
+    //         break;
+    //     case 3:
+    //         vis = "Stack Chart";
+    //         makeStackChart(dataset);
+    //         break;
+    //     case 4:
+    //         vis = "Donut Chart";
+    //         makeDonutChart(dataset);
+    //         break;
+    //     case 5:
+    //         vis = "Tree Map";
+    //         makeTreeMap(dataset);
+    //         break;
+    //     case 6:
+    //         vis = "Bubble Chart";
+    //         makeBubbleChart(dataset);
+    //         break;
+    // }
+
     switch (graph[num]) {
         case 1:
-            vis = "Bar Chart";
-            // Assume makeBarChart is correctly implemented
-            makeBarChart(dataset);
-            break;
-        case 2:
-            vis = "Pie Chart";
-            // Assume makePieChart is correctly implemented
-            makePieChart(dataset);
-            break;
-        case 3:
             vis = "Stack Chart";
             makeStackChart(dataset);
             break;
-        case 4:
+        case 2:
             vis = "Donut Chart";
             makeDonutChart(dataset);
             break;
-        case 5:
+        case 3:
             vis = "Tree Map";
             makeTreeMap(dataset);
             break;
-        case 6:
+        case 4:
             vis = "Bubble Chart";
             makeBubbleChart(dataset);
             break;
