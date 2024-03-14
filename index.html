@@ -46,7 +46,7 @@
         button {
             padding: 10px 15px;
             font-size: 16px;
-            background-color: #007bff;
+            background-color: #7300ff;
        
             color: #fff;
             border: none;
@@ -60,7 +60,7 @@
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #5c00b3;
 
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
@@ -82,47 +82,51 @@
             box-sizing: border-box;
 
         }
+        #progressBarContainer {
+            width: calc(100% - 40px); 
+            margin-top: 20px; 
+            background-color: #ddd;
+        }
     </style>
 </head>
 
 <body>
     <div id="page1">
-        <p>In this experiment</p>
-        <p>you are asked to judge</p>
-        <p>what is the percent of a smaller value to a larger value in several charts.</p>
-        <p>We won't record any other information from you except your answers.</p>
-        <p>Click the "Agree" button to begin.</p>
-        <p>Thank you!</p>
+        <p>Welcome to the test!</p>
+        <p>Click "Yes" to begin.</p>
         <p></p>
 
-        <button id="Disagree" onclick="return Exit()">Disagree</button>
-        <button id="Agree" onclick="return test()">Agree</button>
+        <button id="Disagree" onclick="return Exit()">No</button>
+        <button id="Agree" onclick="return test()">Yes</button>
 
 
     </div>
     <div id="Exit" style="display: none;">
-        <h1>Thank you for your consideration</h1>
-        <p>We appreciate your time and attention in reviewing the survey</p>
+        <h1>Thank you!</h1>
     </div>
     <div id="test" style="display:none">
         <h1>
         </h1>
-        <p>Two values are marked with dots.</p>
-        <p>What do you think the percent of the smaller value to the larger value?</p>
-        <p>Please put your reported below.</p>
-        <p>e.g. If you think the smaller one is exactly a half of the bigger one, please input "50".</p>
+        <p>The values of interest are marked with dots.</p>
+        <p>The only thing you need to do is</p>
+        <p>to estimate the percent of the smaller value</p>
+        <p>to the larger value in the chart.</p>
+        <p>eg: If the smaller one is a half of the bigger one, input "50".</p>
         <h3 id="count"></h3>
         <div id="vis"></div>
+        <div id="progressBarContainer" style="width: 100%; background-color: #ddd;">
+            <div id="progressBar" style="width: 0%; height: 30px; background-color: #4CAF50;"></div>
+          </div>
         <input id="reported" type="text" value=""></input>
         <button id="Next" onclick="return saveTest()">Next</button>
     </div>
 
     <div id="end" style="display:none">
         <h1>
-            You have reached the end of the experiment
+            Thank you for your participation!!!
         </h1>
         <p>
-            Thank you! your testResults have been exported to a csv file.
+            The result has been exported to a csv file.
         </p>
         <div id="printedend"></div>
         <button id="export" onclick="return exportCSV()">Export to .csv</button>
@@ -253,9 +257,8 @@ function makeTest(num) {
     currSvg.remove();
     document.getElementById('count').innerHTML = "Question " + (count) + "/80"
 
-    
-    
-
+    const progressBarWidth = (count / 80) * 100;
+    document.getElementById('progressBar').style.width = progressBarWidth + '%';
     
 
     switch (graph[num]) {
