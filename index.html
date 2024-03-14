@@ -46,7 +46,7 @@
         button {
             padding: 10px 15px;
             font-size: 16px;
-            background-color: #7300ff;
+            background-color: #007bff;
        
             color: #fff;
             border: none;
@@ -60,7 +60,7 @@
         }
 
         button:hover {
-            background-color: #5c00b3;
+            background-color: #0056b3;
 
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
@@ -82,22 +82,21 @@
             box-sizing: border-box;
 
         }
-        #progressBarContainer {
-            width: calc(100% - 40px); 
-            margin-top: 20px; 
-            background-color: #ddd;
-        }
     </style>
 </head>
 
 <body>
     <div id="page1">
-        <p>Welcome to the test!</p>
-        <p>Click "Yes" to begin.</p>
+        <p>In this experiment</p>
+        <p>you are asked to judge</p>
+        <p>what is the percent of a smaller value to a larger value in several charts.</p>
+        <p>We won't record any other information from you except your answers.</p>
+        <p>Click the "Agree" button to begin.</p>
+        <p>Thank you!</p>
         <p></p>
 
-        <button id="Disagree" onclick="return Exit()">No</button>
-        <button id="Agree" onclick="return test()">Yes</button>
+        <button id="Disagree" onclick="return Exit()">Disagree</button>
+        <button id="Agree" onclick="return test()">Agree</button>
 
 
     </div>
@@ -105,33 +104,25 @@
         <h1>Thank you for your consideration</h1>
         <p>We appreciate your time and attention in reviewing the survey</p>
     </div>
-    <div id="Exit" style="display: none;">
-        <h1>Thank you!</p>
-    </div>
-
     <div id="test" style="display:none">
         <h1>
         </h1>
-        <p>The values of interest are marked with dots.</p>
-        <p>The only thing you need to do is</p>
-        <p>to estimate the percent of the smaller value</p>
-        <p>to the larger value in the chart.</p>
-        <p>eg: If the smaller one is a half of the bigger one, input "50".</p>
+        <p>Two values are marked with dots.</p>
+        <p>What do you think the percent of the smaller value to the larger value?</p>
+        <p>Please put your reported below.</p>
+        <p>e.g. If you think the smaller one is exactly a half of the bigger one, please input "50".</p>
         <h3 id="count"></h3>
         <div id="vis"></div>
-        <div id="progressBarContainer" style="width: 100%; background-color: #ddd;">
-            <div id="progressBar" style="width: 0%; height: 30px; background-color: #4CAF50;"></div>
-          </div>
         <input id="reported" type="text" value=""></input>
         <button id="Next" onclick="return saveTest()">Next</button>
     </div>
 
     <div id="end" style="display:none">
         <h1>
-            Thank you for your participation!!!
+            You have reached the end of the experiment
         </h1>
         <p>
-            The result has been exported to a csv file.
+            Thank you! your testResults have been exported to a csv file.
         </p>
         <div id="printedend"></div>
         <button id="export" onclick="return exportCSV()">Export to .csv</button>
@@ -244,47 +235,49 @@ function randomOrder() {
     return order;
 }
 ////////////////////////////////////////////////////
+function makeTest(num) {
+    count++;
+    let dataset = randomData();
 
-        function makeTest(num) {
-            count++;
-            let dataset = randomData();
+    if (dataset.data[dataset.firstPoint].val < dataset.data[dataset.secPoint].val) {
+        truePercent = Math.floor(dataset.data[dataset.firstPoint].val / ((dataset.data[dataset.secPoint].val) / 100));
+    }
+    else if (dataset.data[dataset.firstPoint].val > dataset.data[dataset.secPoint].val) {
+        truePercent = Math.floor(dataset.data[dataset.secPoint].val / ((dataset.data[dataset.firstPoint].val) / 100));
+    }
+    else {
+        truePercent = 100;
+    }
 
-            if (dataset.data[dataset.firstPoint].val < dataset.data[dataset.secPoint].val) {
-                truePercent = Math.floor(dataset.data[dataset.firstPoint].val / ((dataset.data[dataset.secPoint].val) / 100));
-            }
-            else if (dataset.data[dataset.firstPoint].val > dataset.data[dataset.secPoint].val) {
-                truePercent = Math.floor(dataset.data[dataset.secPoint].val / ((dataset.data[dataset.firstPoint].val) / 100));
-            }
-            else {
-                truePercent = 100;
-            }
+    var currSvg = d3.select("div#vis").select('svg')
+    currSvg.remove();
+    document.getElementById('count').innerHTML = "Question " + (count) + "/80"
 
-            var currSvg = d3.select("div#vis").select('svg')
-            currSvg.remove();
-            document.getElementById('count').innerHTML = "Question " + (count) + "/80";
-            
-            const progressBarWidth = (count / 80) * 100;
-            document.getElementById('progressBar').style.width = progressBarWidth + '%';
+    
+    
 
-            switch (graph[num]) {
-                case 1:
-                    vis = "Stack Chart";
-                    makeStackChart(dataset);
-                    break;
-                case 2:
-                    vis = "Donut Chart";
-                    makeDonutChart(dataset);
-                    break;
-                case 3:
-                    vis = "Tree Map";
-                    makeTreeMap(dataset);
-                    break;
-                case 4:
-                    vis = "Bubble Chart";
-                    makeBubbleChart(dataset);
-                    break;
-            }
-        }
+    
+
+    switch (graph[num]) {
+        case 1:
+            vis = "Stack Chart";
+            makeStackChart(dataset);
+            break;
+        case 2:
+            vis = "Donut Chart";
+            makeDonutChart(dataset);
+            break;
+        case 3:
+            vis = "Tree Map";
+            makeTreeMap(dataset);
+            break;
+        case 4:
+            vis = "Bubble Chart";
+            makeBubbleChart(dataset);
+            break;
+    }
+}
+
 
 ///////////////////////////////////////////////////////////////////////////
         function saveTest() {
@@ -429,25 +422,26 @@ function makeDonutChart(dataset) {
         .attr("fill", "white") // 设置颜色为白色
         .style("stroke", "black"); // 设置边缘颜色为黑色
 
-    var circleData = [
-        data[dataset.firstPoint].pieData,
-        data[dataset.secPoint].pieData
-    ];
+    // 标记第一个点
+    const firstPieData = data[dataset.firstPoint].pieData;
+    svg.append("circle")
+        .attr("cx", arc.centroid(firstPieData)[0])
+        .attr("cy", arc.centroid(firstPieData)[1])
+        .attr("r", 3)
+        .style("fill", "black");
 
-    svg.selectAll("circle")
-        .data(circleData)
-        .enter()
-        .append("circle")
-        .attr("cx", function (d) { return arc.centroid(d)[0]; })
-        .attr("cy", function (d) { return arc.centroid(d)[1]; })
+    // 标记第二个点
+    const secPieData = data[dataset.secPoint].pieData;
+    svg.append("circle")
+        .attr("cx", arc.centroid(secPieData)[0])
+        .attr("cy", arc.centroid(secPieData)[1])
         .attr("r", 3)
         .style("fill", "black");
 }
 
+
 /////////////////////////////////////////////
-
-
-      // tree map
+// tree map
 function makeTreeMap(dataset) {
     const width = 500, height = 500;
     const format = d3.format(",d");
@@ -481,21 +475,29 @@ function makeTreeMap(dataset) {
         .style("stroke", "black"); // 设置边缘颜色为黑色
 
     const leaves = root.leaves();
-    let indexes = [];
-    while (indexes.length < 2) {
-        let r = Math.floor(Math.random() * leaves.length);
-        if (indexes.indexOf(r) === -1) indexes.push(r);
-    }
 
-    indexes.forEach(index => {
-        let leaf = leaves[index];
-        svg.append("circle")
-            .attr("cx", leaf.x0 + (leaf.x1 - leaf.x0) / 2)
-            .attr("cy", leaf.y0 + (leaf.y1 - leaf.y0) / 2)
-            .attr("r", 3)
-            .style("fill", "black");
-    });
+    // 标记第一个点
+    const firstPoint = dataset.data[dataset.firstPoint];
+    const firstLeaf = leaves.find(leaf => leaf.data === firstPoint);
+    svg.append("circle")
+        .attr("cx", firstLeaf.x0 + (firstLeaf.x1 - firstLeaf.x0) / 2)
+        .attr("cy", firstLeaf.y0 + (firstLeaf.y1 - firstLeaf.y0) / 2)
+        .attr("r", 3)
+        .style("fill", "black");
+
+    // 标记第二个点
+    const secPoint = dataset.data[dataset.secPoint];
+    const secLeaf = leaves.find(leaf => leaf.data === secPoint);
+    svg.append("circle")
+        .attr("cx", secLeaf.x0 + (secLeaf.x1 - secLeaf.x0) / 2)
+        .attr("cy", secLeaf.y0 + (secLeaf.y1 - secLeaf.y0) / 2)
+        .attr("r", 3)
+        .style("fill", "black");
 }
+
+
+ 
+////////////////////////////
 
 
 // bubble chart
@@ -531,22 +533,26 @@ function makeBubbleChart(dataset) {
 
     const nodes = bubble(root).leaves();
 
-    let indexes = [];
-    while (indexes.length < 2) {
-        let r = Math.floor(Math.random() * nodes.length);
-        if (indexes.indexOf(r) === -1) indexes.push(r);
-    }
+    // 标记第一个点
+    const firstPoint = dataset.data[dataset.firstPoint];
+    svg.append("circle")
+        .attr("cx", nodes.find(node => node.data === firstPoint).x)
+        .attr("cy", nodes.find(node => node.data === firstPoint).y)
+        .attr("r", 3)
+        .style("fill", "black");
 
-    indexes.forEach(index => {
-        let node = nodes[index];
-        svg.append("circle")
-            .attr("cx", node.x)
-            .attr("cy", node.y)
-            .attr("r", 3)
-            .style("fill", "black");
-    });
+    // 标记第二个点
+    const secPoint = dataset.data[dataset.secPoint];
+    svg.append("circle")
+        .attr("cx", nodes.find(node => node.data === secPoint).x)
+        .attr("cy", nodes.find(node => node.data === secPoint).y)
+        .attr("r", 3)
+        .style("fill", "black");
+
+    
 }
 
+/////////////////////////
 
         function starttest() {
             graph = randomOrder();
@@ -577,3 +583,5 @@ function makeBubbleChart(dataset) {
 </body>
 
 </html>
+
+
