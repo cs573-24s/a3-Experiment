@@ -1,6 +1,9 @@
 Assignment 3 - Replicating a Classic Experiment  
 ===
 
+The link to our experiment GitHub Page can be found here here: https://abigailalbuquerque.github.io/a3-Experiment/
+
+
 ### Our Experiment
 
 We conducted two different types of experiments for this project, both centering on the amount of time it takes the user to find a specific colored circle in a scatterplot of about 100 circles. Each circle has a set minimum distance from one to the other and their placement was randomized. This way, we were making graphs where the circle that the participant is attempting to find is not obscured by other circles. For each experiment, the user would have 30 seconds to click on the designated circle, and the time it took them to click on it would be recorded.
@@ -79,3 +82,30 @@ We took into account Fitt's law to reduce any bias within our experiments. We al
 - https://codesandbox.io/p/sandbox/react-d3-scatterplot-solved-kg107?file=%2Fsrc%2Fstyles.css%3A1%2C1-5%2C1
 - https://github.com/gitname/react-gh-pages?tab=readme-ov-file
 - https://www.researchgate.net/figure/The-Berkeley-Color-Project-BCP-32-chromatic-colors-figure-adapted-from-Palmer-and_fig3_282271041
+
+### Screens from our Experiment
+
+<img src="img/Exp1" width="400">
+
+<img src="img/Exp1MovingOn" width="400">
+
+<img src="img/Exp1G1" width="400">
+
+<img src="img/Exp1G2" width="400">
+
+<img src="img/Exp1G3" width="400">
+
+<img src="img/Exp1G4" width="400">
+
+<img src="img/Exp1G5" width="400">
+
+<img src="img/Exp2g1" width="400">
+
+<img src="img/Exp2G2" width="400">
+
+<img src="img/Exp2G3" width="400">
+
+<img src="img/Exp2G4" width="400">
+
+<img src="img/Exp1G5" width="400">
+
