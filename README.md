@@ -26,29 +26,40 @@ One limitation was that we had a 30 second timeout for every graph. This means t
 Another limitation to this experiment is Fitt’s Law. Since every participant has to click on a button to go to toggle the next visualization, the distance between the button and the color they need to click was standardized as long as we used the same visualizations for each participant. We kept sizes and shapes constant for each circle. The amount of circles per experiment were also kept constant. Additionally, we made our experiment so that it can be conducted on mobile devices. In those cases, Fitt’s Law applies less as participants did not have to move a mouse to reach the target circle. 
 
 ### Results
+#### Graphs
 
-**Graphs**
-Below are the graphs highlighting the results of our experiments:
-
-<img src="img/Experiment1.png" width="400">
 A boxplot graph showing the 5 different trials for experiment 1. As we see, the 5th trial has a wide range as opposed to other trials.
 
-<img src="img/Experiment1_4only.png" width="400">
+<img src="img/Experiment1.png" width="400"> 
+
+
 A boxplot graph showing the first 4 trials. This graph was created to highlight any differences between the first 4, however, we do not notice any statistically significant differences between the same.
+
+<img src="img/Experiment1_4only.png" width="400"> 
+
+
+A boxplot graph where the y axis is augmented to log(time+1). The log augmentation was performed to scale the different graphs for comparison. A +1 was added to the times so the log values would not be negative.
 
 <img src="img/Experiment1Augmented.png" width="400">
-A boxplot graph where the y axis is augmented to log(time+1). The log augmentation was performed to scale the different graphs for comparison. A +1 was added to the times so the log values would not be negative.
 
-<img src="img/Experiment2.png" width="400">
+
 A boxplot graph showing the 5 different trials for experiment 2. As we see, the 5th trial has a wide range as opposed to other trials.
 
-<img src="img/Experiment2_4only.png" width="400">
+<img src="img/Experiment2.png" width="400">
+
+
 A boxplot graph showing the first 4 trials. This graph was created to highlight any differences between the first 4, however, we do not notice any statistically significant differences between the same.
 
-<img src="img/Experiment2Augmented.png" width="400">
+<img src="img/Experiment2_4only.png" width="400">
+
+
 A boxplot graph where the y axis is augmented to log(time+1). The log augmentation was performed to scale the different graphs for comparison. A +1 was added to the times so the log values would not be negative.
 
-**Discussion**
+<img src="img/Experiment2Augmented.png" width="400">
+
+
+#### Discussion
+
 We noticed that there was a large jump in time taken for the final trial in both experiments. In all the trials besides the last in each experiment, the results were relatively similar. We observe from the box plots that there is no statistically significant difference in the first 4 trials. It would seem that people have an easy time telling colors apart unless they’re really close together.
 
 As expected, for the one participant who did this test that was color blind, they had a very difficult time telling apart the red and green colors in the first experiment (having the results 19.076, 23.403, 7.528, 30, and 30 seconds). In contrast, they had a much easier time with experiment 2, where the target was to find the black circle. This makes sense as the lightness of black is a much more easily differentiable value than something like red versus green. 
