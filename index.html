@@ -499,7 +499,8 @@ function makeTreeMap(dataset) {
         .attr("id", d => (d.data.id))
         .attr("width", d => d.x1 - d.x0)
         .attr("height", d => d.y1 - d.y0)
-        .attr("fill", d => color(d.parent.data.id));
+        .style("fill", (d, i) => color(i));
+        // .attr("fill", d => color(d.parent.data.id));
 
     cell.append("text")
         .attr("x", 5)
