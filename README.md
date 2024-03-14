@@ -85,27 +85,33 @@ We took into account Fitt's law to reduce any bias within our experiments. We al
 
 ### Screens from our Experiment
 
-<img src="img/Exp1" width="400">
+<img src="img/Exp1.png" width="400">
 
-<img src="img/Exp1MovingOn" width="400">
+<img src="img/Exp1MovingOn.png" width="400">
 
-<img src="img/Exp1G1" width="400">
+<img src="img/Exp1Sample.png" width="400">
 
-<img src="img/Exp1G2" width="400">
+<img src="img/Exp1G1.png" width="400">
 
-<img src="img/Exp1G3" width="400">
+<img src="img/next.png" width="400">
 
-<img src="img/Exp1G4" width="400">
+<img src="img/Exp1G2.png" width="400">
 
-<img src="img/Exp1G5" width="400">
+<img src="img/Exp1G3.png" width="400">
 
-<img src="img/Exp2g1" width="400">
+<img src="img/Exp1G4.png" width="400">
 
-<img src="img/Exp2G2" width="400">
+<img src="img/Exp1G5.png" width="400">
 
-<img src="img/Exp2G3" width="400">
+<img src="img/Exp2.png" width="400">
 
-<img src="img/Exp2G4" width="400">
+<img src="img/Exp2Sample.png" width="400">
 
-<img src="img/Exp1G5" width="400">
+<img src="img/Exp2G1.png" width="400">
+
+<img src="img/Exp2G2.png" width="400">
+
+<img src="img/Exp2G4.png" width="400">
+
+<img src="img/Exp2G5.png" width="400">
 
