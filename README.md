@@ -45,9 +45,15 @@ This bar chart provides the overall summary of average adj errors for the visual
 
 This chart shows the ggplot calculations for the bootstrapped 95% confidence intervals for the performance of each visualization. From this chart we can see that the bar chart did significantly better than all other charts as expected. We can also see that the difference between the bubble chart and the treemap charts is significant. Lastly, there is not sufficient evidence to determine if there is a significant difference between the performance of the regular and voronoi treemaps. 
 
+The following image shows the results from Cleveland and McGill's original experiments as well as results from crowdsourced experiments. 
+![Original Results](img/cleveland-results.png)
+
+Comparing my results to the previous image, the bar chart in my experiment performed slightly better than Cleveland and McGill's, and similarly to the crowdsourced bar chart. The treemaps in my experiment performed better than the crowdsourced experiment, and the bubble chart performed similarly to the crowdsourced experiments. One interesting difference is that in my experiment there is a significant difference between the regular treemap and bubble chart, where treemaps performed noticably better, however in the crowdsourced experiments the treemap and bubble chart scored similarly.
+
 Design Achievements
 ---
 - I attempted to create a clean and easily navigable website for the experiment
+- I used consistent fonts
 - I inlcuded and about and information section on the home page in order to inform participants
 - I also used the same svg size across all charts to keep the layout consistent
 - I used consistent design themes throughout each visualization, always using the same sized dots to indicate the selected values, and I used the same stroke thickness for each visual
