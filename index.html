@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Next Page</title>
+    <title>Experiment</title>
     <script src="https://cdn.jsdelivr.net/npm/d3-funnel@2"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
         button {
             padding: 10px 15px;
             font-size: 16px;
-            background-color: #007bff;
+            background-color: #ffff00;
        
             color: #fff;
             border: none;
@@ -60,7 +60,7 @@
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #8cb300;
 
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
@@ -87,30 +87,25 @@
 
 <body>
     <div id="page1">
-        <p>In this experiment</p>
-        <p>you are asked to judge</p>
-        <p>what is the percent of a smaller value to a larger value in several charts.</p>
-        <p>We won't record any other information from you except your answers.</p>
-        <p>Click the "Agree" button to begin.</p>
-        <p>Thank you!</p>
+        <p>Two values are marked with dots in every chart.</p>
+        <p>The only thing you need to do </p>
+        <p>is to estimate the percent of the smaller value to the larger value in every chart.</p>
+        <p>Click "Yes" to begin.</p>
         <p></p>
 
-        <button id="Disagree" onclick="return Exit()">Disagree</button>
-        <button id="Agree" onclick="return test()">Agree</button>
+        <button id="Disagree" onclick="return Exit()">No</button>
+        <button id="Agree" onclick="return test()">Yes</button>
 
 
     </div>
     <div id="Exit" style="display: none;">
-        <h1>Thank you for your consideration</h1>
-        <p>We appreciate your time and attention in reviewing the survey</p>
+        <h1>Thank you!</p>
     </div>
     <div id="test" style="display:none">
         <h1>
         </h1>
-        <p>Two values are marked with dots.</p>
-        <p>What do you think the percent of the smaller value to the larger value?</p>
-        <p>Please put your reported below.</p>
-        <p>e.g. If you think the smaller one is exactly a half of the bigger one, please input "50".</p>
+        <p>Estimate the percent of the smaller value to the larger value and input the number.</p>
+        <p>If the smaller one is a half of the bigger one, input "50".</p>
         <h3 id="count"></h3>
         <div id="vis"></div>
         <input id="reported" type="text" value=""></input>
@@ -119,10 +114,10 @@
 
     <div id="end" style="display:none">
         <h1>
-            You have reached the end of the experiment
+            Thank you for your participation!!!
         </h1>
         <p>
-            Thank you! your testResults have been exported to a csv file.
+            The result has been exported to a csv file.
         </p>
         <div id="printedend"></div>
         <button id="export" onclick="return exportCSV()">Export to .csv</button>
@@ -433,17 +428,28 @@
                 .enter().append("g")
                 .attr("transform", d => `translate(${d.x0},${d.y0})`);
 
-    cell.append("rect")
-        .attr("id", d => (d.data.id))
-        .attr("width", d => d.x1 - d.x0)
-        .attr("height", d => d.y1 - d.y0)
-        .attr("fill", d => color(d.parent.data.id));
+            cell.append("rect")
+                .attr("id", d => d.data.id)
+                .attr("width", d => d.x1 - d.x0)
+                .attr("height", d => d.y1 - d.y0)
+                .attr("fill", d => color(d.data.idx));
 
-    cell.append("text")
-        .attr("x", 5)
-        .attr("y", 20)
-        .text(d => d.data.idx);
-}
+            const leaves = root.leaves();
+            let indexes = [];
+            while (indexes.length < 2) {
+                let r = Math.floor(Math.random() * leaves.length);
+                if (indexes.indexOf(r) === -1) indexes.push(r);
+            }
+
+            indexes.forEach(index => {
+                let leaf = leaves[index];
+                svg.append("circle")
+                    .attr("cx", leaf.x0 + (leaf.x1 - leaf.x0) / 2)
+                    .attr("cy", leaf.y0 + (leaf.y1 - leaf.y0) / 2)
+                    .attr("r", 5)
+                    .style("fill", "black");
+            });
+        }
 
 
 
