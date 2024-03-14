@@ -317,6 +317,13 @@ console.log(d3);
 
 
         function saveTest() {
+            var reportedValue = document.getElementById('reported').value;
+
+            if (reportedValue.trim() === '' || isNaN(reportedValue) || !Number.isInteger(parseFloat(reportedValue))) {
+                alert("Please enter a valid integer value.");
+                return; 
+            }
+
             let result = {
                 trialNum: count,
                 vis: vis,
