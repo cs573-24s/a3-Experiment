@@ -6,8 +6,13 @@
 
 <img width="957" alt="image" src="https://github.com/chikpea123/a3-Experiment/assets/51792257/aa514358-baf1-4f65-b8a3-cb8d9c900d11">
 
+# Results
+
+![results_img](./img/results.png)
+
 # First Place Chart Type
 
+Our best performing chart type was the bar char.
 screenshot of chart
 **Results**
 report average log2Error across all trials and participants
