@@ -20,7 +20,7 @@ For Fitt’s Law, since every participant has to click on a button to go to togg
 **Limitations**
 
 **Results**
-![alt text](img/Experiment1.png)
+<img src="img/Experiment1.png" width="300">
 ![alt text](img/Experiment1_4Only.png)
 ![alt text](img/Experiment1Augmented.png)
 
