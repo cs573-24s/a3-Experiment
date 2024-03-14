@@ -19,7 +19,9 @@ console.log(d3);
     <title>Next Page</title>
     <script src="https://cdn.jsdelivr.net/npm/d3-funnel@2"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        
         body {
             display: flex;
             flex-direction: column;
@@ -27,97 +29,70 @@ console.log(d3);
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: #e6f7ff;
-            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            font-family: 'Nunito', sans-serif;
             color: #333;
         }
 
-        h1 {
-            margin-bottom: 20px;
+        h1,
+        p {
+            margin: 10px 0;
         }
 
-        #chartContainer {
-            width: 530px;
-            height: 450px;
-        }
-
-        iframe {
-            border: none;
-            width: 100%;
-            height: 100%;
-        }
-
-        #buttonContainer {
-            display: flex;
-            margin-top: 20px;
-        }
-
-        button:last-child {
-            margin-right: 0;
-        }
-
-        button:hover {
-            background-color: #2980b9;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        #page1 {
+        #page1,
+        #Exit,
+        #test,
+        #end {
+            background-color: #ffffff;
+      
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+       
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+       
             text-align: center;
         }
 
         button {
             padding: 10px 15px;
             font-size: 16px;
-            background-color: #3498db;
+            background-color: #007bff;
+       
             color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 20px;
+         
             cursor: pointer;
-            transition: background-color 0.3s, box-shadow 0.3s;
-            margin-right: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+         
+            margin: 5px;
+      
         }
 
-        #textBox {
-            padding: 10px;
-            font-size: 16px;
-            margin-right: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        button:hover {
+            background-color: #0056b3;
+
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+            transform: translateY(-2px);
+
         }
 
-        #textContainer {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        p {
-            margin: 10;
-            text-align: center;
-        }
-
-        #end {
-            text-align: center;
-        }
-
-        #count {
-            position: fixed;
-            top: 20px;
-            right: 30px;
-            font-size: 14px;
-            color: #333;
-        }
-
-        #test {
-            text-align: center;
-        }
-
+        #textBox,
         #reported {
+            width: calc(100% - 20px);
+
             padding: 10px;
             font-size: 16px;
-            margin-right: 10px;
+            margin: 10px 0;
+
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 20px;
+
+            box-sizing: border-box;
+
         }
     </style>
 </head>
@@ -222,24 +197,24 @@ console.log(d3);
 
         function randomOrder() {
             var order = [];
-
+            var count = 20;
             // Add 20 Bubble Charts
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < count; i++) {
                 order.push(4); // Assuming 4 represents Bubble Chart
             }
 
             // Add 20 TreeMaps
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < count; i++) {
                 order.push(3); // Assuming 3 represents TreeMap
             }
 
             // Add 20 Donut Charts
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < count; i++) {
                 order.push(2); // Assuming 2 represents Donut Chart
             }
 
             // Add 20 Stack Charts
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < count; i++) {
                 order.push(1); // Assuming 1 represents Stack Chart
             }
 
@@ -445,10 +420,11 @@ console.log(d3);
 
         // tree map
         function makeTreeMap(dataset) {
-            const width = 960, height = 500;
+            const width = 500, height = 500;
             const format = d3.format(",d");
             const color = d3.scaleOrdinal(d3.schemeCategory10);
 
+            
             // Convert flat data to hierarchical structure
             const root = d3.hierarchy({ children: dataset.data })
                 .sum(d => d.val)
@@ -496,7 +472,7 @@ console.log(d3);
 
         //bubble chart
         function makeBubbleChart(dataset) {
-            const width = 960, height = 500;
+            const width = 460, height = 460;
             const format = d3.format(",d");
             const color = d3.scaleOrdinal(d3.schemeCategory10);
 
