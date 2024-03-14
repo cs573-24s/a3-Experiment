@@ -46,7 +46,7 @@
         button {
             padding: 10px 15px;
             font-size: 16px;
-            background-color: #ffff00;
+            background-color: #7300ff;
        
             color: #fff;
             border: none;
@@ -60,7 +60,7 @@
         }
 
         button:hover {
-            background-color: #8cb300;
+            background-color: #5c00b3;
 
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
@@ -82,14 +82,18 @@
             box-sizing: border-box;
 
         }
+        #progressBarContainer {
+            width: calc(100% - 40px); 
+            margin-top: 20px; 
+            background-color: #ddd;
+        }
+
     </style>
 </head>
 
 <body>
     <div id="page1">
-        <p>Two values are marked with dots in every chart.</p>
-        <p>The only thing you need to do </p>
-        <p>is to estimate the percent of the smaller value to the larger value in every chart.</p>
+        <p>Welcome to the test!</p>
         <p>Click "Yes" to begin.</p>
         <p></p>
 
@@ -104,13 +108,22 @@
     <div id="test" style="display:none">
         <h1>
         </h1>
-        <p>Estimate the percent of the smaller value to the larger value and input the number.</p>
-        <p>If the smaller one is a half of the bigger one, input "50".</p>
+        <p>The values of interest are marked with dots.</p>
+        <p>The only thing you need to do is</p>
+        <p>to estimate the percent of the smaller value</p>
+        <p>to the larger value in the chart.</p>
+        <p>eg: If the smaller one is a half of the bigger one, input "50".</p>
         <h3 id="count"></h3>
         <div id="vis"></div>
+        <div id="progressBarContainer" style="width: 100%; background-color: #ddd;">
+            <div id="progressBar" style="width: 0%; height: 30px; background-color: #4CAF50;"></div>
+          </div>
         <input id="reported" type="text" value=""></input>
         <button id="Next" onclick="return saveTest()">Next</button>
     </div>
+
+
+      
 
     <div id="end" style="display:none">
         <h1>
@@ -206,7 +219,7 @@
         }
 
 
-        function makeTest(num) {
+        function makeTest(num, totalQuestions = 80) {
             count++;
             let dataset = randomData();
 
@@ -222,8 +235,10 @@
 
             var currSvg = d3.select("div#vis").select('svg')
             currSvg.remove();
-            document.getElementById('count').innerHTML = "Question " + (count) + "/80"
+            document.getElementById('count').innerHTML = "Question " + (count) + "/80";
 
+            const progressBarWidth = (count / totalQuestions) * 100;
+            document.getElementById('progressBar').style.width = progressBarWidth + '%';
 
             switch (graph[num]) {
                 case 1:
@@ -244,6 +259,7 @@
                     break;
             }
         }
+
 
 
         function saveTest() {
