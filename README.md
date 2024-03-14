@@ -1,4 +1,4 @@
-**Experiment Link: **
+**Experiment Link: https://data-vis-a3.github.io/**
 
 # Assignment 3 - Replicating a Classic Experiment
 
