@@ -266,34 +266,6 @@ console.log(d3);
             currSvg.remove();
             document.getElementById('count').innerHTML = "Question " + (count) + "/80"
 
-            // switch (graph[num]) {
-            //     case 1:
-            //         vis = "Bar Chart";
-            //         // Assume makeBarChart is correctly implemented
-            //         makeBarChart(dataset);
-            //         break;
-            //     case 2:
-            //         vis = "Pie Chart";
-            //         // Assume makePieChart is correctly implemented
-            //         makePieChart(dataset);
-            //         break;
-            //     case 3:
-            //         vis = "Stack Chart";
-            //         makeStackChart(dataset);
-            //         break;
-            //     case 4:
-            //         vis = "Donut Chart";
-            //         makeDonutChart(dataset);
-            //         break;
-            //     case 5:
-            //         vis = "Tree Map";
-            //         makeTreeMap(dataset);
-            //         break;
-            //     case 6:
-            //         vis = "Bubble Chart";
-            //         makeBubbleChart(dataset);
-            //         break;
-            // }
 
             switch (graph[num]) {
                 case 1:
@@ -321,7 +293,7 @@ console.log(d3);
 
             if (reportedValue.trim() === '' || isNaN(reportedValue) || !Number.isInteger(parseFloat(reportedValue))) {
                 alert("Please enter a valid integer value.");
-                return; 
+                return;
             }
 
             let result = {
@@ -407,33 +379,6 @@ console.log(d3);
                 .attr('r', dotRadius)
                 .style('fill', 'black');
         }
-
-
-
-        // // bar chart
-
-        // function makeBarChart(data) {
-        //     const svgWidth = 500, svgHeight = 300, barPadding = 5;
-        //     const barWidth = (svgWidth / data.length);
-
-        //     const svg = d3.select('#barChart').append('svg')
-        //         .attr('width', svgWidth)
-        //         .attr('height', svgHeight);
-
-        //     svg.selectAll('rect')
-        //         .data(data)
-        //         .enter()
-        //         .append('rect')
-        //         .attr('y', d => svgHeight - d)
-        //         .attr('height', d => d)
-        //         .attr('width', barWidth - barPadding)
-        //         .attr('transform', (d, i) => {
-        //             const translate = [barWidth * i, 0]; 
-        //             return `translate(${translate})`;
-        //         });
-        // }
-
-
 
 
         // donut chart
@@ -525,15 +470,26 @@ console.log(d3);
                 .attr("transform", d => `translate(${d.x0},${d.y0})`);
 
             cell.append("rect")
-                .attr("id", d => (d.data.id))
+                .attr("id", d => d.data.id)
                 .attr("width", d => d.x1 - d.x0)
                 .attr("height", d => d.y1 - d.y0)
-                .attr("fill", d => color(d.parent.data.id));
+                .attr("fill", d => color(d.data.idx));
 
-            cell.append("text")
-                .attr("x", 5)
-                .attr("y", 20)
-                .text(d => d.data.idx);
+            const leaves = root.leaves();
+            let indexes = [];
+            while (indexes.length < 2) {
+                let r = Math.floor(Math.random() * leaves.length);
+                if (indexes.indexOf(r) === -1) indexes.push(r);
+            }
+
+            indexes.forEach(index => {
+                let leaf = leaves[index];
+                svg.append("circle")
+                    .attr("cx", leaf.x0 + (leaf.x1 - leaf.x0) / 2)
+                    .attr("cy", leaf.y0 + (leaf.y1 - leaf.y0) / 2)
+                    .attr("r", 5)
+                    .style("fill", "black");
+            });
         }
 
 
@@ -567,11 +523,23 @@ console.log(d3);
             node.append("circle")
                 .attr("r", d => d.r)
                 .style("fill", (d, i) => color(i));
+            const nodes = bubble(root).leaves();
 
-            node.append("text")
-                .attr("dy", ".2em")
-                .style("text-anchor", "middle")
-                .text(d => d.data.idx);
+            let indexes = [];
+            while (indexes.length < 2) {
+                let r = Math.floor(Math.random() * nodes.length);
+                if (indexes.indexOf(r) === -1) indexes.push(r);
+            }
+
+
+            indexes.forEach(index => {
+                let node = nodes[index];
+                svg.append("circle")
+                    .attr("cx", node.x)
+                    .attr("cy", node.y)
+                    .attr("r", 5)
+                    .style("fill", "black");
+            });
         }
 
 
