@@ -90,11 +90,12 @@ button:hover {
 }
 
 #resultTable {
-  width: 100%; /* Ensure the table occupies the full width of its container */
+  width: 100%;
+  /* Ensure the table occupies the full width of its container */
 }
 
 .endingPageContainer {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
