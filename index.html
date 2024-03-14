@@ -9,7 +9,6 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        
         body {
             display: flex;
             flex-direction: column;
@@ -32,14 +31,14 @@
         #test,
         #end {
             background-color: #ffffff;
-      
+
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-       
+
             padding: 20px;
             width: 90%;
             max-width: 600px;
-       
+
             text-align: center;
         }
 
@@ -47,16 +46,16 @@
             padding: 10px 15px;
             font-size: 16px;
             background-color: #007bff;
-       
+
             color: #fff;
             border: none;
             border-radius: 20px;
-         
+
             cursor: pointer;
             transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
-         
+
             margin: 5px;
-      
+
         }
 
         button:hover {
@@ -412,7 +411,7 @@
             const format = d3.format(",d");
             const color = d3.scaleOrdinal(d3.schemeCategory10);
 
-            
+
             // Convert flat data to hierarchical structure
             const root = d3.hierarchy({ children: dataset.data })
                 .sum(d => d.val)
@@ -533,6 +532,12 @@
             anchor.download = 'data.csv';
             anchor.click();
         }
+        document.getElementById('reported').addEventListener('keyup', function (event) {
+            if (event.keyCode === 13) { // 13 is the keyCode for Enter key
+                saveTest();
+                document.getElementById('reported').focus(); // Set focus back to the input box after submission
+            }
+        });
     </script>
 </body>
 
