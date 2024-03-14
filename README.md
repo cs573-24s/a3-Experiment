@@ -7,7 +7,7 @@ The first experiment has the participants click on a designated color in a scatt
 
 There were 100 data points generated for experiment 1, with 1 being the ‘designated’ color, which was chosen to be red. The other 99 data points shared a similar color that changed depending on the trial.
 
-![alt text](http://url/to/img.png)
+![alt text](img/colorScale.png)
 
 The second experiment has the participants click on a designated color in a scatter plot of multiple colors. The other colors are all a similar “distance” from the designated color and we decrease their distance over trials. There are 5 different colors outside of the designated one. We used the yellow, green, blue, purple and red colors from the Berkeley Color Project and had the target value be black, which is approximately the center of the colors. The Saturated versions of the colors had the largest distance from the target, then the Light, Muted and Dark versions were used for subsequent trials, each one decreasing in distance to the target. In order to have five trials, we calculated the values halfway between the Saturated and Light values since these colors had the largest distance between them and used the resulting colors for the second trial. There were 101 data points generated for experiment 2, with 20 of each color and 1 of the target color.
 
