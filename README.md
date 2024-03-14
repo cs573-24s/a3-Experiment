@@ -1,112 +1,145 @@
 Assignment 3 - Replicating a Classic Experiment  
 ===
 
-For the scope of this project, assume the role of a scientist who runs experiments for a living.
+The link to our experiment GitHub Page can be found here here: https://abigailalbuquerque.github.io/a3-Experiment/
 
-For example: 
 
-Q: How do we know that bar charts are "better" than pie charts?  
-A: Controlled experiments!
+### Our Experiment
 
-In this assignment you'll implement a simple controlled experiment using some of the visualizations you’ve been building in this class. 
-You'll need to develop support code for the experiment sequence, results file output, and other experiment components. 
-(These are all simple with Javascript buttons and forms.)
-The main goals for you are to a) test at least three competing visualizations or experiment conditions, b) implement data/stimuli generation and error calculation functions (if following the baseline, use Cleveland and McGill's 1984 paper and Heer and Bostock's 2010 replication), c) run the experiment with 10 participants (or equivalent number of trials), and d) do basic analysis and reporting of the results.
+We conducted two different types of experiments for this project, both centering on the amount of time it takes the user to find a specific colored circle in a scatterplot of about 100 circles. Each circle has a set minimum distance from one to the other and their placement was randomized. This way, we were making graphs where the circle that the participant is attempting to find is not obscured by other circles. For each experiment, the user would have 30 seconds to click on the designated circle, and the time it took them to click on it would be recorded. And before each experiment, to make sure the first trial results wouldn’t be skewed highly, we had a practice round.
 
-For this assignment you should aim to write everything from scratch. For experimentation it is often necessary to control all elements of the chart.
-You should definitely *reference* demo programs from books or the web, and if you do please provide a References section with links at the end of your Readme.
+#### Experiment 1
 
-Going Beyond Cleveland-McGill
----
+The first experiment has the participants click on a designated color in a scatter plot of other uniform colors (by clicking said colored circle). Each runthrough of this trial has the colors getting closer in “distance” to each other, making it harder to tell apart their difference. The “distance” of the colors is determined through the CIELAB color space. To find the colors to be used for the experiment, our first step was to choose our "target" color, and an opposing color. Our "target" color was chosen to be red, and, based on the color space, we chose the opposing color to be green. We used the colormath library within python, and converted the colors into LabColors which are CIELAB representations. We then calculated 4 intermediate colors by calculating equi-distant colors between red and green. The hex codes of these colors were then used to create the graph data points.
 
-Several have expressed interest in conducting surveys of various sorts. I encourage you go move beyond Cleveland and McGill if you can think of other interesting visualization experiment designs and corresponding analyses. 
+There were 100 data points generated for experiment 1, with 1 being the ‘designated’ color, which was chosen to be red. The other 99 data points shared a similar color that changed depending on the trial.
 
-You might study how people interpret COVID visualizations or design an experiment on shapes or color, for example.
-If you decide to go in a custom route, do plan to sync with staff so we can help you set acceptable parameters that would be fair to folks following the original route.
+<img src="img/colorScale.png" width="400">
 
-(Basically, we still want you to do a multi-trial study with each participant, to raise the chance that you get solid results.)
+#### Experiment 2
 
-How you measure "error" and similar facets also matter. But you can't go wrong with finding a good visualization study online to start from :)
+The second experiment has the participants click on a designated color in a scatter plot of multiple colors. The other colors are all a similar “distance” from the designated color and we decrease their distance over trials. There are 5 different colors outside of the designated one. We used the yellow, green, blue, purple and red colors from the Berkeley Color Project and had the target value be black, which is approximately the center of the colors. The Saturated versions of the colors had the largest distance from the target, then the Light, Muted and Dark versions were used for subsequent trials, each one decreasing in distance to the target. In order to have five trials, we calculated the values halfway between the Saturated and Light values since these colors had the largest distance between them and used the resulting colors for the second trial. There were 101 data points generated for experiment 2, with 20 of each color and 1 of the target color.
 
-Requirements
----
+#### Our hypotheses
 
-- Look it over Cleveland and McGill's original experiment (see the section below) and [watch this video](experiment-example.mp4) to get a sense of the experiment structure and where your visualizations will go.
-- When viewing the example experiment video, note the following:
-    - Trials are in random order.  
-    - Each trial has a randomly generated set of 5-10 data points.  
-    - Two of these data points are marked.  
-    - (Note: the experiment UI and User Experience could be better. Plenty of design achievements here).
-- Implement the data generation code **as described in the Cleveland & McGill and Heer & Bostock papers**. 
-    - The goal is to generate a set of random datapoints (usually 5 or 10, with values be between 0 and 100) and to mark two of them for comparison in the trial. 
-- Add 3 visualizations (i.e. conditions) to your experiment. When you are adding these visualizations, think about *why* these visualizations are interesting to test. In other words, keep in mind a *testable hypothesis* for each of the added visualization. Some good options include bar charts, pie charts, stacked-bar charts, and treemaps. You can also rotate your bar chart to be horizontal or upside-down as one of your conditions. You are encouraged to test unorthodox charts -- radar charts come to mind, but there are MANY possibilities here-- feel free to be creative!
-    - Follow the style from Cleveland and McGill closely (e.g. no color, simple lines) unless you are specifically testing a hypothesis (e.g. color versus no color). Pay attention to spacing between elements like bars. Do not mark bars for comparison using color-- this makes the perceptual task too easy.
-- After each trial, implement code that grades and stores participant’s responses.
-- At the end of the experiment, to get the data, one easy option use Javascript to show the data from the current experiment\* (i.e. a comma separated list in a text box) and copy it into your master datafile. See the Background section below for an example of what this file should look like. (\*Alternately implement a server, if you're experienced with that sort of thing.)
+Our hypothesis was that the time needed for picking out the correct color will increase if the colors are closer together in distance. We also hypothesized that the time needed for picking out the correct color will increase if all of the plot points have different colors compared to uniform colors. We conducted this test to see if our hypotheses are right, and to investigate how fast people were able to distinguish colors and react to our trials.
 
-** DATA SCIENTISTS! IT IS YOUR TIME TO SHINE **
+We created this study idea on our own, basing it on the professor’s in class example on determining what color is what. We also made our website from scratch using React, modelled off the one designed by the professor.
 
-- Figure out how to calculate "Error", the difference between the true percentage and the reported percentage.
-- Scale this error using Cleveland and McGill’s log-base-2 error equation. For details, see the background section (there’s a figure with the equation). This becomes your “Error” column in the output. Make sure you use whole percentages (not decimal) in the log-base-2 equation. Make sure you handle the case of when a person gets the exact percentage correct (log-base-2 of 1/8 is -3, it is better to set this to 0). 
-- Run your experiment with 10 or more participants, or-- make sure you get at least 200 trials **per visualization type** in total.  
-    - Grab friends or people in the class.   
-    - Run at least 20 trials per visualization type, per participant. This is to ensure that you cover the range of possible answers (e.g. 5%, 10%, ..., 95%)
-- Make sure to save the resulting CSV after each participant. Compile the results into a master csv file (all participants, all trials).
-- Produce a README with figures that shows the visualizations you tested and results, ordered by best performance to worst performance. Follow the modern Cleveland-McGill figure below -- though note that using names instead of icons is fine.
-- To obtain the ranking, calculate and report the average log2Error for each visualization across all trials and participants. This should be straightforward to do in a spreadsheet.
-- Use Bootstrapped 95\% confidence intervals for your error upper and lower bounds. Include these in your figures. Bootstrapped confidence intervals are easily implemented in R + ggplot2 using the `stat_summary` geom. You can also use Excel, Python, or many many other tools. Bootstrapped 95% CIs are **very** useful in modern experiment practice.
-- Include example images of each visualization as they appeared in your experiment (i.e. if you used a pie chart show the actual pie chart you used in the experiment along with the markings, not an example from Google Images).
+#### Tools Used
 
-## General Requirements
+We generated our graphs using d3 and integrated the graphs with the React frontend. We used Python to generate the data points for the experiments.
 
-0. Your code should be forked from the GitHub repo and linked using GitHub pages.
-2. Your project should use d3 to build visualizations. 
-3. Your writeup (readme.md in the repo) should contain the following:
+#### Other Considerations
 
-- Working link to the experiment hosted on gh-pages or some other site.
-- Concise description and screenshot of your experiment.
-- Description of the technical achievements you attempted with this project.
-- Description of the design achievements you attempted with this project.
+Taking into account Fitt’s Law, since every participant has to click on a button to go to toggle the next visualization, the distance between the button and the color they need to click was standardized as long as we used the same visualizations for each participant. We kept sizes and shapes constant for each circle. The amount of circles per experiment were also kept constant. Additionally, we made our experiment so that it can be conducted on mobile devices. In those cases, Fitt’s Law applies less as participants did not have to move a mouse to reach the target circle. 
 
-Background
----
+### Screens from our Experiment
+The first screen shows the user instructions regarding the experiment. Users are given sample graphs to practice, before the actual experiment begins. Users are shown a screen between each graph allowing them to take a break between each trial and make sure they're ready for the next one. The last screen shows the user's times for each graph, including the sample graphs.
 
-In 1984, William Cleveland and Robert McGill published the results of several controlled experiments that pitted bar charts against pies and stacked-bar variants. 
-Their paper (http://www.cs.ubc.ca/~tmm/courses/cpsc533c-04-spr/readings/cleveland.pdf) (http://info.slis.indiana.edu/~katy/S637-S11/cleveland84.pdf) is considered a key paper in data visualization.
-In particular, they ran a psychology-style experiment where users were shown a series of randomly-generated charts with two graphical elements marked like this:
+<img src="img/Exp1.png" width="400">
 
-![cleveland bar chart](img/cleveland-bar.png)
+<img src="img/Exp1MovingOn.png" width="400">
 
-Participants were then asked, "What percentage is the smaller of the larger?". 
-This was repeated hundreds of time with varying data and charts. 
-By the end of the study, Cleveland and McGill had amassed a large dataset that looked like this:
+<img src="img/Exp1Sample.png" width="400">
 
-![cleveland table](img/cleveland-table.png)
+<img src="img/Exp1G1.png" width="400">
 
-__Log-base-2 or "cm-error"__: The true percent is the actual percentage of the smaller to the larger, while the reported percent is what participants reported. 
-Cleveland and McGill recognized that their analyses would be biased if they took `abs(ReportedPercent – TruePercent)` as their score for error. 
-To compensate, they came up with a logarithmic scale for error with this equation:
+<img src="img/next.png" width="400">
 
-![cleveland equation](img/cleveland-equation.png)
+<img src="img/Exp1G2.png" width="400">
 
-You’ll be implementing this error score as part of the lab. 
-(Hint: it’s not a trick question, this is just to familiarize you with the experiment protocol). 
-With this Cleveland-McGill error score you can better compare the performance of the charts you test to figure out which one performs the best.
+<img src="img/Exp1G3.png" width="400">
 
-As a baseline, compare your average Error scores to the following chart, which include both Cleveland and McGill’s results as well as more recent extensions of this experiment (lower error indicates better performance, and error bars are bootstrapped 95% confidence intervals (`http://en.wikipedia.org/wiki/Confidence_interval#Meaning_and_interpretation`)):
+<img src="img/Exp1G4.png" width="400">
 
-![cleveland results](img/cleveland-results.png)
+<img src="img/Exp1G5.png" width="400">
 
-GitHub Details
----
+<img src="img/Exp2.png" width="400">
 
-- Fork the GitHub Repository. You now have a copy associated with your username.
-- Make changes to index.html to fulfill the project requirements. 
-- Make sure your "master" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit this README.md with a link to your gh-pages site: e.g. http://YourUsernameGoesHere.github.io/Experiment/index.html
-- Replace this file (README.md) with your writeup and Design/Technical achievements.
-- To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
-- Name your submission using the following scheme: 
-```
-a3-FirstLastnameMember1-FirstLastnameMember2-FirstLastnameMember3-...
-```
+<img src="img/Exp2Sample.png" width="400">
+
+<img src="img/Exp2G1.png" width="400">
+
+<img src="img/Exp2G2.png" width="400">
+
+<img src="img/Exp2G4.png" width="400">
+
+<img src="img/Exp2G5.png" width="400">
+
+
+### Limitations
+
+One limitation was that we had a 30 second timeout for every graph. This means that if a participant isn’t able to find the specified color within 30 seconds, we would force them to move on to prevent any participant from being stuck on a particular graph and not finishing the experiment at all. In our experiment results, there are some 30 second data points which are the result of this timeout. 
+
+Another limitation to this experiment is Fitt’s Law. Since every participant has to click on a button to go to toggle the next visualization, the distance between the button and the color they need to click was standardized as long as we used the same visualizations for each participant. We kept sizes and shapes constant for each circle. The amount of circles per experiment were also kept constant. Additionally, we made our experiment so that it can be conducted on mobile devices. In those cases, Fitt’s Law applies less as participants did not have to move a mouse to reach the target circle. 
+
+In the future, it would be better to run multiple tests for each color variation we had in experiment 1 and 2. As it stands, some trials could’ve been harder than others simply due to the positioning of the designated circle, which was a factor we wanted to keep constant. We’d want to average out the results for each set of trials for each configuration. The values in the second trial of experiment 2 also seem to make finding the target noticeably easier. There appears to be a big jump in the Berkeley Color Experiment so maybe custom colors could be calculated.
+
+### Results
+#### Spreadsheet
+<img width="770" alt="Screenshot 2024-03-14 at 10 57 38 AM" src="https://github.com/abigailalbuquerque/a3-Experiment/assets/44651405/11a4a0a7-f44c-4d25-bbda-993a46906bfa">
+
+Here is the list of results from all our participants.
+
+#### Graphs
+
+A boxplot graph showing the 5 different trials for experiment 1. As we see, the 5th trial has a wide range as opposed to other trials.
+
+<img src="img/Experiment1.png" width="400"> 
+
+
+A boxplot graph showing the first 4 trials. This graph was created to highlight any differences between the first 4, however, we do not notice any statistically significant differences between the same.
+
+<img src="img/Experiment1_4only.png" width="400"> 
+
+
+A boxplot graph where the y axis is augmented to log(time+1). The log augmentation was performed to scale the different graphs for comparison. A +1 was added to the times so the log values would not be negative.
+
+<img src="img/Experiment1Augmented.png" width="400">
+
+
+A boxplot graph showing the 5 different trials for experiment 2. As we see, the 5th trial has a wide range as opposed to other trials.
+
+<img src="img/Experiment2.png" width="400">
+
+
+A boxplot graph showing the first 4 trials. This graph was created to highlight any differences between the first 4, however, we do not notice any statistically significant differences between the same.
+
+<img src="img/Experiment2_4only.png" width="400">
+
+
+A boxplot graph where the y axis is augmented to log(time+1). The log augmentation was performed to scale the different graphs for comparison. A +1 was added to the times so the log values would not be negative.
+
+<img src="img/Experiment2Augmented.png" width="400">
+
+
+#### Discussion
+
+We noticed that there was a large jump in time taken for the final trial in both experiments. In all the trials besides the last in each experiment, the results were relatively similar, with the average of all of those results hovering between 1 and 1 and a half seconds for experiment 1 and and 1-2 seconds for experiment 2. It would seem that people have an easy time telling colors apart unless they’re really close together.
+
+Surprisingly, it appeared that the first trial in experiment 1 took longer time than trials 2-4 for that. This could be due to multiple reasons, such as the placement of the black circle, the colorings of the other circles, or a lack of practice from the participant. Despite trials 2-3 being supposedly closer to the black circle from our calculations, it appeared visually easier to do said trials. This wouldn’t explain how trial 1 took more time than 4 or 5 however.
+
+Both experiments performed very similarly on trials 2-4, having all their timings centering around 1.25 seconds. This leads us to believe our hypothesis was wrong that having a lot of different colors as distractors would increase the amount of time taken. However, trial 5 on experiment 1 took a lot more time than experiment 2, with the upper quartile of experiment 1’s trial 5 being around 20 seconds, and experiment 2’s trial 5 being around 8.5 seconds. The medians of both of them are the same however. We believe this could've been due to trial 5 being harder for the first experiment than the second, with the colors being closer together. It’s also possible that the increased color variation in experiment 2 made it easier to distinguish the one the user was trying to find. We feel more testing would need to be done for colors that are really close to another of the same distance for both experiments to make claims on what experiment is harder than the other. 
+
+As expected, for the one participant who did this test that was color blind, they had a very difficult time telling apart the red and green colors in the first experiment (having the results 19.076, 23.403, 7.528, 30, and 30 seconds). In contrast, they had a much easier time with experiment 2, where the target was to find the black circle. This makes sense as the lightness of black is a much more easily differentiable value than something like red versus green. 
+
+
+### Technical achievements
+
+#### React App and D3
+We developed a React App from scratch, implemented the d3 graph within the app. All the functionality was built from scratch.
+
+#### Experiments
+We took the time to have two different experiments for our project instead of one, each having 5 different graphs. The experiments were meticulously planned, taking into account various research done on color theory, etc. A lot of research was put into determining the colors for both experiments. A substantial amount of time went into calculating color distances to make sure the colors were getting a set distance closer in experiment 1.
+
+### Design achievements
+#### Fitts Law and Usability
+We took into account Fitt's law to reduce any bias within our experiments. We also took into account very minor details like the sizes of the circles on the scatterplots, etc to ensure usability.
+
+### References
+
+- https://codesandbox.io/p/sandbox/react-d3-scatterplot-solved-kg107?file=%2Fsrc%2Fstyles.css%3A1%2C1-5%2C1
+- https://github.com/gitname/react-gh-pages?tab=readme-ov-file
+- https://www.researchgate.net/figure/The-Berkeley-Color-Project-BCP-32-chromatic-colors-figure-adapted-from-Palmer-and_fig3_282271041
+
