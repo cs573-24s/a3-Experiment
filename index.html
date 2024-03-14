@@ -1,134 +1,109 @@
-<!-- <!DOCTYPE html>
-<div id="container"></div>
-<script type="module">
-
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
-
-console.log(d3);
-
-</script> -->
-
-<!-- Read the html below -->
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Next Page</title>
-  <script src="https://cdn.jsdelivr.net/npm/d3-funnel@2"></script>
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #e6f7ff; 
-      font-family: 'Roboto', sans-serif; 
-      color: #333; 
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/d3-funnel@2"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+            font-family: 'Nunito', sans-serif;
+            color: #333;
+        }
 
-    h1 {
-      margin-bottom: 20px;
-    }
-    #chartContainer {
-      width: 530px;
-      height: 450px;
-    }
-    iframe {
-      border: none;
-      width: 100%;
-      height: 100%;
-    }
-    #buttonContainer {
-      display: flex;
-      margin-top: 20px; 
-    }
-    button:last-child {
-      margin-right: 0; 
-    }
-    button:hover {
-      background-color: #2980b9;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    #page1 {
-    text-align: center; 
-    }
-    button {
-      padding: 10px 15px;
-      font-size: 16px;
-      background-color: #3498db;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      margin-right: 10px; 
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    }
+        h1,
+        p {
+            margin: 10px 0;
+        }
 
-    #textBox {
-      padding: 10px;
-      font-size: 16px;
-      margin-right: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    #textContainer {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    p {
-      margin: 10;
-      text-align: center;
-    }
-    #end {
-    text-align: center; 
-    }
-    #count {
-    position: fixed;
-    top: 20px;
-    right: 30px;
-    font-size: 14px;
-    color: #333;
-    }
-    #test {
-    text-align: center;
-    }
-    #reported {
-      padding: 10px;
-      font-size: 16px;
-      margin-right: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+        #page1,
+        #Exit,
+        #test,
+        #end {
+            background-color: #ffffff;
+      
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+       
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+       
+            text-align: center;
+        }
 
-  </style>
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #007bff;
+       
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+         
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+         
+            margin: 5px;
+      
+        }
+
+        button:hover {
+            background-color: #0056b3;
+
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+            transform: translateY(-2px);
+
+        }
+
+        #textBox,
+        #reported {
+            width: calc(100% - 20px);
+
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+
+            border: 1px solid #ccc;
+            border-radius: 20px;
+
+            box-sizing: border-box;
+
+        }
+    </style>
 </head>
 
 <body>
     <div id="page1">
-      <p>In this experiment</p>
-      <p>you are asked to judge</p>
-      <p>what is the percent of a smaller value to a larger value in several charts.</p>
-      <p>We won't record any other information from you except your answers.</p>
-      <p>Click the "Agree" button to begin.</p>
-      <p>Thank you!</p>
-      <p></p>
+        <p>In this experiment</p>
+        <p>you are asked to judge</p>
+        <p>what is the percent of a smaller value to a larger value in several charts.</p>
+        <p>We won't record any other information from you except your answers.</p>
+        <p>Click the "Agree" button to begin.</p>
+        <p>Thank you!</p>
+        <p></p>
 
-      <button id ="Disagree" onclick="return Exit()">Disagree</button>
-        <button id ="Agree" onclick="return test()">Agree</button>
-        
-        
+        <button id="Disagree" onclick="return Exit()">Disagree</button>
+        <button id="Agree" onclick="return test()">Agree</button>
+
+
     </div>
     <div id="Exit" style="display: none;">
-      <h1>Thank you for your consideration</h1>
-       <p>We appreciate your time and attention in reviewing the survey</p>
-   </div>
+        <h1>Thank you for your consideration</h1>
+        <p>We appreciate your time and attention in reviewing the survey</p>
+    </div>
     <div id="test" style="display:none">
         <h1>
         </h1>
@@ -142,365 +117,327 @@ console.log(d3);
         <button id="Next" onclick="return saveTest()">Next</button>
     </div>
 
-  <div id="end" style="display:none">
-    <h1>
-        You have reached the end of the experiment
-    </h1>
-    <p>
-        Thank you! your testResults have been exported to a csv file.
-    </p>
-    <div id="printedend"></div>
-    <button id="export" onclick="return exportCSV()">Export to .csv</button>
-</div>
+    <div id="end" style="display:none">
+        <h1>
+            You have reached the end of the experiment
+        </h1>
+        <p>
+            Thank you! your testResults have been exported to a csv file.
+        </p>
+        <div id="printedend"></div>
+        <button id="export" onclick="return exportCSV()">Export to .csv</button>
+    </div>
 
-<script>
-    console.log(d3); 
+    <script>
+        console.log(d3);
 
-    var graph = [];
-    var testResults = [];
-    var count = 0;
+        var graph = [];
+        var testResults = [];
+        var count = 0;
 
-    var vis = "";
-    var truePercent = 0;
+        var vis = "";
+        var truePercent = 0;
 
-    function test() {
-        document.getElementById('page1').style.display='none';
-        document.getElementById('test').style.display='block';
-        starttest();
-    }
-
-    function Exit() {
-    document.getElementById('page1').style.display = 'none';
-    document.getElementById('test').style.display = 'none';
-    document.getElementById('Exit').style.display = 'block';
-    startExit();
-    }
-
-    function showResults() {
-        document.getElementById('test').style.display='none';
-        document.getElementById('end').style.display='block';
-    }
-
-    function randomData() {
-        var data = d3.range(1, 6).map(function (d) {
-            return{
-                idx: d.toString(),
-                val: Math.floor(Math.random()*100 + 1)
-            };
-        });
-
-        let firstPoint = Math.floor(Math.random()*5)
-        let secPoint = Math.floor(Math.random()*5);
-
-        while (firstPoint == secPoint) {
-            secPoint = Math.floor(Math.random()*5);
+        function test() {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('test').style.display = 'block';
+            starttest();
         }
 
-        var dataset = {
-            data: data,
-            firstPoint: firstPoint,
-            secPoint: secPoint
+        function Exit() {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('test').style.display = 'none';
+            document.getElementById('Exit').style.display = 'block';
+            startExit();
         }
 
-        console.log(data)
-        console.log(firstPoint);
-        console.log(secPoint);
-        return dataset;
-    }
-
-    function randomOrder() {
-    var counts = [0, 0, 0, 0]; // Updated for 6 chart types
-    var order = [];
-
-    while (counts.some(count => count < 20)) {
-        let num = Math.floor(Math.random() * 4) + 1; // Range updated to 1-4
-
-        if (counts[num - 1] < 20) {
-            order.push(num);
-            counts[num - 1]++;
+        function showResults() {
+            document.getElementById('test').style.display = 'none';
+            document.getElementById('end').style.display = 'block';
         }
-    }
 
-    console.log(order);
-    return order;
-}
+        function randomData() {
+            var data = d3.range(1, 6).map(function (d) {
+                return {
+                    idx: d.toString(),
+                    val: Math.floor(Math.random() * 100 + 1)
+                };
+            });
 
+            let firstPoint = Math.floor(Math.random() * 5)
+            let secPoint = Math.floor(Math.random() * 5);
 
-function makeTest(num) {
-    count++;
-    let dataset = randomData();
+            while (firstPoint == secPoint) {
+                secPoint = Math.floor(Math.random() * 5);
+            }
 
-    if (dataset.data[dataset.firstPoint].val < dataset.data[dataset.secPoint].val) {
-        truePercent = Math.floor(dataset.data[dataset.firstPoint].val / ((dataset.data[dataset.secPoint].val)/100));
-    }
-    else if (dataset.data[dataset.firstPoint].val > dataset.data[dataset.secPoint].val) {
-        truePercent = Math.floor(dataset.data[dataset.secPoint].val / ((dataset.data[dataset.firstPoint].val)/100));
-    }
-    else {
-        truePercent = 100;
-    }
+            var dataset = {
+                data: data,
+                firstPoint: firstPoint,
+                secPoint: secPoint
+            }
 
-    var currSvg = d3.select("div#vis").select('svg')
-    currSvg.remove();
-    document.getElementById('count').innerHTML = "Question " + (count) + "/80"
+            console.log(data)
+            console.log(firstPoint);
+            console.log(secPoint);
+            return dataset;
+        }
 
-    // switch (graph[num]) {
-    //     case 1:
-    //         vis = "Bar Chart";
-    //         // Assume makeBarChart is correctly implemented
-    //         makeBarChart(dataset);
-    //         break;
-    //     case 2:
-    //         vis = "Pie Chart";
-    //         // Assume makePieChart is correctly implemented
-    //         makePieChart(dataset);
-    //         break;
-    //     case 3:
-    //         vis = "Stack Chart";
-    //         makeStackChart(dataset);
-    //         break;
-    //     case 4:
-    //         vis = "Donut Chart";
-    //         makeDonutChart(dataset);
-    //         break;
-    //     case 5:
-    //         vis = "Tree Map";
-    //         makeTreeMap(dataset);
-    //         break;
-    //     case 6:
-    //         vis = "Bubble Chart";
-    //         makeBubbleChart(dataset);
-    //         break;
-    // }
+        function randomOrder() {
+            var order = [];
+            var count = 20;
+            // Add 20 Bubble Charts
+            for (let i = 0; i < count; i++) {
+                order.push(4); // Assuming 4 represents Bubble Chart
+            }
 
-    switch (graph[num]) {
-        case 1:
-            vis = "Stack Chart";
-            makeStackChart(dataset);
-            break;
-        case 2:
-            vis = "Donut Chart";
-            makeDonutChart(dataset);
-            break;
-        case 3:
-            vis = "Tree Map";
-            makeTreeMap(dataset);
-            break;
-        case 4:
-            vis = "Bubble Chart";
-            makeBubbleChart(dataset);
-            break;
-    }
-}
+            // Add 20 TreeMaps
+            for (let i = 0; i < count; i++) {
+                order.push(3); // Assuming 3 represents TreeMap
+            }
+
+            // Add 20 Donut Charts
+            for (let i = 0; i < count; i++) {
+                order.push(2); // Assuming 2 represents Donut Chart
+            }
+
+            // Add 20 Stack Charts
+            for (let i = 0; i < count; i++) {
+                order.push(1); // Assuming 1 represents Stack Chart
+            }
+
+            console.log(order);
+            return order;
+        }
 
 
-function saveTest() {
-    let result = {
-        trialNum: count,
-        vis: vis,
-        reported: parseInt(document.getElementById('reported').value),
-        truePercent: truePercent
-    }
-    console.log(result);
-    testResults.push(result);
+        function makeTest(num) {
+            count++;
+            let dataset = randomData();
 
-    if (count == 80) {
-        showResults();
-    }
-    else {
-        document.getElementById("reported").value="";
-        makeTest(count);
-    }
-}
+            if (dataset.data[dataset.firstPoint].val < dataset.data[dataset.secPoint].val) {
+                truePercent = Math.floor(dataset.data[dataset.firstPoint].val / ((dataset.data[dataset.secPoint].val) / 100));
+            }
+            else if (dataset.data[dataset.firstPoint].val > dataset.data[dataset.secPoint].val) {
+                truePercent = Math.floor(dataset.data[dataset.secPoint].val / ((dataset.data[dataset.firstPoint].val) / 100));
+            }
+            else {
+                truePercent = 100;
+            }
 
-
-//  stack bar chart
-    function makeStackChart(dataset) {
-    const width = 460;
-    const height = 200;
-    const margin = { top: 20, right: 10, bottom: 20, left: 10 };
-    const h = height * 0.66;
-    const barHeight = 100;
-    const halfBarHeight = barHeight / 2;
-    const dotRadius = 5;
-    const colors = ["red", "blue", "yellow", "green", "orange"];
-
-    const total = d3.sum(dataset.data, d => d.val);
-
-    function groupDataFunc(data) {
-        const percent = d3.scaleLinear()
-            .domain([0, total])
-            .range([0, 100]);
-
-        let cumulative = 0;
-        const _data = data.map((d, i) => {
-            cumulative += d.val;
-            return {
-                value: d.val,
-                cumulative: cumulative - d.val,
-                label: 'Group ' + (i + 1),
-                percent: percent(d.val)
-            };
-        }).filter(d => d.value > 0);
-
-        return _data;
-    }
-
-    const groupData = groupDataFunc(dataset.data);
-
-    const svg = d3.select("#vis").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", h + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    const xScale = d3.scaleLinear()
-        .domain([0, total])
-        .range([0, width]);
-
-    const join = svg.selectAll('g')
-        .data(groupData)
-        .enter().append('g')
-        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-
-    join.append('rect')
-        .attr('class', 'rect-stacked')
-        .attr('x', d => xScale(d.cumulative))
-        .attr('y', h / 2 - halfBarHeight)
-        .attr('height', barHeight)
-        .attr('width', d => xScale(d.value))
-        .style('fill', (d, i) => colors[i]);
-
-    join.filter((d, i) => i === dataset.firstPoint || i === dataset.secPoint)
-        .append('circle')
-        .attr('cx', (d, i) => xScale(d.cumulative) + (xScale(d.value) / 2))
-        .attr('cy', h / 2)
-        .attr('r', dotRadius)
-        .style('fill', 'black');
-}
+            var currSvg = d3.select("div#vis").select('svg')
+            currSvg.remove();
+            document.getElementById('count').innerHTML = "Question " + (count) + "/80"
 
 
-
-// // bar chart
-
-// function makeBarChart(data) {
-//     const svgWidth = 500, svgHeight = 300, barPadding = 5;
-//     const barWidth = (svgWidth / data.length);
-
-//     const svg = d3.select('#barChart').append('svg')
-//         .attr('width', svgWidth)
-//         .attr('height', svgHeight);
-
-//     svg.selectAll('rect')
-//         .data(data)
-//         .enter()
-//         .append('rect')
-//         .attr('y', d => svgHeight - d)
-//         .attr('height', d => d)
-//         .attr('width', barWidth - barPadding)
-//         .attr('transform', (d, i) => {
-//             const translate = [barWidth * i, 0]; 
-//             return `translate(${translate})`;
-//         });
-// }
+            switch (graph[num]) {
+                case 1:
+                    vis = "Stack Chart";
+                    makeStackChart(dataset);
+                    break;
+                case 2:
+                    vis = "Donut Chart";
+                    makeDonutChart(dataset);
+                    break;
+                case 3:
+                    vis = "Tree Map";
+                    makeTreeMap(dataset);
+                    break;
+                case 4:
+                    vis = "Bubble Chart";
+                    makeBubbleChart(dataset);
+                    break;
+            }
+        }
 
 
+        function saveTest() {
+            var reportedValue = document.getElementById('reported').value;
 
-    
-// donut chart
-function makeDonutChart(dataset) {
-    var width = 460,
-        height = 400,
-        radius = Math.min(width, height) / 2;
+            if (reportedValue.trim() === '' || isNaN(reportedValue) || !Number.isInteger(parseFloat(reportedValue))) {
+                alert("Please enter a valid integer value.");
+                return;
+            }
 
-    var innerRadius = radius * 0.6; 
-    var svg = d3.select("div#vis")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height + 70)
-        .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+            let result = {
+                trialNum: count,
+                vis: vis,
+                reported: parseInt(document.getElementById('reported').value),
+                truePercent: truePercent
+            }
+            console.log(result);
+            testResults.push(result);
 
-    var pie = d3.pie();
-    var arc = d3.arc()
-        .innerRadius(innerRadius) 
-        .outerRadius(radius);
-
-        let dataVals = [];
-
-    dataset.data.forEach(function (row) {
-        dataVals.push(row.val);
-    })
-    var tempData = pie(dataVals);
-    let data = [];
-    let index = 1;
-
-    tempData.forEach(function (row) {
-        d = {
-            index: index,
-            pieData: row
-        };
-        data.push(d);
-        index++;
-    })
-
-    const slices = svg.selectAll("path")
-        .data(tempData)
-        .enter()
-        .append("path")
-        .attr("d", arc)
-        .attr("fill", function (d, i) {
-            return d3.schemeCategory10[i % d3.schemeCategory10.length];
-        });
-
-    var circleData = [
-        data[dataset.firstPoint].pieData,  
-        data[dataset.secPoint].pieData
-    ];
-
-    svg.selectAll("circle")
-        .data(circleData)
-        .enter()
-        .append("circle")
-        .attr("cx", function (d) { return arc.centroid(d)[0]; })
-        .attr("cy", function (d) { return arc.centroid(d)[1]; })
-        .attr("r", 5)
-        .style("fill", "black"); 
-}
+            if (count == 80) {
+                showResults();
+            }
+            else {
+                document.getElementById("reported").value = "";
+                makeTest(count);
+            }
+        }
 
 
-// tree map
-function makeTreeMap(dataset) {
-    const width = 960, height = 500;
-    const format = d3.format(",d");
-    const color = d3.scaleOrdinal(d3.schemeCategory10);
+        //  stack bar chart
+        function makeStackChart(dataset) {
+            const width = 460;
+            const height = 200;
+            const margin = { top: 20, right: 10, bottom: 20, left: 10 };
+            const h = height * 0.66;
+            const barHeight = 100;
+            const halfBarHeight = barHeight / 2;
+            const dotRadius = 5;
+            const colors = ["red", "blue", "yellow", "green", "orange"];
 
-    // Convert flat data to hierarchical structure
-    const root = d3.hierarchy({children: dataset.data})
-        .sum(d => d.val)
-        .sort((a, b) => b.value - a.value);
+            const total = d3.sum(dataset.data, d => d.val);
 
-    const svg = d3.select("#vis").append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("class", "tree-map");
+            function groupDataFunc(data) {
+                const percent = d3.scaleLinear()
+                    .domain([0, total])
+                    .range([0, 100]);
 
-    const treemap = d3.treemap()
-        .size([width, height])
-        .padding(1)
-        .round(true)(root);
+                let cumulative = 0;
+                const _data = data.map((d, i) => {
+                    cumulative += d.val;
+                    return {
+                        value: d.val,
+                        cumulative: cumulative - d.val,
+                        label: 'Group ' + (i + 1),
+                        percent: percent(d.val)
+                    };
+                }).filter(d => d.value > 0);
 
-    const cell = svg.selectAll("g")
-        .data(root.leaves())
-        .enter().append("g")
-        .attr("transform", d => `translate(${d.x0},${d.y0})`);
+                return _data;
+            }
+
+            const groupData = groupDataFunc(dataset.data);
+
+            const svg = d3.select("#vis").append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", h + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+            const xScale = d3.scaleLinear()
+                .domain([0, total])
+                .range([0, width]);
+
+            const join = svg.selectAll('g')
+                .data(groupData)
+                .enter().append('g')
+                .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+            join.append('rect')
+                .attr('class', 'rect-stacked')
+                .attr('x', d => xScale(d.cumulative))
+                .attr('y', h / 2 - halfBarHeight)
+                .attr('height', barHeight)
+                .attr('width', d => xScale(d.value))
+                .style('fill', (d, i) => colors[i]);
+
+            join.filter((d, i) => i === dataset.firstPoint || i === dataset.secPoint)
+                .append('circle')
+                .attr('cx', (d, i) => xScale(d.cumulative) + (xScale(d.value) / 2))
+                .attr('cy', h / 2)
+                .attr('r', dotRadius)
+                .style('fill', 'black');
+        }
+
+
+        // donut chart
+        function makeDonutChart(dataset) {
+            var width = 460,
+                height = 400,
+                radius = Math.min(width, height) / 2;
+
+            var innerRadius = radius * 0.6;
+            var svg = d3.select("div#vis")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height + 70)
+                .append("g")
+                .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+            var pie = d3.pie();
+            var arc = d3.arc()
+                .innerRadius(innerRadius)
+                .outerRadius(radius);
+
+            let dataVals = [];
+
+            dataset.data.forEach(function (row) {
+                dataVals.push(row.val);
+            })
+            var tempData = pie(dataVals);
+            let data = [];
+            let index = 1;
+
+            tempData.forEach(function (row) {
+                d = {
+                    index: index,
+                    pieData: row
+                };
+                data.push(d);
+                index++;
+            })
+
+            const slices = svg.selectAll("path")
+                .data(tempData)
+                .enter()
+                .append("path")
+                .attr("d", arc)
+                .attr("fill", function (d, i) {
+                    return d3.schemeCategory10[i % d3.schemeCategory10.length];
+                });
+
+            var circleData = [
+                data[dataset.firstPoint].pieData,
+                data[dataset.secPoint].pieData
+            ];
+
+            svg.selectAll("circle")
+                .data(circleData)
+                .enter()
+                .append("circle")
+                .attr("cx", function (d) { return arc.centroid(d)[0]; })
+                .attr("cy", function (d) { return arc.centroid(d)[1]; })
+                .attr("r", 5)
+                .style("fill", "black");
+        }
+
+
+        // tree map
+        function makeTreeMap(dataset) {
+            const width = 500, height = 500;
+            const format = d3.format(",d");
+            const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+            
+            // Convert flat data to hierarchical structure
+            const root = d3.hierarchy({ children: dataset.data })
+                .sum(d => d.val)
+                .sort((a, b) => b.value - a.value);
+
+            const svg = d3.select("#vis").append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .attr("class", "tree-map");
+
+            const treemap = d3.treemap()
+                .size([width, height])
+                .padding(1)
+                .round(true)(root);
+
+            const cell = svg.selectAll("g")
+                .data(root.leaves())
+                .enter().append("g")
+                .attr("transform", d => `translate(${d.x0},${d.y0})`);
 
     cell.append("rect")
         .attr("id", d => (d.data.id))
         .attr("width", d => d.x1 - d.x0)
         .attr("height", d => d.y1 - d.y0)
-        .style("fill", (d, i) => color(i));
-        // .attr("fill", d => color(d.parent.data.id));
+        .attr("fill", d => color(d.parent.data.id));
 
     cell.append("text")
         .attr("x", 5)
@@ -510,72 +447,82 @@ function makeTreeMap(dataset) {
 
 
 
-//bubble chart
-function makeBubbleChart(dataset) {
-    const width = 960, height = 500;
-    const format = d3.format(",d");
-    const color = d3.scaleOrdinal(d3.schemeCategory10);
+        //bubble chart
+        function makeBubbleChart(dataset) {
+            const width = 460, height = 460;
+            const format = d3.format(",d");
+            const color = d3.scaleOrdinal(d3.schemeCategory10);
 
-    // Transform data for bubble chart
-    const root = d3.hierarchy({children: dataset.data})
-        .sum(d => d.val)
-        .sort((a, b) => b.value - a.value);
+            // Transform data for bubble chart
+            const root = d3.hierarchy({ children: dataset.data })
+                .sum(d => d.val)
+                .sort((a, b) => b.value - a.value);
 
-    const bubble = d3.pack()
-        .size([width, height])
-        .padding(1.5);
+            const bubble = d3.pack()
+                .size([width, height])
+                .padding(1.5);
 
-    const svg = d3.select("#vis").append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("class", "bubble");
+            const svg = d3.select("#vis").append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .attr("class", "bubble");
 
-    const node = svg.selectAll(".node")
-        .data(bubble(root).leaves())
-        .enter().append("g")
-        .attr("class", "node")
-        .attr("transform", d => `translate(${d.x},${d.y})`);
+            const node = svg.selectAll(".node")
+                .data(bubble(root).leaves())
+                .enter().append("g")
+                .attr("class", "node")
+                .attr("transform", d => `translate(${d.x},${d.y})`);
 
-    node.append("circle")
-        .attr("r", d => d.r)
-        .style("fill", (d, i) => color(i));
+            node.append("circle")
+                .attr("r", d => d.r)
+                .style("fill", (d, i) => color(i));
+            const nodes = bubble(root).leaves();
 
-    node.append("text")
-        .attr("dy", ".2em")
-        .style("text-anchor", "middle")
-        .text(d => d.data.idx);
-}
+            let indexes = [];
+            while (indexes.length < 2) {
+                let r = Math.floor(Math.random() * nodes.length);
+                if (indexes.indexOf(r) === -1) indexes.push(r);
+            }
 
 
-
-function starttest() {
-    graph = randomOrder();
-
-    csvHeadings = {
-        trialNum: "trialNum",
-        vis: "Vis Type",
-        reported: "Reported Percent",
-        truePercent: "True Percent"
-    }
-
-    testResults.push(csvHeadings);
-    makeTest(count);
-}
-
-function exportCSV() {
-    csvData = "";
-    testResults.forEach(function(row) {
-        csvData += row.trialNum + ',' + row.vis + ',' + row.reported + ',' + row.truePercent + '\n';
-    });
-    let anchor = document.createElement('a');
-    anchor.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvData);
-    anchor.target = '_blank';
-    anchor.download = 'data.csv';
-    anchor.click();
-}
-         </script>
-     </body>
- </html> 
+            indexes.forEach(index => {
+                let node = nodes[index];
+                svg.append("circle")
+                    .attr("cx", node.x)
+                    .attr("cy", node.y)
+                    .attr("r", 5)
+                    .style("fill", "black");
+            });
+        }
 
 
 
+        function starttest() {
+            graph = randomOrder();
+
+            csvHeadings = {
+                trialNum: "trialNum",
+                vis: "Vis Type",
+                reported: "Reported Percent",
+                truePercent: "True Percent"
+            }
+
+            testResults.push(csvHeadings);
+            makeTest(count);
+        }
+
+        function exportCSV() {
+            csvData = "";
+            testResults.forEach(function (row) {
+                csvData += row.trialNum + ',' + row.vis + ',' + row.reported + ',' + row.truePercent + '\n';
+            });
+            let anchor = document.createElement('a');
+            anchor.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvData);
+            anchor.target = '_blank';
+            anchor.download = 'data.csv';
+            anchor.click();
+        }
+    </script>
+</body>
+
+</html>
