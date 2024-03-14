@@ -2,7 +2,7 @@
 
 # Assignment 3 - Replicating a Classic Experiment
 
-1. For our experiment, we sought to compare users' ability to differentiate the sizes of points when viewing **Bar Charts**, **Pie Charts**, and **Bubble Charts**. We developed an application in React to host the experiment and display the results after each assessment. We had 16 people participate in the experiment for a total of \_\_** trials for each type of visualization.
+1. For our experiment, we sought to compare users' ability to differentiate the sizes of points when viewing **Bar Charts**, **Pie Charts**, and **Bubble Charts**. We developed an application in React to host the experiment and display the results after each assessment. We had 16 people participate in the experiment for a total of 240 trials for each type of visualization.
 
 <img width="957" alt="image" src="https://github.com/chikpea123/a3-Experiment/assets/51792257/aa514358-baf1-4f65-b8a3-cb8d9c900d11">
 
