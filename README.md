@@ -20,6 +20,8 @@ There were 100 data points generated for experiment 1, with 1 being the ‘desig
 
 The second experiment has the participants click on a designated color in a scatter plot of multiple colors. The other colors are all a similar “distance” from the designated color and we decrease their distance over trials. There are 5 different colors outside of the designated one. We used the yellow, green, blue, purple and red colors from the Berkeley Color Project and had the target value be black, which is approximately the center of the colors. The Saturated versions of the colors had the largest distance from the target, then the Light, Muted and Dark versions were used for subsequent trials, each one decreasing in distance to the target. In order to have five trials, we calculated the values halfway between the Saturated and Light values since these colors had the largest distance between them and used the resulting colors for the second trial. There were 101 data points generated for experiment 2, with 20 of each color and 1 of the target color.
 
+#### Our hypotheses
+
 Our hypothesis was that the time needed for picking out the correct color will increase if the colors are closer together in distance. We also hypothesized that the time needed for picking out the correct color will increase if all of the plot points have different colors compared to uniform colors. We conducted this test to see if our hypotheses are right, and to investigate how fast people were able to distinguish colors and react to our trials.
 
 We created this study idea on our own, basing it on the professor’s in class example on determining what color is what. We also made our website from scratch using React, modelled off the one designed by the professor.
