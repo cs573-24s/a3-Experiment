@@ -12,25 +12,41 @@
 
 # First Place Chart Type
 
-Our best performing chart type was the bar char.
-screenshot of chart
-**Results**
-report average log2Error across all trials and participants
-screenshot of confidence interval graph
+Our best performing chart type was the bar chart.
+
+![bar_chart](./img/bar-chart.png)
+
+## Calculated Error (Bar)
+
+For this chart type, we calculated a log2Error of 2.078 across all trials
+<br />
+The results can be seen below under the "bar" label
+![results_img](./img/results.png)
 
 # Second Place Chart Type
 
-screenshot of chart
-**Results**
-report average log2Error across all trials and participants
-screenshot of confidence interval graph
+Our second best performing chart type was the pie chart.
+<br />
+![pie_chart](./img/pie-chart.png)
+
+## Calculated Error (Pie)
+
+For this chart type, we calculated a log2Error of 2.635 across all trials
+<br />
+The results can be seen below under the "pie" label
+![results_img](./img/results.png)
 
 # Third Place Chart Type
 
-screenshot of chart
-**Results**
-report average log2Error across all trials and participants
-screenshot of confidence interval graph
+Our third best performing chart type was the bubble chart.
+![bubble_chart](./img/bubble-chart.png)
+
+## Calculated Error (Bubble)
+
+For this chart type, we calculated a log2Error of 2.818 across all trials
+<br />
+The results can be seen below under the "bubble" label
+![results_img](./img/results.png)
 
 # Technical Achievements
 
@@ -46,7 +62,7 @@ screenshot of confidence interval graph
 - We use this database as well to generate a CSV file downloadable on our website that
   reflects the most recent data that has been submitted in our experiment.
 
-## Dynamically Generate Results
+## Dynamically Generating Results
 
 - We dynamically generate our results chart based on the firebase database, and the collection
   of user data. This means that whenever a new user completes the questions in the experiment, the
