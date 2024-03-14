@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rectangle with Two Bubble Charts using D3.js</title>
+  <!-- Include D3.js from CDN -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <style>
+    /* Add some basic styling for the chart */
+    .chart-container {
+      display: flex;
+      justify-content: space-around;
+    }
+    .chart {
+      width: 300px;
+      height: 200px;
+      margin: 20px;
+    }
+    .bubble {
+      fill: steelblue;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+<div class="chart-container">
+  <div class="chart" id="chart1"></div>
+  <div class="chart" id="chart2"></div>
+</div>
+
+<script>
+  // Sample data for the first chart
+  const data1 = [
+    { x: 100, y: 105, r: 20, t: 0.3 },
+    { x: 200, y: 150, r: 45, t: 0.9 ,e:"a"},
+    { x: 330, y: 120, r: 30, t: 0.3 },
+  ];
+
+  // Sample data for the second chart
+  const data2 = [
+    { x: 150, y: 120, r: 21, t: 0.7 },
+    { x: 220, y: 150, r: 30, t: 0.4, },
+    { x: 300, y: 100, r: 45, t: 0.2,e:"b"},
+  ];
+
+  // Set up the SVG container for the rectangle
+  const rectWidth = 700;
+  const rectHeight = 250;
+  const rectSvg = d3.select('body')
+    .append('svg')
+    .attr('width', rectWidth)
+    .attr('height', rectHeight)
+    .style('border', '1px solid black'); // Add border for visualization
+
+  // Create a rectangle inside the SVG
+  rectSvg.append('rect')
+    .attr('width', rectWidth)
+    .attr('height', rectHeight)
+    .attr('fill', 'none')
+    .attr('stroke', 'black');
+
+  // Set up the first SVG container inside the rectangle
+  const svg1 = rectSvg.append('svg')
+    .attr('x', 10)
+    .attr('y', 10)
+    .attr('width', (rectWidth - 30) / 2)
+    .attr('height', rectHeight - 20);
+
+  // Set up the second SVG container inside the rectangle
+  const svg2 = rectSvg.append('svg')
+    .attr('x', 20 + (rectWidth - 30) / 2)
+    .attr('y', 10)
+    .attr('width', (rectWidth - 30) / 2)
+    .attr('height', rectHeight - 20);
+
+  // Create scales for x and y axes based on the rectangle's dimensions
+  const xScale = d3.scaleLinear()
+    .domain([0, rectWidth])
+    .range([0, (rectWidth - 30) / 2]);
+
+  const yScale = d3.scaleLinear()
+    .domain([0, rectHeight])
+    .range([rectHeight - 20, 0]);
+
+  // Create circles for the first chart inside the rectangle
+  const circles1 = svg1.selectAll('circle')
+    .data(data1)
+    .enter().append('circle')
+    .attr('class', 'bubble')
+    .attr('cx', d => xScale(d.x))
+    .attr('cy', d => yScale(d.y))
+    .attr('r', d => d.r)
+    .attr('opacity', d => d.t);
+
+  const text1 = svg1.selectAll('text')
+    .data(data1)
+    .enter().append('text')
+    .attr('class', 'label')
+    .attr('x', d => xScale(d.x))
+    .attr('y', d => yScale(d.y))
+    .text(d => d.e)
+    .attr('dy', -15);
+
+
+
+  // Create circles for the second chart inside the rectangle
+  const circles2 = svg2.selectAll('circle')
+    .data(data2)
+    .enter().append('circle')
+    .attr('class', 'bubble')
+    .attr('cx', d => xScale(d.x))
+    .attr('cy', d => yScale(d.y))
+    .attr('r', d => d.r)
+    .attr('opacity', d => d.t);
+
+  const text2 = svg2.selectAll('text')
+    .data(data2)
+    .enter().append('text')
+    .attr('class', 'label')
+    .attr('x', d => xScale(d.x))
+    .attr('y', d => yScale(d.y))
+    .text(d => d.e)
+    .attr('dy', -15);
+
+</script>
+
+</body>
+</html>
