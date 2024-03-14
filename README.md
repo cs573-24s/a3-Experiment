@@ -20,13 +20,13 @@ For Fitt’s Law, since every participant has to click on a button to go to togg
 **Limitations**
 
 **Results**
-<img src="img/Experiment1.png" width="300">
-![alt text](img/Experiment1_4Only.png)
-![alt text](img/Experiment1Augmented.png)
+<img src="img/Experiment1.png" width="400">
+<img src="img/Experiment1_4Only.png" width="400">
+<img src="img/img/Experiment1Augmented.png" width="400">
 
-![alt text](img/Experiment2.png)
-![alt text](img/Experiment2_4Only.png)
-![alt text](img/Experiment2Augmented.png)
+<img src="img/Experiment2.png" width="400">
+<img src="img/Experiment2_4Only.png" width="400">
+<img src="img/img/Experiment2Augmented.png" width="400">
 
 **References**
 - https://codesandbox.io/p/sandbox/react-d3-scatterplot-solved-kg107?file=%2Fsrc%2Fstyles.css%3A1%2C1-5%2C1
