@@ -1,7 +1,7 @@
 Assignment 3 - Replicating a Classic Experiment  
 ===
 ## Jazz Group Members：
-Tang Dong, Anthony Chen, Songling Li, Jinqin Xiong
+**Tang Dong, Anthony Chen, Songling Li, Jinqin Xiong**
 
 ## Page link:
 link: 
@@ -13,8 +13,11 @@ link: https://github.com/dongtang3/a3-Experiment
 ## Introduction:
 According to Cleveland and McGill [1], our project offers an exciting opportunity to delve into the world of scientific experimentation and data visualization. By replicating classic experiments and applying modern methodologies, you'll gain valuable insights into the effectiveness of different visualization techniques. Get ready to shine as a data scientist and uncover fascinating findings that contribute to the field of data visualization! In this endeavor, we embark on a journey to replicate a classic experiment, echoing the pioneering works of luminaries such as Cleveland and McGill, and building upon modern methodologies championed by Heer and Bostock. 
 
-## Hypothesis and Questions
-In this assignment, we lay the groundwork for a controlled experiment that seeks to answer pressing questions about visualization techniques. Drawing inspiration from seminal works and contemporary research, we design an experiment that stands as a testament to the scientific method's power.
+## Survey
+- In this assignment, we lay the groundwork for a controlled experiment that seeks to answer pressing questions about visualization techniques. Drawing inspiration from seminal works and contemporary research, we design an experiment that stands as a testament to the scientific method's power. 
+- Every single graph generated is unique, made by a random number generator for data point having a value ranging from 1-100 and generating between 5-10 data points each, in each graph 2 bars are made black dot to indicate that they are the ones to compare. 
+- Additionally there are 4 different types of bar graphs used in the experiment, Vertical Bar Chart, Upside Down Bar Chart, Bar Chart Facing Right, and Bar Chart Facing Left. The choice between which chart to display is random, however, they are all limited to 20 attempts each per survey allowing for a total of 80 datapoints. 
+- Additionally, the data is collected through a button where if pressed a prompt will appear asking for how big the smaller marked bar is compared to the smaller one in a percentage (i.e. 100% = 100). After all 80 graphs are marked a CSV will download where every each column is a type of graph and the data in the columns is the log2(error) of the data.
 
 
 
@@ -132,3 +135,8 @@ As a baseline, compare your average Error scores to the following chart, which i
 - Progress Tracking: The experiment includes a progress bar to visually indicate the participant's progress throughout the test. This feature helps participants understand their current position within the experiment and encourages completion.
 
 - Responsive Design: The experiment is designed to be responsive and adaptable to different screen sizes and devices. This ensures a consistent user experience across various platforms and devices, enhancing accessibility for participants.
+
+# References:
+- https://github.com/OmriGreen/a3-OmriGreen-Omri-Green
+- http://www.cs.ubc.ca/~tmm/courses/cpsc533c-04-spr/readings/cleveland.pdf
+- https://www.math.pku.edu.cn/teachers/xirb/Courses/biostatistics/Biostatistics2016/GraphicalPerception_Jasa1984.pdf
