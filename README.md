@@ -3,10 +3,10 @@ Assignment 3 - Replicating a Classic Experiment
 ## Jazz Group Members：
 **Dong Tang, Anthony Chen, Songling Li, Jinqin Xiong**
 
-## Page link:
+## Page Link:
 link: https://dongtang3.github.io/a3-Experiment/
 
-## Our repository link
+## Our Repository Link
 link: https://github.com/dongtang3/a3-Experiment
 
 # Our Study Research
@@ -54,7 +54,7 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - Visualizations were created using numpy and matplotlib in Python.
 
 ## Data Analysis Method:
-  ![alt text](img/error-funciton.png)
+  ![alt text](img/error-funciton.png)<br>
   After necessary data cleaning:
 - We employed either a log-base-2 transformation or the cm-error metric to quantify participants' accuracy in perceptual judgments.
 - This methodology aligns with the approach established in the original Cleveland and McGill paper [1].
