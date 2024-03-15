@@ -28,21 +28,25 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 
 **1.  Stacked Charts**: These are enhanced bar charts where each bar is subdivided into smaller segments that represent different subcategories. The collective height of these segments illustrates the total value. Stacked charts are particularly useful for observing overall trends and comparing the make-up of different categories.<br>
 ![alt text](img/stack-chart.png)
+
 <br>
 
 
 
 **2.  Donut Charts**: A variant of pie charts, these display data in a ring shape, allowing for a visually appealing comparison of parts to a whole. They are effective for showing categorical data and providing a quick snapshot of the proportionate distribution.<br>
 ![alt text](img/donut-chart.png)
+
 <br>
 
 **3.  Tree Map**: Tree maps are used for displaying hierarchical data via nested rectangles, with each rectangle's size and color representing a particular dimension of the data set. They are efficient in space utilization and effective for showing attributes of data such as size and category.<br>
 ![alt text](img/tree-map.png)
+
 <br>
 
 
 **4.  Bubble Charts**: These charts present multi-dimensional data, with each bubble representing a data point and the size and position of the bubble corresponding to data values. Bubble charts are excellent for visualizing complex data sets where each bubble can encapsulate multiple data dimensions.<br>
 ![alt text](img/bubble-chart.png)
+
 <br>
 
 
@@ -63,17 +67,17 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - Visualizations were created using numpy and matplotlib in Python.
 
 # 3️⃣、User Interface Design
-**Start Page:**
+## **Start Page:**
 ![alt text](img/start-scene.png)
 
-**On_Going Page：**
+## **On_Going Page：**
 ![alt text](img/donut-chart.png)
 
-**End Page:**
+## **End Page:**
 ![alt text](img/end-scene.png)
 
 # 4️⃣、Data Analysis Method:
-**Error Function:**
+## **Error Function:**
  ![alt text](img/formula.png) <br>
     **After necessary data cleaning:**
 - We employed either a log-base-2 transformation or the cm-error metric to quantify participants' accuracy in perceptual judgments.
@@ -101,7 +105,7 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 
   If the data across these groups are similar in terms of their 'accuracy_error' values. That could cause this phenomenon. 
 
-  **Additional Analysis Graph:**
+  ## **Additional Analysis Graph:**
   ![alt text](img/additional-analysis.png)
 
   **Here's our additional analysis:**
