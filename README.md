@@ -1,6 +1,6 @@
 Assignment 3 - Replicating a Classic Experiment  
 ===
-## Jazz Group members：
+## Jazz Group Members：
 Tang Dong, Anthony Chen, Songling Li, Jinqin Xiong
 
 ## Page link:
@@ -8,6 +8,14 @@ link:
 
 ## Our repository link
 link: https://github.com/dongtang3/a3-Experiment
+
+# Our Study research
+## Introduction:
+According to Cleveland and McGill [1], our project offers an exciting opportunity to delve into the world of scientific experimentation and data visualization. By replicating classic experiments and applying modern methodologies, you'll gain valuable insights into the effectiveness of different visualization techniques. Get ready to shine as a data scientist and uncover fascinating findings that contribute to the field of data visualization! In this endeavor, we embark on a journey to replicate a classic experiment, echoing the pioneering works of luminaries such as Cleveland and McGill, and building upon modern methodologies championed by Heer and Bostock. 
+
+## Hypothesis and Questions
+In this assignment, we lay the groundwork for a controlled experiment that seeks to answer pressing questions about visualization techniques. Drawing inspiration from seminal works and contemporary research, we design an experiment that stands as a testament to the scientific method's power.
+
 
 
 For the scope of this project, assume the role of a scientist who runs experiments for a living.
@@ -106,16 +114,21 @@ As a baseline, compare your average Error scores to the following chart, which i
 
 ![cleveland results](img/cleveland-results.png)
 
-GitHub Details
----
+# Achievements From Our Study
+## Technical Achievements:
+- Dynamic Data Generation: The experiment dynamically generates random data points for each trial, ensuring variability in the test scenarios. This is achieved using JavaScript functions like randomData() and randomOrder(), which create randomized datasets and trial orders, respectively.
 
-- Fork the GitHub Repository. You now have a copy associated with your username.
-- Make changes to index.html to fulfill the project requirements. 
-- Make sure your "master" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit this README.md with a link to your gh-pages site: e.g. http://YourUsernameGoesHere.github.io/Experiment/index.html
-- Replace this file (README.md) with your writeup and Design/Technical achievements.
-- To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
-- Name your submission using the following scheme: 
-```
-a3-FirstLastnameMember1-FirstLastnameMember2-FirstLastnameMember3-...
-```
+- Visualization Rendering: The experiment presents multiple types of visualizations including Stack Chart, Donut Chart, Tree Map, and Bubble Chart using the D3.js library. Each visualization is generated based on the randomized datasets, providing a diverse set of visual stimuli for the experiment participants.
+
+- User Interaction and Feedback: The experiment includes interactive elements such as buttons for starting and ending the test, as well as input fields for participants to provide their estimations. Error handling mechanisms are in place to ensure valid inputs are received and participants receive prompt feedback in case of incorrect inputs.
+
+- Data Export: Upon completion of the experiment, the results are exported to a CSV file using JavaScript. This allows for easy analysis and further processing of the collected data.
+
+## Design Achievements:
+- User Interface Design: The experiment features a clean and intuitive user interface designed to guide participants through the test process. Elements such as buttons and input fields are clearly labeled, and instructions are provided to explain the task requirements.
+
+- Visual Stimulus Design: Each visualization is designed to be simple yet effective in conveying the relevant data points to participants. The use of basic shapes and minimal colors adheres to the principles outlined in Cleveland and McGill's seminal work, ensuring that the visual stimuli are perceptually challenging yet informative.
+
+- Progress Tracking: The experiment includes a progress bar to visually indicate the participant's progress throughout the test. This feature helps participants understand their current position within the experiment and encourages completion.
+
+- Responsive Design: The experiment is designed to be responsive and adaptable to different screen sizes and devices. This ensures a consistent user experience across various platforms and devices, enhancing accessibility for participants.
