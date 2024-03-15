@@ -90,7 +90,7 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 # 5️⃣、Experiment Result and Analysis
 ## **Our Result**:
 ![alt text](img/our-results.png)
-**Cleveland Result**:
+## **Cleveland Result**:
 ![alt text](img/cleveland-results.png)
 <br>
 
