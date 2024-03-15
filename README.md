@@ -9,7 +9,7 @@ link: https://dongtang3.github.io/a3-Experiment/
 ## Our Repository Link
 link: https://github.com/dongtang3/a3-Experiment
 
-# 1️⃣、Our Study Research
+# 1️⃣ Our Study 
 ## Introduction:
 According to Cleveland and McGill [1], our project offers an exciting opportunity to delve into the world of scientific experimentation and data visualization. By replicating classic experiments and applying modern methodologies, you'll gain valuable insights into the effectiveness of different visualization techniques. Get ready to shine as a data scientist and uncover fascinating findings that contribute to the field of data visualization! In this endeavor, we embark on a journey to replicate a classic experiment, echoing the pioneering works of luminaries such as Cleveland and McGill, and building upon modern methodologies championed by Heer and Bostock. 
 
@@ -51,10 +51,11 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 
 
   Each visualization technique was chosen for its unique strengths in representing data and assisting viewers in understanding complex information patterns.
+
   <br>
 
 
-# 2️⃣、Data Collection and Clean
+# 2️⃣ Data Collection and Clean
 ## Data Collection Process
   We gathered data through the following steps:
 - Downloaded a CSV file for each participant, containing their responses compared to the correct answers.
@@ -65,8 +66,9 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - Removing outlier test values, which seemed to be input errors by participants.
 - Utilizing Excel and pandas to compare correct values against test values.
 - Visualizations were created using numpy and matplotlib in Python.
+<br>
 
-# 3️⃣、User Interface Design
+# 3️⃣ User Interface Design
 ## **Start Page:**
 ![alt text](img/start-scene.png)
 
@@ -75,8 +77,9 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 
 ## **End Page:**
 ![alt text](img/end-scene.png)
+<br>
 
-# 4️⃣、Data Analysis Method:
+# 4️⃣ Data Analysis Method:
 ## **Error Function:**
  ![alt text](img/formula.png) <br>
     **After necessary data cleaning:**
@@ -89,9 +92,9 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - Error bars were incorporated to represent bootstrapped 95% confidence intervals.<br>
   **Benchmark Comparison:**
 - Average error scores were compared with benchmark results reported by Cleveland and McGill.
+<br>
 
-
-# 5️⃣、Experiment Result and Analysis
+# 5️⃣ Experiment Result and Analysis
 ## **Our Result**:
 ![alt text](img/our-results.png)
 ## **Cleveland Result**:
@@ -123,7 +126,7 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 
 <br>
 
-# 6️⃣、Achievements From Our Study
+# 6️⃣ Achievements From Our Study
 ## Technical Achievements:
 - Dynamic Data Generation: The experiment dynamically generates random data points for each trial, ensuring variability in the test scenarios. This is achieved using JavaScript functions like randomData() and randomOrder(), which create randomized datasets and trial orders, respectively.
 
@@ -143,6 +146,6 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - Responsive Design: The experiment is designed to be responsive and adaptable to different screen sizes and devices. This ensures a consistent user experience across various platforms and devices, enhancing accessibility for participants.
 <br>
 
-# 7️⃣、References:
+# 7️⃣ References:
 - http://www.cs.ubc.ca/~tmm/courses/cpsc533c-04-spr/readings/cleveland.pdf
 - https://www.math.pku.edu.cn/teachers/xirb/Courses/biostatistics/Biostatistics2016/GraphicalPerception_Jasa1984.pdf
