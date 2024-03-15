@@ -102,7 +102,7 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 <br>
 
 ## **Analysis:**
-  * Why do the error bars look very similar across different **'Vis Type'** categories?
+  **Why do the error bars look very similar across different **'Vis Type'** categories?**
 
   The graph shows point estimates of the 'accuracy_error_shifted' for different 'Vis Type' categories with error bars representing 95% confidence intervals. These intervals are calculated based on bootstrapping, which is a method for statistical inference. 
 
@@ -147,5 +147,8 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 <br>
 
 # 7️⃣ References:
+- https://www.npmjs.com/package/d3-funnel
+- https://www.w3schools.com/cssref/css_colors.php
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag
 - http://www.cs.ubc.ca/~tmm/courses/cpsc533c-04-spr/readings/cleveland.pdf
 - https://www.math.pku.edu.cn/teachers/xirb/Courses/biostatistics/Biostatistics2016/GraphicalPerception_Jasa1984.pdf
