@@ -19,7 +19,7 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - Additionally there are 4 different types of bar graphs used in the experiment, Vertical Bar Chart, Upside Down Bar Chart, Bar Chart Facing Right, and Bar Chart Facing Left. The choice between which chart to display is random, however, they are all limited to 20 attempts each per survey allowing for a total of 80 datapoints. 
 - Additionally, the data is collected through a button where if pressed a prompt will appear asking for how big the smaller marked bar is compared to the smaller one in a percentage (i.e. 100% = 100). After all 80 graphs are marked a CSV will download where every each column is a type of graph and the data in the columns is the log2(error) of the data.
 
-
+<br>
 # Charts for Data Visualization 
   In our study, we examined the efficacy of different visualization techniques in helping users discern point sizes. Our application, developed using React, allowed participants to interact with the visualizations and provided immediate feedback after each task. With 16 individuals partaking, we amassed 240 evaluations per visualization across four distinct chart types, rendered using D3.js.<br>
 
@@ -43,6 +43,7 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 
 
   Each visualization technique was chosen for its unique strengths in representing data and assisting viewers in understanding complex information patterns.
+  <br>
 
 
 # Data Collection and Clean
@@ -58,8 +59,9 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - Visualizations were created using numpy and matplotlib in Python.
 
 ## Data Analysis Method:
+**Error Function:**
  ![alt text](img/formula.png) <br>
-   **After necessary data cleaning:**
+    **After necessary data cleaning:**
 - We employed either a log-base-2 transformation or the cm-error metric to quantify participants' accuracy in perceptual judgments.
 - This methodology aligns with the approach established in the original Cleveland and McGill paper [1].<br>
   **Error Score Calculation:**
@@ -140,6 +142,7 @@ With this Cleveland-McGill error score you can better compare the performance of
 As a baseline, compare your average Error scores to the following chart, which include both Cleveland and McGill’s results as well as more recent extensions of this experiment (lower error indicates better performance, and error bars are bootstrapped 95% confidence intervals (`http://en.wikipedia.org/wiki/Confidence_interval#Meaning_and_interpretation`)):
 
 ![cleveland results](img/cleveland-results.png)
+<br>
 
 # Achievements From Our Study
 ## Technical Achievements:
@@ -159,7 +162,7 @@ As a baseline, compare your average Error scores to the following chart, which i
 - Progress Tracking: The experiment includes a progress bar to visually indicate the participant's progress throughout the test. This feature helps participants understand their current position within the experiment and encourages completion.
 
 - Responsive Design: The experiment is designed to be responsive and adaptable to different screen sizes and devices. This ensures a consistent user experience across various platforms and devices, enhancing accessibility for participants.
-
+<br>
 # References:
 - http://www.cs.ubc.ca/~tmm/courses/cpsc533c-04-spr/readings/cleveland.pdf
 - https://www.math.pku.edu.cn/teachers/xirb/Courses/biostatistics/Biostatistics2016/GraphicalPerception_Jasa1984.pdf
