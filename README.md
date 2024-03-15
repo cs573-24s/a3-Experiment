@@ -9,7 +9,7 @@ link: https://dongtang3.github.io/a3-Experiment/
 ## Our repository link
 link: https://github.com/dongtang3/a3-Experiment
 
-# Our Study research
+# Our Study Research
 ## Introduction:
 According to Cleveland and McGill [1], our project offers an exciting opportunity to delve into the world of scientific experimentation and data visualization. By replicating classic experiments and applying modern methodologies, you'll gain valuable insights into the effectiveness of different visualization techniques. Get ready to shine as a data scientist and uncover fascinating findings that contribute to the field of data visualization! In this endeavor, we embark on a journey to replicate a classic experiment, echoing the pioneering works of luminaries such as Cleveland and McGill, and building upon modern methodologies championed by Heer and Bostock. 
 
@@ -23,18 +23,22 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 # Charts for Data Visualization 
 - In our study, we examined the efficacy of different visualization techniques in helping users discern point sizes. Our application, developed using React, allowed participants to interact with the visualizations and provided immediate feedback after each task. With 16 individuals partaking, we amassed 240 evaluations per visualization across four distinct chart types, rendered using D3.js.<br>
 
-We selected the following four visualizations for our experiment:
+  We selected the following four visualizations for our experiment:
 
-- **Stacked Charts**: These are enhanced bar charts where each bar is subdivided into smaller segments that represent different subcategories. The collective height of these segments illustrates the total value. Stacked charts are particularly useful for observing overall trends and comparing the make-up of different categories.
+- 1. **Stacked Charts**: These are enhanced bar charts where each bar is subdivided into smaller segments that represent different subcategories. The collective height of these segments illustrates the total value. Stacked charts are particularly useful for observing overall trends and comparing the make-up of different categories.<br>
 
 
-- **Donut Charts**: A variant of pie charts, these display data in a ring shape, allowing for a visually appealing comparison of parts to a whole. They are effective for showing categorical data and providing a quick snapshot of the proportionate distribution.
 
-- **Tree Map**: Tree maps are used for displaying hierarchical data via nested rectangles, with each rectangle's size and color representing a particular dimension of the data set. They are efficient in space utilization and effective for showing attributes of data such as size and category.
+- 2. **Donut Charts**: A variant of pie charts, these display data in a ring shape, allowing for a visually appealing comparison of parts to a whole. They are effective for showing categorical data and providing a quick snapshot of the proportionate distribution.<br>
 
-- **Bubble Charts**: These charts present multi-dimensional data, with each bubble representing a data point and the size and position of the bubble corresponding to data values. Bubble charts are excellent for visualizing complex data sets where each bubble can encapsulate multiple data dimensions.<br>
 
-Each visualization technique was chosen for its unique strengths in representing data and assisting viewers in understanding complex information patterns.
+- 3. **Tree Map**: Tree maps are used for displaying hierarchical data via nested rectangles, with each rectangle's size and color representing a particular dimension of the data set. They are efficient in space utilization and effective for showing attributes of data such as size and category.<br>
+
+
+- 4. **Bubble Charts**: These charts present multi-dimensional data, with each bubble representing a data point and the size and position of the bubble corresponding to data values. Bubble charts are excellent for visualizing complex data sets where each bubble can encapsulate multiple data dimensions.<br>
+
+
+  Each visualization technique was chosen for its unique strengths in representing data and assisting viewers in understanding complex information patterns.
 
 
 
