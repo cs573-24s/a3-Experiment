@@ -4,12 +4,12 @@ Assignment 3 - Replicating a Classic Experiment
 **Dong Tang, Anthony Chen, Songling Li, Jinqin Xiong**
 
 ## Page link:
-link: 
+link: https://dongtang3.github.io/a3-Experiment/
 
 ## Our repository link
 link: https://github.com/dongtang3/a3-Experiment
 
-# Our Study research
+# Our Study Research
 ## Introduction:
 According to Cleveland and McGill [1], our project offers an exciting opportunity to delve into the world of scientific experimentation and data visualization. By replicating classic experiments and applying modern methodologies, you'll gain valuable insights into the effectiveness of different visualization techniques. Get ready to shine as a data scientist and uncover fascinating findings that contribute to the field of data visualization! In this endeavor, we embark on a journey to replicate a classic experiment, echoing the pioneering works of luminaries such as Cleveland and McGill, and building upon modern methodologies championed by Heer and Bostock. 
 
@@ -20,21 +20,51 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - Additionally, the data is collected through a button where if pressed a prompt will appear asking for how big the smaller marked bar is compared to the smaller one in a percentage (i.e. 100% = 100). After all 80 graphs are marked a CSV will download where every each column is a type of graph and the data in the columns is the log2(error) of the data.
 
 
+# Charts for Data Visualization 
+  In our study, we examined the efficacy of different visualization techniques in helping users discern point sizes. Our application, developed using React, allowed participants to interact with the visualizations and provided immediate feedback after each task. With 16 individuals partaking, we amassed 240 evaluations per visualization across four distinct chart types, rendered using D3.js.<br>
 
-For the scope of this project, assume the role of a scientist who runs experiments for a living.
+  We selected the following four visualizations for our experiment:
 
-For example: 
+**1.  Stacked Charts**: These are enhanced bar charts where each bar is subdivided into smaller segments that represent different subcategories. The collective height of these segments illustrates the total value. Stacked charts are particularly useful for observing overall trends and comparing the make-up of different categories.<br>
 
-Q: How do we know that bar charts are "better" than pie charts?  
-A: Controlled experiments!
 
-In this assignment you'll implement a simple controlled experiment using some of the visualizations you’ve been building in this class. 
-You'll need to develop support code for the experiment sequence, results file output, and other experiment components. 
-(These are all simple with Javascript buttons and forms.)
-The main goals for you are to a) test at least three competing visualizations or experiment conditions, b) implement data/stimuli generation and error calculation functions (if following the baseline, use Cleveland and McGill's 1984 paper and Heer and Bostock's 2010 replication), c) run the experiment with 10 participants (or equivalent number of trials), and d) do basic analysis and reporting of the results.
 
-For this assignment you should aim to write everything from scratch. For experimentation it is often necessary to control all elements of the chart.
-You should definitely *reference* demo programs from books or the web, and if you do please provide a References section with links at the end of your Readme.
+**2.  Donut Charts**: A variant of pie charts, these display data in a ring shape, allowing for a visually appealing comparison of parts to a whole. They are effective for showing categorical data and providing a quick snapshot of the proportionate distribution.<br>
+
+
+**3.  Tree Map**: Tree maps are used for displaying hierarchical data via nested rectangles, with each rectangle's size and color representing a particular dimension of the data set. They are efficient in space utilization and effective for showing attributes of data such as size and category.<br>
+
+
+**4.  Bubble Charts**: These charts present multi-dimensional data, with each bubble representing a data point and the size and position of the bubble corresponding to data values. Bubble charts are excellent for visualizing complex data sets where each bubble can encapsulate multiple data dimensions.<br>
+
+
+  Each visualization technique was chosen for its unique strengths in representing data and assisting viewers in understanding complex information patterns.
+
+
+# Data Collection and Clean
+## Data Collection Process
+  We gathered data through the following steps:
+- Downloaded a CSV file for each participant, containing their responses compared to the correct answers.
+- After data collection from all 20 participants, we proceeded with data cleaning and analysis.
+
+## Data Cleaning and Analysis
+  Data cleaning involved:
+- Removing outlier test values, which seemed to be input errors by participants.
+- Utilizing Excel and pandas to compare correct values against test values.
+- Visualizations were created using numpy and matplotlib in Python.
+
+## Data Analysis Method:
+  ![alt text](img/error-funciton.png)
+  After necessary data cleaning:
+- We employed either a log-base-2 transformation or the cm-error metric to quantify participants' accuracy in perceptual judgments.
+- This methodology aligns with the approach established in the original Cleveland and McGill paper [1].
+  Error Score Calculation:
+- A metric was derived to enable a rigorous comparison of performance across different chart types.
+- Lower error scores indicate superior performance.
+  Robustness Enhancement:
+- Error bars were incorporated to represent bootstrapped 95% confidence intervals.
+  Benchmark Comparison:
+- Average error scores were compared with benchmark results reported by Cleveland and McGill.
 
 Going Beyond Cleveland-McGill
 ---
