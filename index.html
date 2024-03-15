@@ -1,9 +1,594 @@
 <!DOCTYPE html>
+<html lang="en">
 <div id="container"></div>
-<script type="module">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+            font-family: 'Nunito', sans-serif;
+            color: #333;
+        }
 
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+        h1,
+        p {
+            margin: 10px 0;
+        }
 
-console.log(d3);
+        #page1,
+        #Exit,
+        #test,
+        #end {
+            background-color: #ffffff;
 
-</script>
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #c49ff1;
+
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+
+            margin: 5px;
+
+        }
+
+        button:hover {
+            background-color: #5c00b3;
+
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+            transform: translateY(-2px);
+
+        }
+
+        #textBox,
+        #reported {
+            width: calc(100% - 20px);
+
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+
+            border: 1px solid #b5e9f7;
+            border-radius: 20px;
+
+            box-sizing: border-box;
+            
+
+        }
+        #progressBarContainer {
+            width: calc(100% - 40px); 
+            margin-top: 20px; 
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page1">
+        <p>Welcome to this survey!</p>
+        <p>Click "Yes" to begin our trip in data visualization  .</p>
+        <p></p>
+
+        <button id="Disagree" onclick="return Exit()">No</button>
+        <button id="Agree" onclick="return test()">Yes</button>
+
+
+    </div>
+    <div id="Exit" style="display: none;">
+        <h1>Have a good day, see you next time</h1>
+    </div>
+    <div id="test" style="display:none; font-family: Arial, sans-serif; font-weight: bold; font-size: 18px; color: rgb(122, 196, 231);">
+        <h1>
+        </h1>
+        <p>Two parts of plot for comparison are marked with dots.What you need to do is to estimate the percent of the smaller value represented by one part of plot to the larger value plot in the chart.</p>
+        <p>If the smaller one is a half of the bigger one, input 50 .</p>
+        <h3 id="count"></h3>
+        <div id="vis"></div>
+        <div id="progressBarContainer" style="width: 100%; background-color: rgb(231, 241, 243);">
+            <div id="progressBar" style="width: 0%; height: 30px; background-color: rgb(172, 212, 245);"></div>
+          </div>
+        <input id="reported" type="text" value=""></input>
+        <button id="Next" onclick="return saveTest()">Next</button>
+    </div>
+
+    <div id="end" style="display:none; background-color: #b5e9f7;color: #ffadff;">
+        <h1>
+            ^-^ Thank you for participation! ^-^
+        </h1>
+        <p>
+            Download the csv file.
+        </p>
+        <div id="printedend"></div>
+        <button id="export" onclick="return exportCSV()" style="background-color: #f8abf8; color: white; padding: 10px 15px; font-size: 16px; border: none; border-radius: 20px; cursor: pointer; transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s; margin: 5px;">
+    Download Your Result
+</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/+esm" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-funnel@2"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script type="module"></script>
+    <script>
+        console.log(d3);
+
+        var graph = [];
+        var testResults = [];
+        var count = 0;
+
+        var vis = "";
+        var truePercent = 0;
+
+        function test() {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('test').style.display = 'block';
+            starttest();
+        }
+
+        function Exit() {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('test').style.display = 'none';
+            document.getElementById('Exit').style.display = 'block';
+            startExit();
+        }
+
+        function showResults() {
+            document.getElementById('test').style.display = 'none';
+            document.getElementById('end').style.display = 'block';
+        }
+
+//////////////////////////////////////////////////////
+
+function randomData() {
+    var data = d3.range(1, 101).map(function (d) { // 产生1到100的数字
+        return {
+            idx: d.toString(),
+            val: Math.floor(Math.random() * 100) + 1 // 产生1到100的随机数
+        };
+    });
+
+    // 对生成的数字按值进行排序
+    data.sort(function(a, b) {
+        return a.val - b.val;
+    });
+
+    let points = [];
+    let usedIndexes = [];
+    for (let i = 0; i < 5; i++) {
+        let index = Math.floor(Math.random() * data.length);
+        while (usedIndexes.includes(index)) {
+            index = Math.floor(Math.random() * data.length);
+        }
+        points.push(data[index]);
+        usedIndexes.push(index);
+    }
+
+    // 对生成的数字进行排序
+    points.sort(function(a, b) {
+        return a.val - b.val;
+    });
+
+    // 最大值
+    let maxIndex = points.findIndex(point => point.val === Math.max(...points.map(point => point.val)));
+    // 将最大值移动到最后
+    [points[maxIndex], points[points.length - 1]] = [points[points.length - 1], points[maxIndex]];
+
+    let secPointIndex = points.length - 2; // 初始化第二个点索引为倒数第二个
+    let thirdPointIndex = points.length - 3; // 初始化第三个点索引为倒数第三个
+    if (Math.random() < 0.5) {
+        // 有一半的概率将第二个点索引设置为倒数第三个
+        secPointIndex = points.length - 3;
+        thirdPointIndex = points.length - 2;
+    }
+
+    var dataset = {
+        data: points,
+        firstPoint: points.length - 1, // 将第一个点固定为数组中的最后一个数字
+        secPoint: secPointIndex,    // 随机选择倒数第二个或倒数第三个作为第二个固定点
+        thirdPoint: thirdPointIndex // 第三个固定点为剩余的倒数第二个或倒数第三个
+    }
+
+    console.log(points);
+    return dataset;
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+
+function randomOrder() {
+    var order = [];
+    var count = 80;
+    var types = [1, 2, 3, 4]; // 图表类型的数组，每个数字代表一个类型
+
+    // 打乱图表类型的顺序
+    types = types.sort(() => Math.random() - 0.5);
+
+    // 为每个类型添加对应数量的实例
+    for (let i = 0; i < types.length; i++) {
+        for (let j = 0; j < count / types.length; j++) {
+            order.push(types[i]);
+        }
+    }
+
+    // Randomize the order of the array 'order'.
+    order = order.sort(() => Math.random() - 0.5);
+
+    console.log(order);
+    return order;
+}
+////////////////////////////////////////////////////
+function makeTest(num) {
+    count++;
+    let dataset = randomData();
+
+    if (dataset.data[dataset.firstPoint].val < dataset.data[dataset.secPoint].val) {
+        truePercent = Math.floor(dataset.data[dataset.firstPoint].val / ((dataset.data[dataset.secPoint].val) / 100));
+    }
+    else if (dataset.data[dataset.firstPoint].val > dataset.data[dataset.secPoint].val) {
+        truePercent = Math.floor(dataset.data[dataset.secPoint].val / ((dataset.data[dataset.firstPoint].val) / 100));
+    }
+    else {
+        truePercent = 100;
+    }
+
+    var currSvg = d3.select("div#vis").select('svg')
+    currSvg.remove();
+    document.getElementById('count').innerHTML = "Question " + (count) + "/80"
+
+    const progressBarWidth = (count / 80) * 100;
+    document.getElementById('progressBar').style.width = progressBarWidth + '%';
+
+
+    switch (graph[num]) {
+        case 1:
+            vis = "Stack Chart";
+            makeStackChart(dataset);
+            break;
+        case 2:
+            vis = "Donut Chart";
+            makeDonutChart(dataset);
+            break;
+        case 3:
+            vis = "Tree Map";
+            makeTreeMap(dataset);
+            break;
+        case 4:
+            vis = "Bubble Chart";
+            makeBubbleChart(dataset);
+            break;
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////////
+        function saveTest() {
+            var reportedValue = document.getElementById('reported').value;
+
+            if (reportedValue.trim() === '' || isNaN(reportedValue) || !Number.isInteger(parseFloat(reportedValue))) {
+                alert("Please enter a valid integer value.");
+                return;
+            }
+
+            let result = {
+                trialNum: count,
+                vis: vis,
+                reported: parseInt(document.getElementById('reported').value),
+                truePercent: truePercent
+            }
+            console.log(result);
+            testResults.push(result);
+
+            if (count == 80) {
+                showResults();
+            }
+            else {
+                document.getElementById("reported").value = "";
+                makeTest(count);
+            }
+        }
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+function makeStackChart(dataset) {
+    const width = 460;
+    const height = 200;
+    const margin = { top: 20, right: 10, bottom: 20, left: 10 };
+    const h = height * 0.66;
+    const barHeight = 100;
+    const halfBarHeight = barHeight / 2;
+    const dotRadius = 5;
+
+
+    const total = d3.sum(dataset.data, d => d.val);
+
+    function groupDataFunc(data) {
+        const percent = d3.scaleLinear()
+            .domain([0, total])
+            .range([0, 100]);
+
+        let cumulative = 0;
+        const _data = data.map((d, i) => {
+            cumulative += d.val;
+            return {
+                value: d.val,
+                cumulative: cumulative - d.val,
+                label: 'Group ' + (i + 1),
+                percent: percent(d.val)
+            };
+        }).filter(d => d.value > 0);
+
+        return _data;
+    }
+
+    const groupData = groupDataFunc(dataset.data);
+
+    const svg = d3.select("#vis").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", h + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    const xScale = d3.scaleLinear()
+        .domain([0, total])
+        .range([0, width]);
+
+    const join = svg.selectAll('g')
+        .data(groupData)
+        .enter().append('g')
+        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+    join.append('rect')
+        .attr('class', 'rect-stacked')
+        .attr('x', d => xScale(d.cumulative))
+        .attr('y', h / 2 - halfBarHeight)
+        .attr('height', barHeight)
+        .attr('width', d => xScale(d.value))
+        // 将矩形的填充颜色设置为白色
+        .style('fill', 'white')
+        // 将矩形的边缘颜色设置为黑色
+        .style('stroke', 'black');
+
+    join.filter((d, i) => i === dataset.firstPoint || i === dataset.secPoint)
+        .append('circle')
+        .attr('cx', (d, i) => xScale(d.cumulative) + (xScale(d.value) / 2))
+        .attr('cy', h / 2)
+        .attr('r', 3)
+        .style('fill', 'black')
+        .style('stroke', 'black'); // 设置边缘颜色为黑色
+}
+
+//////////////////////////////////////////////////////////////////////
+
+// donut chart
+function makeDonutChart(dataset) {
+    var width = 460,
+        height = 400,
+        radius = Math.min(width, height) / 2;
+
+    var innerRadius = radius * 0.6;
+    var svg = d3.select("div#vis")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height + 70)
+        .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    var pie = d3.pie();
+    var arc = d3.arc()
+        .innerRadius(innerRadius)
+        .outerRadius(radius);
+
+    let dataVals = [];
+
+    dataset.data.forEach(function (row) {
+        dataVals.push(row.val);
+    })
+    var tempData = pie(dataVals);
+    let data = [];
+    let index = 1;
+
+    tempData.forEach(function (row) {
+        d = {
+            index: index,
+            pieData: row
+        };
+        data.push(d);
+        index++;
+    })
+
+    const slices = svg.selectAll("path")
+        .data(tempData)
+        .enter()
+        .append("path")
+        .attr("d", arc)
+        .attr("fill", "white") // 设置颜色为白色
+        .style("stroke", "black"); // 设置边缘颜色为黑色
+
+    // 标记第一个点
+    const firstPieData = data[dataset.firstPoint].pieData;
+    svg.append("circle")
+        .attr("cx", arc.centroid(firstPieData)[0])
+        .attr("cy", arc.centroid(firstPieData)[1])
+        .attr("r", 3)
+        .style("fill", "black");
+
+    // 标记第二个点
+    const secPieData = data[dataset.secPoint].pieData;
+    svg.append("circle")
+        .attr("cx", arc.centroid(secPieData)[0])
+        .attr("cy", arc.centroid(secPieData)[1])
+        .attr("r", 3)
+        .style("fill", "black");
+}
+
+
+/////////////////////////////////////////////
+// tree map
+function makeTreeMap(dataset) {
+    const width = 500, height = 500;
+    const format = d3.format(",d");
+    const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+    // Convert flat data to hierarchical structure
+    const root = d3.hierarchy({ children: dataset.data })
+        .sum(d => d.val)
+        .sort((a, b) => b.value - a.value);
+
+    const svg = d3.select("#vis").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("class", "tree-map");
+
+    const treemap = d3.treemap()
+        .size([width, height])
+        .padding(1)
+        .round(true)(root);
+
+    const cell = svg.selectAll("g")
+        .data(root.leaves())
+        .enter().append("g")
+        .attr("transform", d => `translate(${d.x0},${d.y0})`);
+
+    cell.append("rect")
+        .attr("id", d => d.data.id)
+        .attr("width", d => d.x1 - d.x0)
+        .attr("height", d => d.y1 - d.y0)
+        .attr("fill", "white") // 设置颜色为白色
+        .style("stroke", "black"); // 设置边缘颜色为黑色
+
+    const leaves = root.leaves();
+
+    // 标记第一个点
+    const firstPoint = dataset.data[dataset.firstPoint];
+    const firstLeaf = leaves.find(leaf => leaf.data === firstPoint);
+    svg.append("circle")
+        .attr("cx", firstLeaf.x0 + (firstLeaf.x1 - firstLeaf.x0) / 2)
+        .attr("cy", firstLeaf.y0 + (firstLeaf.y1 - firstLeaf.y0) / 2)
+        .attr("r", 3)
+        .style("fill", "black");
+
+    // 标记第二个点
+    const secPoint = dataset.data[dataset.secPoint];
+    const secLeaf = leaves.find(leaf => leaf.data === secPoint);
+    svg.append("circle")
+        .attr("cx", secLeaf.x0 + (secLeaf.x1 - secLeaf.x0) / 2)
+        .attr("cy", secLeaf.y0 + (secLeaf.y1 - secLeaf.y0) / 2)
+        .attr("r", 3)
+        .style("fill", "black");
+}
+
+
+
+////////////////////////////
+
+
+// bubble chart
+function makeBubbleChart(dataset) {
+    const width = 460, height = 460;
+    const format = d3.format(",d");
+    const color = d3.scaleOrdinal(d3.schemeCategory10);
+
+    // Transform data for bubble chart
+    const root = d3.hierarchy({ children: dataset.data })
+        .sum(d => d.val)
+        .sort((a, b) => b.value - a.value);
+
+    const bubble = d3.pack()
+        .size([width, height])
+        .padding(1.5);
+
+    const svg = d3.select("#vis").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("class", "bubble");
+
+    const node = svg.selectAll(".node")
+        .data(bubble(root).leaves())
+        .enter().append("g")
+        .attr("class", "node")
+        .attr("transform", d => `translate(${d.x},${d.y})`);
+
+    node.append("circle")
+        .attr("r", d => d.r)
+        .style("fill", "white") // 设置颜色为白色
+        .style("stroke", "black"); // 设置边缘颜色为黑色
+
+    const nodes = bubble(root).leaves();
+
+    // 标记第一个点
+    const firstPoint = dataset.data[dataset.firstPoint];
+    svg.append("circle")
+        .attr("cx", nodes.find(node => node.data === firstPoint).x)
+        .attr("cy", nodes.find(node => node.data === firstPoint).y)
+        .attr("r", 3)
+        .style("fill", "black");
+
+    // 标记第二个点
+    const secPoint = dataset.data[dataset.secPoint];
+    svg.append("circle")
+        .attr("cx", nodes.find(node => node.data === secPoint).x)
+        .attr("cy", nodes.find(node => node.data === secPoint).y)
+        .attr("r", 3)
+        .style("fill", "black");
+
+
+}
+
+/////////////////////////
+
+        function starttest() {
+            graph = randomOrder();
+
+            csvHeadings = {
+                trialNum: "trialNum",
+                vis: "Vis Type",
+                reported: "Reported Percent",
+                truePercent: "True Percent"
+            }
+
+            testResults.push(csvHeadings);
+            makeTest(count);
+        }
+
+        function exportCSV() {
+            csvData = "";
+            testResults.forEach(function (row) {
+                csvData += row.trialNum + ',' + row.vis + ',' + row.reported + ',' + row.truePercent + '\n';
+            });
+            let anchor = document.createElement('a');
+            anchor.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvData);
+            anchor.target = '_blank';
+            anchor.download = 'data.csv';
+            anchor.click();
+        }
+        document.getElementById('reported').addEventListener('keyup', function (event) {
+            if (event.keyCode === 13) { // 13 is the keyCode for Enter key
+                saveTest();
+                document.getElementById('reported').focus(); // Set focus back to the input box after submission
+            }
+        });
+    </script>
+</body>
+
+</html>
