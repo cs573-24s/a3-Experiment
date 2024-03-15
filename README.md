@@ -20,7 +20,8 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - Additionally, the data is collected through a button where if pressed a prompt will appear asking for how big the smaller marked bar is compared to the smaller one in a percentage (i.e. 100% = 100). After all 80 graphs are marked a CSV will download where every each column is a type of graph and the data in the columns is the log2(error) of the data.
 
 <br>
-**Charts for Data Visualization**:
+
+## Charts for Data Visualization 
   In our study, we examined the efficacy of different visualization techniques in helping users discern point sizes. Our application, developed using React, allowed participants to interact with the visualizations and provided immediate feedback after each task. With 16 individuals partaking, we amassed 240 evaluations per visualization across four distinct chart types, rendered using D3.js.<br>
 
   We selected the following four visualizations for our experiment:
