@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<div id="container"></div>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Next Page</title>
-    <script src="https://cdn.jsdelivr.net/npm/d3-funnel@2"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -45,8 +43,8 @@
         button {
             padding: 10px 15px;
             font-size: 16px;
-            background-color: #7300ff;
-       
+            background-color: #c49ff1;
+
             color: #fff;
             border: none;
             border-radius: 20px;
@@ -75,24 +73,25 @@
             font-size: 16px;
             margin: 10px 0;
 
-            border: 1px solid #ccc;
+            border: 1px solid #b5e9f7;
             border-radius: 20px;
 
             box-sizing: border-box;
+            
 
         }
         #progressBarContainer {
             width: calc(100% - 40px); 
             margin-top: 20px; 
-            background-color: #ddd;
+            background-color: #dddddd;
         }
     </style>
 </head>
 
 <body>
     <div id="page1">
-        <p>Welcome to the test!</p>
-        <p>Click "Yes" to begin.</p>
+        <p>Welcome to this survey!</p>
+        <p>Click "Yes" to begin our trip in data visualization  .</p>
         <p></p>
 
         <button id="Disagree" onclick="return Exit()">No</button>
@@ -101,36 +100,38 @@
 
     </div>
     <div id="Exit" style="display: none;">
-        <h1>Thank you!</h1>
+        <h1>Have a good day, see you next time</h1>
     </div>
-    <div id="test" style="display:none">
+    <div id="test" style="display:none; font-family: Arial, sans-serif; font-weight: bold; font-size: 18px; color: rgb(122, 196, 231);">
         <h1>
         </h1>
-        <p>The values of interest are marked with dots.</p>
-        <p>The only thing you need to do is</p>
-        <p>to estimate the percent of the smaller value</p>
-        <p>to the larger value in the chart.</p>
-        <p>eg: If the smaller one is a half of the bigger one, input "50".</p>
+        <p>Two parts of plot for comparison are marked with dots.What you need to do is to estimate the percent of the smaller value represented by one part of plot to the larger value plot in the chart.</p>
+        <p>If the smaller one is a half of the bigger one, input 50 .</p>
         <h3 id="count"></h3>
         <div id="vis"></div>
-        <div id="progressBarContainer" style="width: 100%; background-color: #ddd;">
-            <div id="progressBar" style="width: 0%; height: 30px; background-color: #4CAF50;"></div>
+        <div id="progressBarContainer" style="width: 100%; background-color: rgb(231, 241, 243);">
+            <div id="progressBar" style="width: 0%; height: 30px; background-color: rgb(172, 212, 245);"></div>
           </div>
         <input id="reported" type="text" value=""></input>
         <button id="Next" onclick="return saveTest()">Next</button>
     </div>
 
-    <div id="end" style="display:none">
+    <div id="end" style="display:none; background-color: #b5e9f7;color: #ffadff;">
         <h1>
-            Thank you for your participation!!!
+            ^-^ Thank you for participation! ^-^
         </h1>
         <p>
-            The result has been exported to a csv file.
+            Download the csv file.
         </p>
         <div id="printedend"></div>
-        <button id="export" onclick="return exportCSV()">Export to .csv</button>
+        <button id="export" onclick="return exportCSV()" style="background-color: #f8abf8; color: white; padding: 10px 15px; font-size: 16px; border: none; border-radius: 20px; cursor: pointer; transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s; margin: 5px;">
+    Download Your Result
+</button>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/+esm" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-funnel@2"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script type="module"></script>
     <script>
         console.log(d3);
 
@@ -258,7 +259,7 @@ function makeTest(num) {
 
     const progressBarWidth = (count / 80) * 100;
     document.getElementById('progressBar').style.width = progressBarWidth + '%';
-    
+
 
     switch (graph[num]) {
         case 1:
@@ -317,7 +318,7 @@ function makeStackChart(dataset) {
     const barHeight = 100;
     const halfBarHeight = barHeight / 2;
     const dotRadius = 5;
-    
+
 
     const total = d3.sum(dataset.data, d => d.val);
 
@@ -498,7 +499,7 @@ function makeTreeMap(dataset) {
 }
 
 
- 
+
 ////////////////////////////
 
 
@@ -551,7 +552,7 @@ function makeBubbleChart(dataset) {
         .attr("r", 3)
         .style("fill", "black");
 
-    
+
 }
 
 /////////////////////////
@@ -591,5 +592,3 @@ function makeBubbleChart(dataset) {
 </body>
 
 </html>
-
-
