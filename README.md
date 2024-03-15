@@ -54,6 +54,7 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - Visualizations were created using numpy and matplotlib in Python.
 
 ## Data Analysis Method:
+  ![alt text](img/error-funciton.png)
   After necessary data cleaning:
 - We employed either a log-base-2 transformation or the cm-error metric to quantify participants' accuracy in perceptual judgments.
 - This methodology aligns with the approach established in the original Cleveland and McGill paper [1].
