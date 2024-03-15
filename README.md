@@ -66,6 +66,9 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 **Start Page:**
 ![alt text](img/start-scene.png)
 
+**On_Going Page：**
+![alt text](img/donut-chart.png)
+
 **End Page:**
 ![alt text](img/end-scene.png)
 
