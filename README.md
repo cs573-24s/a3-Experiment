@@ -41,14 +41,29 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
   Each visualization technique was chosen for its unique strengths in representing data and assisting viewers in understanding complex information patterns.
 
 
+# Data Collection and Clean
+## Data Collection Process
+  We gathered data through the following steps:
+- Downloaded a CSV file for each participant, containing their responses compared to the correct answers.
+- After data collection from all 20 participants, we proceeded with data cleaning and analysis.
 
-In this assignment you'll implement a simple controlled experiment using some of the visualizations you’ve been building in this class. 
-You'll need to develop support code for the experiment sequence, results file output, and other experiment components. 
-(These are all simple with Javascript buttons and forms.)
-The main goals for you are to a) test at least three competing visualizations or experiment conditions, b) implement data/stimuli generation and error calculation functions (if following the baseline, use Cleveland and McGill's 1984 paper and Heer and Bostock's 2010 replication), c) run the experiment with 10 participants (or equivalent number of trials), and d) do basic analysis and reporting of the results.
+## Data Cleaning and Analysis
+  Data cleaning involved:
+- Removing outlier test values, which seemed to be input errors by participants.
+- Utilizing Excel and pandas to compare correct values against test values.
+- Visualizations were created using numpy and matplotlib in Python.
 
-For this assignment you should aim to write everything from scratch. For experimentation it is often necessary to control all elements of the chart.
-You should definitely *reference* demo programs from books or the web, and if you do please provide a References section with links at the end of your Readme.
+## Data Analysis Method:
+  After necessary data cleaning:
+- We employed either a log-base-2 transformation or the cm-error metric to quantify participants' accuracy in perceptual judgments.
+- This methodology aligns with the approach established in the original Cleveland and McGill paper [1].
+  Error Score Calculation:
+- A metric was derived to enable a rigorous comparison of performance across different chart types.
+- Lower error scores indicate superior performance.
+  Robustness Enhancement:
+- Error bars were incorporated to represent bootstrapped 95% confidence intervals.
+  Benchmark Comparison:
+- Average error scores were compared with benchmark results reported by Cleveland and McGill.
 
 Going Beyond Cleveland-McGill
 ---
