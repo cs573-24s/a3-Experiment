@@ -1,7 +1,7 @@
 Assignment 3 - Replicating a Classic Experiment  
 ===
 ## Jazz Group Members：
-**Tang Dong, Anthony Chen, Songling Li, Jinqin Xiong**
+**Dong Tang, Anthony Chen, Songling Li, Jinqin Xiong**
 
 ## Page link:
 link: 
