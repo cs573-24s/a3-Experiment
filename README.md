@@ -9,7 +9,7 @@ link: https://dongtang3.github.io/a3-Experiment/
 ## Our Repository Link
 link: https://github.com/dongtang3/a3-Experiment
 
-# Our Study Research
+# 1️⃣、Our Study Research
 ## Introduction:
 According to Cleveland and McGill [1], our project offers an exciting opportunity to delve into the world of scientific experimentation and data visualization. By replicating classic experiments and applying modern methodologies, you'll gain valuable insights into the effectiveness of different visualization techniques. Get ready to shine as a data scientist and uncover fascinating findings that contribute to the field of data visualization! In this endeavor, we embark on a journey to replicate a classic experiment, echoing the pioneering works of luminaries such as Cleveland and McGill, and building upon modern methodologies championed by Heer and Bostock. 
 
@@ -20,33 +20,36 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - Additionally, the data is collected through a button where if pressed a prompt will appear asking for how big the smaller marked bar is compared to the smaller one in a percentage (i.e. 100% = 100). After all 80 graphs are marked a CSV will download where every each column is a type of graph and the data in the columns is the log2(error) of the data.
 
 <br>
-# Charts for Data Visualization 
+**Charts for Data Visualization**:
   In our study, we examined the efficacy of different visualization techniques in helping users discern point sizes. Our application, developed using React, allowed participants to interact with the visualizations and provided immediate feedback after each task. With 16 individuals partaking, we amassed 240 evaluations per visualization across four distinct chart types, rendered using D3.js.<br>
 
   We selected the following four visualizations for our experiment:
 
 **1.  Stacked Charts**: These are enhanced bar charts where each bar is subdivided into smaller segments that represent different subcategories. The collective height of these segments illustrates the total value. Stacked charts are particularly useful for observing overall trends and comparing the make-up of different categories.<br>
 ![alt text](img/stack-chart.png)
+<br>
 
 
 
 **2.  Donut Charts**: A variant of pie charts, these display data in a ring shape, allowing for a visually appealing comparison of parts to a whole. They are effective for showing categorical data and providing a quick snapshot of the proportionate distribution.<br>
 ![alt text](img/donut-chart.png)
-
+<br>
 
 **3.  Tree Map**: Tree maps are used for displaying hierarchical data via nested rectangles, with each rectangle's size and color representing a particular dimension of the data set. They are efficient in space utilization and effective for showing attributes of data such as size and category.<br>
 ![alt text](img/tree-map.png)
+<br>
 
 
 **4.  Bubble Charts**: These charts present multi-dimensional data, with each bubble representing a data point and the size and position of the bubble corresponding to data values. Bubble charts are excellent for visualizing complex data sets where each bubble can encapsulate multiple data dimensions.<br>
 ![alt text](img/bubble-chart.png)
+<br>
 
 
   Each visualization technique was chosen for its unique strengths in representing data and assisting viewers in understanding complex information patterns.
   <br>
 
 
-# Data Collection and Clean
+# 2️⃣、Data Collection and Clean
 ## Data Collection Process
   We gathered data through the following steps:
 - Downloaded a CSV file for each participant, containing their responses compared to the correct answers.
@@ -58,14 +61,14 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - Utilizing Excel and pandas to compare correct values against test values.
 - Visualizations were created using numpy and matplotlib in Python.
 
-# User Interface Design
+# 3️⃣、User Interface Design
 **Start Page:**
 ![alt text](img/start-scene.png)
 
 **End Page:**
 ![alt text](img/end-scene.png)
 
-## Data Analysis Method:
+# 4️⃣、Data Analysis Method:
 **Error Function:**
  ![alt text](img/formula.png) <br>
     **After necessary data cleaning:**
@@ -80,7 +83,7 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - Average error scores were compared with benchmark results reported by Cleveland and McGill.
 
 
-# Experiment Result and Analysis
+# 5️⃣、Experiment Result and Analysis
 ## **Our Result**:
 ![alt text](img/our-results.png)
 **Cleveland Result**:
@@ -112,7 +115,7 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 
 <br>
 
-# Achievements From Our Study
+# 6️⃣、Achievements From Our Study
 ## Technical Achievements:
 - Dynamic Data Generation: The experiment dynamically generates random data points for each trial, ensuring variability in the test scenarios. This is achieved using JavaScript functions like randomData() and randomOrder(), which create randomized datasets and trial orders, respectively.
 
@@ -132,6 +135,6 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - Responsive Design: The experiment is designed to be responsive and adaptable to different screen sizes and devices. This ensures a consistent user experience across various platforms and devices, enhancing accessibility for participants.
 <br>
 
-# References:
+# 7️⃣、References:
 - http://www.cs.ubc.ca/~tmm/courses/cpsc533c-04-spr/readings/cleveland.pdf
 - https://www.math.pku.edu.cn/teachers/xirb/Courses/biostatistics/Biostatistics2016/GraphicalPerception_Jasa1984.pdf
