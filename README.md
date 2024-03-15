@@ -58,6 +58,13 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - Utilizing Excel and pandas to compare correct values against test values.
 - Visualizations were created using numpy and matplotlib in Python.
 
+# User Interface Design
+**Start Page:**
+![alt text](img/start-scene.png)
+
+**End Page:**
+![alt text](img/end-scene.png)
+
 ## Data Analysis Method:
 **Error Function:**
  ![alt text](img/formula.png) <br>
@@ -87,6 +94,9 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 
   If the data across these groups are similar in terms of their 'accuracy_error' values. That could cause this phenomenon. 
 
+  **Additional Analysis Graph:**
+  ![alt text](img/additional-analysis.png)
+
   **Here's our additional analysis:**
 - We plotted each trial as a dot to see what's underneath the hood.
 
@@ -99,8 +109,6 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 3.  **Error Distribution:**  Some chart types show a more concentrated cluster of errors, while others are more spread out. If there is a consistent pattern, such as a certain type of chart consistently having higher or lower errors, this could be a significant finding.
 
 4.  **Outliers:**  There may be outliers present that could be affecting the mean and the calculated confidence intervals. This could be especially true if the outliers are only present in some of the chart types and not others.
-
-
 
 <br>
 
