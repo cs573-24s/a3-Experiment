@@ -4,7 +4,7 @@ Assignment 3 - Replicating a Classic Experiment
 **Dong Tang, Anthony Chen, Songling Li, Jinqin Xiong**
 
 ## Page link:
-link: 
+link: https://dongtang3.github.io/a3-Experiment/
 
 ## Our repository link
 link: https://github.com/dongtang3/a3-Experiment
@@ -20,13 +20,23 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - Additionally, the data is collected through a button where if pressed a prompt will appear asking for how big the smaller marked bar is compared to the smaller one in a percentage (i.e. 100% = 100). After all 80 graphs are marked a CSV will download where every each column is a type of graph and the data in the columns is the log2(error) of the data.
 
 
+# Charts for Data Visualization 
+- In our study, we examined the efficacy of different visualization techniques in helping users discern point sizes. Our application, developed using React, allowed participants to interact with the visualizations and provided immediate feedback after each task. With 16 individuals partaking, we amassed 240 evaluations per visualization across four distinct chart types, rendered using D3.js.<br>
 
-For the scope of this project, assume the role of a scientist who runs experiments for a living.
+We selected the following four visualizations for our experiment:
 
-For example: 
+- **Stacked Charts**: These are enhanced bar charts where each bar is subdivided into smaller segments that represent different subcategories. The collective height of these segments illustrates the total value. Stacked charts are particularly useful for observing overall trends and comparing the make-up of different categories.
 
-Q: How do we know that bar charts are "better" than pie charts?  
-A: Controlled experiments!
+
+- **Donut Charts**: A variant of pie charts, these display data in a ring shape, allowing for a visually appealing comparison of parts to a whole. They are effective for showing categorical data and providing a quick snapshot of the proportionate distribution.
+
+- **Tree Map**: Tree maps are used for displaying hierarchical data via nested rectangles, with each rectangle's size and color representing a particular dimension of the data set. They are efficient in space utilization and effective for showing attributes of data such as size and category.
+
+- **Bubble Charts**: These charts present multi-dimensional data, with each bubble representing a data point and the size and position of the bubble corresponding to data values. Bubble charts are excellent for visualizing complex data sets where each bubble can encapsulate multiple data dimensions.<br>
+
+Each visualization technique was chosen for its unique strengths in representing data and assisting viewers in understanding complex information patterns.
+
+
 
 In this assignment you'll implement a simple controlled experiment using some of the visualizations you’ve been building in this class. 
 You'll need to develop support code for the experiment sequence, results file output, and other experiment components. 
