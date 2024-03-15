@@ -9,7 +9,6 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        
         body {
             display: flex;
             flex-direction: column;
@@ -32,14 +31,14 @@
         #test,
         #end {
             background-color: #ffffff;
-      
+
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-       
+
             padding: 20px;
             width: 90%;
             max-width: 600px;
-       
+
             text-align: center;
         }
 
@@ -51,12 +50,12 @@
             color: #fff;
             border: none;
             border-radius: 20px;
-         
+
             cursor: pointer;
             transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
-         
+
             margin: 5px;
-      
+
         }
 
         button:hover {
@@ -232,7 +231,7 @@ function randomOrder() {
         }
     }
 
-    // 随机打乱 order 数组的顺序
+    // Randomize the order of the array 'order'.
     order = order.sort(() => Math.random() - 0.5);
 
     console.log(order);
@@ -582,6 +581,12 @@ function makeBubbleChart(dataset) {
             anchor.download = 'data.csv';
             anchor.click();
         }
+        document.getElementById('reported').addEventListener('keyup', function (event) {
+            if (event.keyCode === 13) { // 13 is the keyCode for Enter key
+                saveTest();
+                document.getElementById('reported').focus(); // Set focus back to the input box after submission
+            }
+        });
     </script>
 </body>
 

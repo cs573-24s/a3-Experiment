@@ -1,5 +1,14 @@
 Assignment 3 - Replicating a Classic Experiment  
 ===
+## Jazz Group members：
+Tang Dong, Anthony Chen, Songling Li, Jinqin Xiong
+
+## Page link:
+link: 
+
+## Our repository link
+link: https://github.com/dongtang3/a3-Experiment
+
 
 For the scope of this project, assume the role of a scientist who runs experiments for a living.
 
