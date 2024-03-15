@@ -26,16 +26,20 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
   We selected the following four visualizations for our experiment:
 
 **1.  Stacked Charts**: These are enhanced bar charts where each bar is subdivided into smaller segments that represent different subcategories. The collective height of these segments illustrates the total value. Stacked charts are particularly useful for observing overall trends and comparing the make-up of different categories.<br>
+![alt text](img/stack-chart.png)
 
 
 
 **2.  Donut Charts**: A variant of pie charts, these display data in a ring shape, allowing for a visually appealing comparison of parts to a whole. They are effective for showing categorical data and providing a quick snapshot of the proportionate distribution.<br>
+![alt text](img/donut-chart.png)
 
 
 **3.  Tree Map**: Tree maps are used for displaying hierarchical data via nested rectangles, with each rectangle's size and color representing a particular dimension of the data set. They are efficient in space utilization and effective for showing attributes of data such as size and category.<br>
+![alt text](img/tree-map.png)
 
 
 **4.  Bubble Charts**: These charts present multi-dimensional data, with each bubble representing a data point and the size and position of the bubble corresponding to data values. Bubble charts are excellent for visualizing complex data sets where each bubble can encapsulate multiple data dimensions.<br>
+![alt text](img/bubble-chart.png)
 
 
   Each visualization technique was chosen for its unique strengths in representing data and assisting viewers in understanding complex information patterns.
@@ -48,35 +52,25 @@ According to Cleveland and McGill [1], our project offers an exciting opportunit
 - After data collection from all 20 participants, we proceeded with data cleaning and analysis.
 
 ## Data Cleaning and Analysis
-  Data cleaning involved:
+  **Data cleaning involved:**
 - Removing outlier test values, which seemed to be input errors by participants.
 - Utilizing Excel and pandas to compare correct values against test values.
 - Visualizations were created using numpy and matplotlib in Python.
 
 ## Data Analysis Method:
-  ![alt text](img/error-funciton.png)<br>
-  After necessary data cleaning:
+ ![alt text](img/formula.png) <br>
+   **After necessary data cleaning:**
 - We employed either a log-base-2 transformation or the cm-error metric to quantify participants' accuracy in perceptual judgments.
 - This methodology aligns with the approach established in the original Cleveland and McGill paper [1].<br>
-  Error Score Calculation:
+  **Error Score Calculation:**
 - A metric was derived to enable a rigorous comparison of performance across different chart types.
 - Lower error scores indicate superior performance.<br>
-  Robustness Enhancement:
+  **Robustness Enhancement:**
 - Error bars were incorporated to represent bootstrapped 95% confidence intervals.<br>
-  Benchmark Comparison:
+  **Benchmark Comparison:**
 - Average error scores were compared with benchmark results reported by Cleveland and McGill.
 
-Going Beyond Cleveland-McGill
----
 
-Several have expressed interest in conducting surveys of various sorts. I encourage you go move beyond Cleveland and McGill if you can think of other interesting visualization experiment designs and corresponding analyses. 
-
-You might study how people interpret COVID visualizations or design an experiment on shapes or color, for example.
-If you decide to go in a custom route, do plan to sync with staff so we can help you set acceptable parameters that would be fair to folks following the original route.
-
-(Basically, we still want you to do a multi-trial study with each participant, to raise the chance that you get solid results.)
-
-How you measure "error" and similar facets also matter. But you can't go wrong with finding a good visualization study online to start from :)
 
 Requirements
 ---
@@ -167,6 +161,5 @@ As a baseline, compare your average Error scores to the following chart, which i
 - Responsive Design: The experiment is designed to be responsive and adaptable to different screen sizes and devices. This ensures a consistent user experience across various platforms and devices, enhancing accessibility for participants.
 
 # References:
-- https://github.com/OmriGreen/a3-OmriGreen-Omri-Green
 - http://www.cs.ubc.ca/~tmm/courses/cpsc533c-04-spr/readings/cleveland.pdf
 - https://www.math.pku.edu.cn/teachers/xirb/Courses/biostatistics/Biostatistics2016/GraphicalPerception_Jasa1984.pdf
