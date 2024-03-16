@@ -19,12 +19,13 @@ Proportional graphs, also referred to as "percentage" or "parts-of-a-whole" grap
 
 Understanding the effectiveness of different visualization techniques is pivotal for conveying complex data insights accurately and intuitively. In this study, we delve into the realm of parts-of-a-whole graphs, investigating the ease of comprehension and accuracy across four distinct chart types: treemap, pie chart, stacked bar chart, and donut chart.
 
-Our study aims to conduct a survey-based investigation, where participants are presented with two dots marked in each visualization. Their task is to identify which proportion represents the smallest part in relation to the largest part, guided solely by the placement of these dots. By employing this novel approach, we can gauge the perceptual ease and accuracy associated with each chart type.
+Our study aims to conduct a **survey-based** + **face-to-face interview** investigation, where participants are presented with two dots marked in each visualization. Their task is to identify which proportion represents the smallest part in relation to the largest part, guided solely by the placement of these dots. By employing this novel approach, we can gauge the perceptual ease and accuracy associated with each chart type.
 
 In our project, we conducted 60 individual surveys, and we measured accuracy in identifying relative proportions. This output allowed us to determine which chart types facilitate a more intuitive comprehension and precise interpretation. 
 
 The findings of this research hold significant implications for data visualization practitioners. By unveiling the comparative effectiveness of parts-of-a-whole graphs, we can inform best practices in chart selection, ultimately enhancing the clarity and impact of data-driven communication strategies.
 
+---
 
 ### Understanding Different Visualizations
 - Pie Chart: Common for showing proportions within a whole, pie charts are intuitive for some comparisons but can be challenging for precise quantitative comparisons.
@@ -39,9 +40,10 @@ The findings of this research hold significant implications for data visualizati
 - Treemaps, while effective for displaying large datasets, may require more cognitive effort to interpret than pie or stacked bar charts.
 - Donut charts with multiple concentric rings or hierarchical data may require more cognitive effort to interpret compared to simple pie charts or stacked bar charts.
 
+---
 
 
-### Revisit experiment screenshots
+### Survey screenshots
 #### Landing page of the experiment
 ![](img/revisit-landing-page.png)
 
@@ -73,7 +75,18 @@ Considering the minimal variation in error rates among the four visualization ty
 In conclusion, data visualization practitioners can confidently employ any of these formats knowing that they all similarly support accurate parts-of-a-whole interpretations.
 
 
+---
+### Interview Design
 
+Understanding users' experiences and perceptions is significant in designing effective experiments and improving data interpretation processes. We conducted a post-survey face-to-face interview with some of our participants to gather qualitative insights regarding their experiences with our experiment.
+
+
+The interview aimed to delve deeper into participants' thoughts, challenges, and suggestions encountered during the experiment, with a specific focus on the clarity of instructions, ease of data interpretation, confidence in estimations, and suggestions for experiment improvement. By engaging participants in a dialogue, we sought to unearth nuanced insights that quantitative survey data alone may not capture.
+
+The design of the interview was guided by the feedback loop principle, which emphasizes the importance of continuous improvement through iterative feedback collection and analysis. Recognizing the potential limitations of quantitative data in fully elucidating user experiences, we adopted a qualitative approach to complement our understanding and provide actionable insights for enhancing future experiments (e.g., for our final project ;)
+
+
+---
 
 
 ### Design and Technical Achievements
@@ -118,5 +131,5 @@ It allows for flexibility in terms of data visualization where they can be anima
 
 #### User Feedback
 
-There were variations based on gender. Male participants found the donut harder than the treemap while women found the treemap harder than the donut.
-
+- Many users thought the survey was easy
+- There were variations based on gender. Male participants found the donut harder than the treemap while women found the treemap harder than the donut.
