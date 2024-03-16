@@ -153,7 +153,7 @@ It allows for flexibility in terms of data visualization where they can be anima
 - Many users thought the survey was easy
 - There were variations based on gender. Male participants found the donut harder than the treemap while women found the treemap harder than the donut.
 
-<img src="/Users/janet/Documents/_DS/_CS573_DV/HW/a3/a3-Experiment/post-survey-interview/user-pic-1.png" alt="drawing" width="250"/><img src="/Users/janet/Documents/_DS/_CS573_DV/HW/a3/a3-Experiment/post-survey-interview/user-pic-2.jpeg" alt="drawing" width="220"/><img src="/Users/janet/Documents/_DS/_CS573_DV/HW/a3/a3-Experiment/post-survey-interview/user-pic-3.jpeg" alt="drawing" width="400"/>
+<img src="img/user-pic-1.png" alt="drawing" width="250"/><img src="img/user-pic-2.jpeg" alt="drawing" width="220"/><img src="img/user-pic-3.jpeg" alt="drawing" width="400"/>
 
 
 
