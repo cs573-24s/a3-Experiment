@@ -1,0 +1,300 @@
+participantId,trialId,responseId,description,answer,taskOrder
+ZygfxsLg15LPwZPEtGFP,consent,accept,,yes,1
+ZygfxsLg15LPwZPEtGFP,consent,signature,,Dante,1
+ZygfxsLg15LPwZPEtGFP,trainingTreeMap1,cm-response,A treeMap with correct answer of 0.66,50,3
+ZygfxsLg15LPwZPEtGFP,treeMap1,cm-response,A treeMap with correct answer of 0.33,33,17
+ZygfxsLg15LPwZPEtGFP,treeMap2,cm-response,A treeMap with correct answer of 0.166,12,18
+ZygfxsLg15LPwZPEtGFP,treeMap3,cm-response,A treeMap with correct answer of 0.833,80,14
+ZygfxsLg15LPwZPEtGFP,treeMap4,cm-response,A treeMap with correct answer of 0.66,50,15
+ZygfxsLg15LPwZPEtGFP,treeMap5,cm-response,A treeMap with correct answer of 0.2,16,16
+ZygfxsLg15LPwZPEtGFP,StackedBarChart1,cm-response,Stacked bar with CA of .5,45,10
+ZygfxsLg15LPwZPEtGFP,StackedBarChart2,cm-response,Stacked bar with CA of .5,33,12
+ZygfxsLg15LPwZPEtGFP,StackedBarChart4,cm-response,Stacked bar with CA of .833,80,13
+ZygfxsLg15LPwZPEtGFP,StackedBarChart5,cm-response,Stacked bar with CA of .333,33,9
+ZygfxsLg15LPwZPEtGFP,StackedBarChart6,cm-response,Stacked bar with CA of .2,10,11
+ZygfxsLg15LPwZPEtGFP,barChart1,cm-response,Bar with CA of .5,50,4
+ZygfxsLg15LPwZPEtGFP,barChart2,cm-response,Bar with CA of .5,50,8
+ZygfxsLg15LPwZPEtGFP,barChart4,cm-response,Bar with CA of .833,75,6
+ZygfxsLg15LPwZPEtGFP,barChart5,cm-response,Bar with CA of .333,66,5
+ZygfxsLg15LPwZPEtGFP,barChart6,cm-response,Bar with CA of .2,22,7
+ZygfxsLg15LPwZPEtGFP,pieChart1,cm-response,Pie with CA of .5,75,23
+ZygfxsLg15LPwZPEtGFP,pieChart3,cm-response,Pie with CA of .166,15,19
+ZygfxsLg15LPwZPEtGFP,pieChart4,cm-response,Pie with CA of .833,89,21
+ZygfxsLg15LPwZPEtGFP,pieChart5,cm-response,Pie with CA of .333,33,20
+ZygfxsLg15LPwZPEtGFP,pieChart6,cm-response,Pie with CA of .2,23,22
+19hHyMzU744AsSj7OASc,consent,accept,,yes,1
+19hHyMzU744AsSj7OASc,consent,signature,,Vincent Grassi,1
+19hHyMzU744AsSj7OASc,trainingTreeMap1,cm-response,A treeMap with correct answer of 0.66,55,3
+19hHyMzU744AsSj7OASc,treeMap1,cm-response,A treeMap with correct answer of 0.33,40,18
+19hHyMzU744AsSj7OASc,treeMap2,cm-response,A treeMap with correct answer of 0.166,35,17
+19hHyMzU744AsSj7OASc,treeMap3,cm-response,A treeMap with correct answer of 0.833,50,16
+19hHyMzU744AsSj7OASc,treeMap4,cm-response,A treeMap with correct answer of 0.66,20,15
+19hHyMzU744AsSj7OASc,treeMap5,cm-response,A treeMap with correct answer of 0.2,35,14
+19hHyMzU744AsSj7OASc,StackedBarChart2,cm-response,Stacked bar with CA of .5,40,23
+19hHyMzU744AsSj7OASc,StackedBarChart3,cm-response,Stacked bar with CA of .166,35,22
+19hHyMzU744AsSj7OASc,StackedBarChart4,cm-response,Stacked bar with CA of .833,50,21
+19hHyMzU744AsSj7OASc,StackedBarChart5,cm-response,Stacked bar with CA of .333,20,20
+19hHyMzU744AsSj7OASc,StackedBarChart6,cm-response,Stacked bar with CA of .2,30,19
+19hHyMzU744AsSj7OASc,barChart1,cm-response,Bar with CA of .5,45,8
+19hHyMzU744AsSj7OASc,barChart2,cm-response,Bar with CA of .5,50,6
+19hHyMzU744AsSj7OASc,barChart3,cm-response,Bar with CA of .166,40,4
+19hHyMzU744AsSj7OASc,barChart5,cm-response,Bar with CA of .333,20,7
+19hHyMzU744AsSj7OASc,barChart6,cm-response,Bar with CA of .2,35,5
+19hHyMzU744AsSj7OASc,pieChart1,cm-response,Pie with CA of .5,50,9
+19hHyMzU744AsSj7OASc,pieChart2,cm-response,Pie with CA of .5,45,13
+19hHyMzU744AsSj7OASc,pieChart3,cm-response,Pie with CA of .166,35,12
+19hHyMzU744AsSj7OASc,pieChart5,cm-response,Pie with CA of .333,30,11
+19hHyMzU744AsSj7OASc,pieChart6,cm-response,Pie with CA of .2,40,10
+KF6jWCUIqLq2ZPnmMNgk,consent,signature,,Antone Mello,1
+KF6jWCUIqLq2ZPnmMNgk,consent,accept,,yes,1
+KF6jWCUIqLq2ZPnmMNgk,trainingTreeMap1,cm-response,A treeMap with correct answer of 0.66,33,3
+KF6jWCUIqLq2ZPnmMNgk,treeMap1,cm-response,A treeMap with correct answer of 0.33,40,6
+KF6jWCUIqLq2ZPnmMNgk,treeMap2,cm-response,A treeMap with correct answer of 0.166,15,8
+KF6jWCUIqLq2ZPnmMNgk,treeMap3,cm-response,A treeMap with correct answer of 0.833,90,7
+KF6jWCUIqLq2ZPnmMNgk,treeMap4,cm-response,A treeMap with correct answer of 0.66,66,5
+KF6jWCUIqLq2ZPnmMNgk,treeMap5,cm-response,A treeMap with correct answer of 0.2,15,4
+KF6jWCUIqLq2ZPnmMNgk,StackedBarChart1,cm-response,Stacked bar with CA of .5,50,9
+KF6jWCUIqLq2ZPnmMNgk,StackedBarChart3,cm-response,Stacked bar with CA of .166,15,11
+KF6jWCUIqLq2ZPnmMNgk,StackedBarChart4,cm-response,Stacked bar with CA of .833,80,10
+KF6jWCUIqLq2ZPnmMNgk,StackedBarChart5,cm-response,Stacked bar with CA of .333,50,12
+KF6jWCUIqLq2ZPnmMNgk,StackedBarChart6,cm-response,Stacked bar with CA of .2,20,13
+KF6jWCUIqLq2ZPnmMNgk,barChart1,cm-response,Bar with CA of .5,50,15
+KF6jWCUIqLq2ZPnmMNgk,barChart2,cm-response,Bar with CA of .5,50,14
+KF6jWCUIqLq2ZPnmMNgk,barChart3,cm-response,Bar with CA of .166,15,17
+KF6jWCUIqLq2ZPnmMNgk,barChart4,cm-response,Bar with CA of .833,80,16
+KF6jWCUIqLq2ZPnmMNgk,barChart5,cm-response,Bar with CA of .333,66,18
+KF6jWCUIqLq2ZPnmMNgk,pieChart1,cm-response,Pie with CA of .5,50,23
+KF6jWCUIqLq2ZPnmMNgk,pieChart2,cm-response,Pie with CA of .5,50,20
+KF6jWCUIqLq2ZPnmMNgk,pieChart3,cm-response,Pie with CA of .166,15,22
+KF6jWCUIqLq2ZPnmMNgk,pieChart5,cm-response,Pie with CA of .333,66,21
+KF6jWCUIqLq2ZPnmMNgk,pieChart6,cm-response,Pie with CA of .2,15,19
+PQAjIBmhWqhvMkoWyCdc,consent,signature,,Jamie Rapal,1
+PQAjIBmhWqhvMkoWyCdc,consent,accept,,yes,1
+PQAjIBmhWqhvMkoWyCdc,trainingTreeMap1,cm-response,A treeMap with correct answer of 0.66,50,3
+PQAjIBmhWqhvMkoWyCdc,treeMap1,cm-response,A treeMap with correct answer of 0.33,20,15
+PQAjIBmhWqhvMkoWyCdc,treeMap2,cm-response,A treeMap with correct answer of 0.166,10,16
+PQAjIBmhWqhvMkoWyCdc,treeMap3,cm-response,A treeMap with correct answer of 0.833,80,18
+PQAjIBmhWqhvMkoWyCdc,treeMap4,cm-response,A treeMap with correct answer of 0.66,50,17
+PQAjIBmhWqhvMkoWyCdc,treeMap5,cm-response,A treeMap with correct answer of 0.2,20,14
+PQAjIBmhWqhvMkoWyCdc,StackedBarChart1,cm-response,Stacked bar with CA of .5,25,13
+PQAjIBmhWqhvMkoWyCdc,StackedBarChart3,cm-response,Stacked bar with CA of .166,10,11
+PQAjIBmhWqhvMkoWyCdc,StackedBarChart4,cm-response,Stacked bar with CA of .833,80,12
+PQAjIBmhWqhvMkoWyCdc,StackedBarChart5,cm-response,Stacked bar with CA of .333,50,9
+PQAjIBmhWqhvMkoWyCdc,StackedBarChart6,cm-response,Stacked bar with CA of .2,10,10
+PQAjIBmhWqhvMkoWyCdc,barChart1,cm-response,Bar with CA of .5,50,5
+PQAjIBmhWqhvMkoWyCdc,barChart2,cm-response,Bar with CA of .5,50,8
+PQAjIBmhWqhvMkoWyCdc,barChart3,cm-response,Bar with CA of .166,20,6
+PQAjIBmhWqhvMkoWyCdc,barChart4,cm-response,Bar with CA of .833,80,7
+PQAjIBmhWqhvMkoWyCdc,barChart5,cm-response,Bar with CA of .333,70,4
+PQAjIBmhWqhvMkoWyCdc,pieChart1,cm-response,Pie with CA of .5,60,22
+PQAjIBmhWqhvMkoWyCdc,pieChart3,cm-response,Pie with CA of .166,20,21
+PQAjIBmhWqhvMkoWyCdc,pieChart4,cm-response,Pie with CA of .833,80,23
+PQAjIBmhWqhvMkoWyCdc,pieChart5,cm-response,Pie with CA of .333,75,20
+PQAjIBmhWqhvMkoWyCdc,pieChart6,cm-response,Pie with CA of .2,20,19
+OYknxUO9uvKLhgngJhRs,consent,accept,,yes,1
+OYknxUO9uvKLhgngJhRs,consent,signature,,Ella Bauerle,1
+OYknxUO9uvKLhgngJhRs,trainingTreeMap1,cm-response,A treeMap with correct answer of 0.66,50,3
+OYknxUO9uvKLhgngJhRs,treeMap1,cm-response,A treeMap with correct answer of 0.33,50,23
+OYknxUO9uvKLhgngJhRs,treeMap2,cm-response,A treeMap with correct answer of 0.166,17,20
+OYknxUO9uvKLhgngJhRs,treeMap3,cm-response,A treeMap with correct answer of 0.833,100,22
+OYknxUO9uvKLhgngJhRs,treeMap4,cm-response,A treeMap with correct answer of 0.66,55,21
+OYknxUO9uvKLhgngJhRs,treeMap5,cm-response,A treeMap with correct answer of 0.2,20,19
+OYknxUO9uvKLhgngJhRs,StackedBarChart1,cm-response,Stacked bar with CA of .5,40,17
+OYknxUO9uvKLhgngJhRs,StackedBarChart3,cm-response,Stacked bar with CA of .166,14,15
+OYknxUO9uvKLhgngJhRs,StackedBarChart4,cm-response,Stacked bar with CA of .833,90,18
+OYknxUO9uvKLhgngJhRs,StackedBarChart5,cm-response,Stacked bar with CA of .333,70,16
+OYknxUO9uvKLhgngJhRs,StackedBarChart6,cm-response,Stacked bar with CA of .2,20,14
+OYknxUO9uvKLhgngJhRs,barChart1,cm-response,Bar with CA of .5,50,11
+OYknxUO9uvKLhgngJhRs,barChart3,cm-response,Bar with CA of .166,15,13
+OYknxUO9uvKLhgngJhRs,barChart4,cm-response,Bar with CA of .833,80,12
+OYknxUO9uvKLhgngJhRs,barChart5,cm-response,Bar with CA of .333,66,9
+OYknxUO9uvKLhgngJhRs,barChart6,cm-response,Bar with CA of .2,20,10
+OYknxUO9uvKLhgngJhRs,pieChart1,cm-response,Pie with CA of .5,60,8
+OYknxUO9uvKLhgngJhRs,pieChart2,cm-response,Pie with CA of .5,50,4
+OYknxUO9uvKLhgngJhRs,pieChart4,cm-response,Pie with CA of .833,85,7
+OYknxUO9uvKLhgngJhRs,pieChart5,cm-response,Pie with CA of .333,75,5
+OYknxUO9uvKLhgngJhRs,pieChart6,cm-response,Pie with CA of .2,20,6
+ANPzC8lXSZvQ4aUXSMS8,consent,signature,,Carson Kershner,1
+ANPzC8lXSZvQ4aUXSMS8,consent,accept,,yes,1
+ANPzC8lXSZvQ4aUXSMS8,trainingTreeMap1,cm-response,A treeMap with correct answer of 0.66,50,3
+ANPzC8lXSZvQ4aUXSMS8,treeMap1,cm-response,A treeMap with correct answer of 0.33,50,20
+ANPzC8lXSZvQ4aUXSMS8,treeMap2,cm-response,A treeMap with correct answer of 0.166,20,22
+ANPzC8lXSZvQ4aUXSMS8,treeMap3,cm-response,A treeMap with correct answer of 0.833,100,21
+ANPzC8lXSZvQ4aUXSMS8,treeMap4,cm-response,A treeMap with correct answer of 0.66,75,23
+ANPzC8lXSZvQ4aUXSMS8,treeMap5,cm-response,A treeMap with correct answer of 0.2,20,19
+ANPzC8lXSZvQ4aUXSMS8,StackedBarChart1,cm-response,Stacked bar with CA of .5,50,13
+ANPzC8lXSZvQ4aUXSMS8,StackedBarChart2,cm-response,Stacked bar with CA of .5,50,12
+ANPzC8lXSZvQ4aUXSMS8,StackedBarChart4,cm-response,Stacked bar with CA of .833,90,11
+ANPzC8lXSZvQ4aUXSMS8,StackedBarChart5,cm-response,Stacked bar with CA of .333,60,10
+ANPzC8lXSZvQ4aUXSMS8,StackedBarChart6,cm-response,Stacked bar with CA of .2,25,9
+ANPzC8lXSZvQ4aUXSMS8,barChart2,cm-response,Bar with CA of .5,50,7
+ANPzC8lXSZvQ4aUXSMS8,barChart3,cm-response,Bar with CA of .166,10,8
+ANPzC8lXSZvQ4aUXSMS8,barChart4,cm-response,Bar with CA of .833,80,6
+ANPzC8lXSZvQ4aUXSMS8,barChart5,cm-response,Bar with CA of .333,70,5
+ANPzC8lXSZvQ4aUXSMS8,barChart6,cm-response,Bar with CA of .2,20,4
+ANPzC8lXSZvQ4aUXSMS8,pieChart2,cm-response,Pie with CA of .5,50,17
+ANPzC8lXSZvQ4aUXSMS8,pieChart3,cm-response,Pie with CA of .166,15,18
+ANPzC8lXSZvQ4aUXSMS8,pieChart4,cm-response,Pie with CA of .833,80,14
+ANPzC8lXSZvQ4aUXSMS8,pieChart5,cm-response,Pie with CA of .333,70,16
+ANPzC8lXSZvQ4aUXSMS8,pieChart6,cm-response,Pie with CA of .2,25,15
+ZJd8VzPznZ2XyQK85ZRP,consent,accept,,yes,1
+ZJd8VzPznZ2XyQK85ZRP,consent,signature,,max inamn,1
+ZJd8VzPznZ2XyQK85ZRP,trainingTreeMap1,cm-response,A treeMap with correct answer of 0.66,50,3
+ZJd8VzPznZ2XyQK85ZRP,treeMap1,cm-response,A treeMap with correct answer of 0.33,20,6
+ZJd8VzPznZ2XyQK85ZRP,treeMap2,cm-response,A treeMap with correct answer of 0.166,10,8
+ZJd8VzPznZ2XyQK85ZRP,treeMap3,cm-response,A treeMap with correct answer of 0.833,100,7
+ZJd8VzPznZ2XyQK85ZRP,treeMap4,cm-response,A treeMap with correct answer of 0.66,50,4
+ZJd8VzPznZ2XyQK85ZRP,treeMap5,cm-response,A treeMap with correct answer of 0.2,10,5
+ZJd8VzPznZ2XyQK85ZRP,StackedBarChart1,cm-response,Stacked bar with CA of .5,50,17
+ZJd8VzPznZ2XyQK85ZRP,StackedBarChart2,cm-response,Stacked bar with CA of .5,50,18
+ZJd8VzPznZ2XyQK85ZRP,StackedBarChart4,cm-response,Stacked bar with CA of .833,100,15
+ZJd8VzPznZ2XyQK85ZRP,StackedBarChart5,cm-response,Stacked bar with CA of .333,80,16
+ZJd8VzPznZ2XyQK85ZRP,StackedBarChart6,cm-response,Stacked bar with CA of .2,20,14
+ZJd8VzPznZ2XyQK85ZRP,barChart1,cm-response,Bar with CA of .5,50,22
+ZJd8VzPznZ2XyQK85ZRP,barChart2,cm-response,Bar with CA of .5,50,19
+ZJd8VzPznZ2XyQK85ZRP,barChart4,cm-response,Bar with CA of .833,90,23
+ZJd8VzPznZ2XyQK85ZRP,barChart5,cm-response,Bar with CA of .333,75,20
+ZJd8VzPznZ2XyQK85ZRP,barChart6,cm-response,Bar with CA of .2,20,21
+ZJd8VzPznZ2XyQK85ZRP,pieChart1,cm-response,Pie with CA of .5,80,11
+ZJd8VzPznZ2XyQK85ZRP,pieChart2,cm-response,Pie with CA of .5,50,12
+ZJd8VzPznZ2XyQK85ZRP,pieChart3,cm-response,Pie with CA of .166,10,13
+ZJd8VzPznZ2XyQK85ZRP,pieChart5,cm-response,Pie with CA of .333,50,9
+ZJd8VzPznZ2XyQK85ZRP,pieChart6,cm-response,Pie with CA of .2,20,10
+kD73Sm5UaG6SYj2EA7Zg,consent,accept,,yes,1
+kD73Sm5UaG6SYj2EA7Zg,consent,signature,,Henry Sniezek,1
+kD73Sm5UaG6SYj2EA7Zg,trainingTreeMap1,cm-response,A treeMap with correct answer of 0.66,60,3
+kD73Sm5UaG6SYj2EA7Zg,treeMap1,cm-response,A treeMap with correct answer of 0.33,40,23
+kD73Sm5UaG6SYj2EA7Zg,treeMap2,cm-response,A treeMap with correct answer of 0.166,10,19
+kD73Sm5UaG6SYj2EA7Zg,treeMap3,cm-response,A treeMap with correct answer of 0.833,100,21
+kD73Sm5UaG6SYj2EA7Zg,treeMap4,cm-response,A treeMap with correct answer of 0.66,85,22
+kD73Sm5UaG6SYj2EA7Zg,treeMap5,cm-response,A treeMap with correct answer of 0.2,16,20
+kD73Sm5UaG6SYj2EA7Zg,StackedBarChart1,cm-response,Stacked bar with CA of .5,67,15
+kD73Sm5UaG6SYj2EA7Zg,StackedBarChart2,cm-response,Stacked bar with CA of .5,50,16
+kD73Sm5UaG6SYj2EA7Zg,StackedBarChart3,cm-response,Stacked bar with CA of .166,17,18
+kD73Sm5UaG6SYj2EA7Zg,StackedBarChart5,cm-response,Stacked bar with CA of .333,90,17
+kD73Sm5UaG6SYj2EA7Zg,StackedBarChart6,cm-response,Stacked bar with CA of .2,20,14
+kD73Sm5UaG6SYj2EA7Zg,barChart1,cm-response,Bar with CA of .5,50,4
+kD73Sm5UaG6SYj2EA7Zg,barChart2,cm-response,Bar with CA of .5,50,7
+kD73Sm5UaG6SYj2EA7Zg,barChart3,cm-response,Bar with CA of .166,16,8
+kD73Sm5UaG6SYj2EA7Zg,barChart5,cm-response,Bar with CA of .333,67,6
+kD73Sm5UaG6SYj2EA7Zg,barChart6,cm-response,Bar with CA of .2,20,5
+kD73Sm5UaG6SYj2EA7Zg,pieChart1,cm-response,Pie with CA of .5,75,12
+kD73Sm5UaG6SYj2EA7Zg,pieChart2,cm-response,Pie with CA of .5,67,13
+kD73Sm5UaG6SYj2EA7Zg,pieChart4,cm-response,Pie with CA of .833,95,10
+kD73Sm5UaG6SYj2EA7Zg,pieChart5,cm-response,Pie with CA of .333,80,11
+kD73Sm5UaG6SYj2EA7Zg,pieChart6,cm-response,Pie with CA of .2,20,9
+nyx8566CBzWO34oPdS4F,consent,accept,,yes,1
+nyx8566CBzWO34oPdS4F,consent,signature,,William Kiley,1
+nyx8566CBzWO34oPdS4F,trainingTreeMap1,cm-response,A treeMap with correct answer of 0.66,40,3
+nyx8566CBzWO34oPdS4F,treeMap1,cm-response,A treeMap with correct answer of 0.33,33,17
+nyx8566CBzWO34oPdS4F,treeMap2,cm-response,A treeMap with correct answer of 0.166,10,18
+nyx8566CBzWO34oPdS4F,treeMap3,cm-response,A treeMap with correct answer of 0.833,100,16
+nyx8566CBzWO34oPdS4F,treeMap4,cm-response,A treeMap with correct answer of 0.66,50,15
+nyx8566CBzWO34oPdS4F,treeMap5,cm-response,A treeMap with correct answer of 0.2,10,14
+nyx8566CBzWO34oPdS4F,StackedBarChart2,cm-response,Stacked bar with CA of .5,50,7
+nyx8566CBzWO34oPdS4F,StackedBarChart3,cm-response,Stacked bar with CA of .166,10,6
+nyx8566CBzWO34oPdS4F,StackedBarChart4,cm-response,Stacked bar with CA of .833,100,4
+nyx8566CBzWO34oPdS4F,StackedBarChart5,cm-response,Stacked bar with CA of .333,50,5
+nyx8566CBzWO34oPdS4F,StackedBarChart6,cm-response,Stacked bar with CA of .2,10,8
+nyx8566CBzWO34oPdS4F,barChart2,cm-response,Bar with CA of .5,50,10
+nyx8566CBzWO34oPdS4F,barChart3,cm-response,Bar with CA of .166,10,13
+nyx8566CBzWO34oPdS4F,barChart4,cm-response,Bar with CA of .833,90,9
+nyx8566CBzWO34oPdS4F,barChart5,cm-response,Bar with CA of .333,70,12
+nyx8566CBzWO34oPdS4F,barChart6,cm-response,Bar with CA of .2,10,11
+nyx8566CBzWO34oPdS4F,pieChart1,cm-response,Pie with CA of .5,33,21
+nyx8566CBzWO34oPdS4F,pieChart3,cm-response,Pie with CA of .166,10,23
+nyx8566CBzWO34oPdS4F,pieChart4,cm-response,Pie with CA of .833,100,22
+nyx8566CBzWO34oPdS4F,pieChart5,cm-response,Pie with CA of .333,50,19
+nyx8566CBzWO34oPdS4F,pieChart6,cm-response,Pie with CA of .2,10,20
+9hBp57CMAHATqwwTUdSA,consent,accept,,yes,1
+9hBp57CMAHATqwwTUdSA,consent,signature,,Jack Pszeniczny,1
+9hBp57CMAHATqwwTUdSA,trainingTreeMap1,cm-response,A treeMap with correct answer of 0.66,30,3
+9hBp57CMAHATqwwTUdSA,treeMap1,cm-response,A treeMap with correct answer of 0.33,30,13
+9hBp57CMAHATqwwTUdSA,treeMap2,cm-response,A treeMap with correct answer of 0.166,10,10
+9hBp57CMAHATqwwTUdSA,treeMap3,cm-response,A treeMap with correct answer of 0.833,100,11
+9hBp57CMAHATqwwTUdSA,treeMap4,cm-response,A treeMap with correct answer of 0.66,40,12
+9hBp57CMAHATqwwTUdSA,treeMap5,cm-response,A treeMap with correct answer of 0.2,20,9
+9hBp57CMAHATqwwTUdSA,StackedBarChart1,cm-response,Stacked bar with CA of .5,30,16
+9hBp57CMAHATqwwTUdSA,StackedBarChart2,cm-response,Stacked bar with CA of .5,40,17
+9hBp57CMAHATqwwTUdSA,StackedBarChart3,cm-response,Stacked bar with CA of .166,20,14
+9hBp57CMAHATqwwTUdSA,StackedBarChart4,cm-response,Stacked bar with CA of .833,90,15
+9hBp57CMAHATqwwTUdSA,StackedBarChart5,cm-response,Stacked bar with CA of .333,50,18
+9hBp57CMAHATqwwTUdSA,barChart1,cm-response,Bar with CA of .5,50,20
+9hBp57CMAHATqwwTUdSA,barChart2,cm-response,Bar with CA of .5,50,19
+9hBp57CMAHATqwwTUdSA,barChart3,cm-response,Bar with CA of .166,10,23
+9hBp57CMAHATqwwTUdSA,barChart5,cm-response,Bar with CA of .333,75,21
+9hBp57CMAHATqwwTUdSA,barChart6,cm-response,Bar with CA of .2,20,22
+9hBp57CMAHATqwwTUdSA,pieChart1,cm-response,Pie with CA of .5,50,8
+9hBp57CMAHATqwwTUdSA,pieChart3,cm-response,Pie with CA of .166,10,6
+9hBp57CMAHATqwwTUdSA,pieChart4,cm-response,Pie with CA of .833,80,4
+9hBp57CMAHATqwwTUdSA,pieChart5,cm-response,Pie with CA of .333,50,5
+9hBp57CMAHATqwwTUdSA,pieChart6,cm-response,Pie with CA of .2,20,7
+1gDbGS9oR4YFueMPXX1e,consent,accept,,yes,1
+1gDbGS9oR4YFueMPXX1e,consent,signature,,Ryan R. Martin,1
+1gDbGS9oR4YFueMPXX1e,trainingTreeMap1,cm-response,A treeMap with correct answer of 0.66,38,3
+1gDbGS9oR4YFueMPXX1e,treeMap1,cm-response,A treeMap with correct answer of 0.33,50,17
+1gDbGS9oR4YFueMPXX1e,treeMap2,cm-response,A treeMap with correct answer of 0.166,33,18
+1gDbGS9oR4YFueMPXX1e,treeMap3,cm-response,A treeMap with correct answer of 0.833,100,14
+1gDbGS9oR4YFueMPXX1e,treeMap4,cm-response,A treeMap with correct answer of 0.66,50,16
+1gDbGS9oR4YFueMPXX1e,treeMap5,cm-response,A treeMap with correct answer of 0.2,15,15
+1gDbGS9oR4YFueMPXX1e,StackedBarChart1,cm-response,Stacked bar with CA of .5,40,6
+1gDbGS9oR4YFueMPXX1e,StackedBarChart2,cm-response,Stacked bar with CA of .5,40,5
+1gDbGS9oR4YFueMPXX1e,StackedBarChart3,cm-response,Stacked bar with CA of .166,10,8
+1gDbGS9oR4YFueMPXX1e,StackedBarChart4,cm-response,Stacked bar with CA of .833,80,7
+1gDbGS9oR4YFueMPXX1e,StackedBarChart5,cm-response,Stacked bar with CA of .333,50,4
+1gDbGS9oR4YFueMPXX1e,barChart1,cm-response,Bar with CA of .5,50,12
+1gDbGS9oR4YFueMPXX1e,barChart2,cm-response,Bar with CA of .5,50,9
+1gDbGS9oR4YFueMPXX1e,barChart4,cm-response,Bar with CA of .833,80,10
+1gDbGS9oR4YFueMPXX1e,barChart5,cm-response,Bar with CA of .333,70,11
+1gDbGS9oR4YFueMPXX1e,barChart6,cm-response,Bar with CA of .2,20,13
+1gDbGS9oR4YFueMPXX1e,pieChart1,cm-response,Pie with CA of .5,50,19
+1gDbGS9oR4YFueMPXX1e,pieChart2,cm-response,Pie with CA of .5,50,21
+1gDbGS9oR4YFueMPXX1e,pieChart3,cm-response,Pie with CA of .166,20,23
+1gDbGS9oR4YFueMPXX1e,pieChart4,cm-response,Pie with CA of .833,80,20
+1gDbGS9oR4YFueMPXX1e,pieChart5,cm-response,Pie with CA of .333,70,22
+N8gIlMBzKrZnFNexUQJx,consent,accept,,yes,1
+N8gIlMBzKrZnFNexUQJx,consent,signature,,Michael Bragg,1
+N8gIlMBzKrZnFNexUQJx,trainingTreeMap1,cm-response,A treeMap with correct answer of 0.66,50,3
+N8gIlMBzKrZnFNexUQJx,treeMap1,cm-response,A treeMap with correct answer of 0.33,33,7
+N8gIlMBzKrZnFNexUQJx,treeMap2,cm-response,A treeMap with correct answer of 0.166,25,8
+N8gIlMBzKrZnFNexUQJx,treeMap3,cm-response,A treeMap with correct answer of 0.833,75,4
+N8gIlMBzKrZnFNexUQJx,treeMap4,cm-response,A treeMap with correct answer of 0.66,50,5
+N8gIlMBzKrZnFNexUQJx,treeMap5,cm-response,A treeMap with correct answer of 0.2,20,6
+N8gIlMBzKrZnFNexUQJx,StackedBarChart1,cm-response,Stacked bar with CA of .5,50,17
+N8gIlMBzKrZnFNexUQJx,StackedBarChart2,cm-response,Stacked bar with CA of .5,50,18
+N8gIlMBzKrZnFNexUQJx,StackedBarChart4,cm-response,Stacked bar with CA of .833,85,16
+N8gIlMBzKrZnFNexUQJx,StackedBarChart5,cm-response,Stacked bar with CA of .333,50,15
+N8gIlMBzKrZnFNexUQJx,StackedBarChart6,cm-response,Stacked bar with CA of .2,20,14
+N8gIlMBzKrZnFNexUQJx,barChart2,cm-response,Bar with CA of .5,50,19
+N8gIlMBzKrZnFNexUQJx,barChart3,cm-response,Bar with CA of .166,15,20
+N8gIlMBzKrZnFNexUQJx,barChart4,cm-response,Bar with CA of .833,80,23
+N8gIlMBzKrZnFNexUQJx,barChart5,cm-response,Bar with CA of .333,67,21
+N8gIlMBzKrZnFNexUQJx,barChart6,cm-response,Bar with CA of .2,15,22
+N8gIlMBzKrZnFNexUQJx,pieChart2,cm-response,Pie with CA of .5,50,13
+N8gIlMBzKrZnFNexUQJx,pieChart3,cm-response,Pie with CA of .166,20,10
+N8gIlMBzKrZnFNexUQJx,pieChart4,cm-response,Pie with CA of .833,67,12
+N8gIlMBzKrZnFNexUQJx,pieChart5,cm-response,Pie with CA of .333,50,9
+N8gIlMBzKrZnFNexUQJx,pieChart6,cm-response,Pie with CA of .2,15,11
+gbyHznrh1wl9kjKURRsK,consent,signature,,Ryan Harrington,1
+gbyHznrh1wl9kjKURRsK,consent,accept,,yes,1
+gbyHznrh1wl9kjKURRsK,trainingTreeMap1,cm-response,A treeMap with correct answer of 0.66,38,3
+gbyHznrh1wl9kjKURRsK,treeMap1,cm-response,A treeMap with correct answer of 0.33,45,14
+gbyHznrh1wl9kjKURRsK,treeMap2,cm-response,A treeMap with correct answer of 0.166,15,15
+gbyHznrh1wl9kjKURRsK,treeMap3,cm-response,A treeMap with correct answer of 0.833,90,16
+gbyHznrh1wl9kjKURRsK,treeMap4,cm-response,A treeMap with correct answer of 0.66,60,17
+gbyHznrh1wl9kjKURRsK,treeMap5,cm-response,A treeMap with correct answer of 0.2,15,18
+gbyHznrh1wl9kjKURRsK,StackedBarChart1,cm-response,Stacked bar with CA of .5,40,13
+gbyHznrh1wl9kjKURRsK,StackedBarChart2,cm-response,Stacked bar with CA of .5,40,12
+gbyHznrh1wl9kjKURRsK,StackedBarChart4,cm-response,Stacked bar with CA of .833,95,9
+gbyHznrh1wl9kjKURRsK,StackedBarChart5,cm-response,Stacked bar with CA of .333,55,11
+gbyHznrh1wl9kjKURRsK,StackedBarChart6,cm-response,Stacked bar with CA of .2,20,10
+gbyHznrh1wl9kjKURRsK,barChart1,cm-response,Bar with CA of .5,50,8
+gbyHznrh1wl9kjKURRsK,barChart3,cm-response,Bar with CA of .166,10,6
+gbyHznrh1wl9kjKURRsK,barChart4,cm-response,Bar with CA of .833,85,7
+gbyHznrh1wl9kjKURRsK,barChart5,cm-response,Bar with CA of .333,65,4
+gbyHznrh1wl9kjKURRsK,barChart6,cm-response,Bar with CA of .2,20,5
+gbyHznrh1wl9kjKURRsK,pieChart1,cm-response,Pie with CA of .5,65,21
+gbyHznrh1wl9kjKURRsK,pieChart2,cm-response,Pie with CA of .5,50,22
+gbyHznrh1wl9kjKURRsK,pieChart3,cm-response,Pie with CA of .166,15,19
+gbyHznrh1wl9kjKURRsK,pieChart4,cm-response,Pie with CA of .833,85,20
+gbyHznrh1wl9kjKURRsK,pieChart6,cm-response,Pie with CA of .2,20,23
