@@ -88,6 +88,22 @@ Considering the minimal variation in error rates among the four visualization ty
 In conclusion, data visualization practitioners can confidently employ any of these formats knowing that they all similarly support accurate parts-of-a-whole interpretations.
 
 
+### Cleveland & McGill experiment
+![](img/cleveland-results.png)
+We compared our findings with the experiments conducted in the Cleveland & McGill study (*) and more recent extensions of this experiment. The image depicts the outcomes of these studies, showcasing the performance of various chart types. Lower error rates indicate better performance, and the error bars represent bootstrapped 95% confidence intervals, similar to the boxplot in our study. In the crowdsourced results, charts displaying rectangular areas, such as bar charts, exhibited the highest error values. Conversely, in our study, among the four visualization types evaluated, the treemap demonstrated the best performance with the lowest error rate.
+
+Regarding angular graphs like pie and donut charts, their studies revealed an error range and a narrow confidence interval between 2 and 2.5, indicating lower performance compared to other chart types. In our study, the pie chart exhibited the worst performance, while the donut chart performed reasonably well, closely following the treemap.
+
+Based on the information provided, we can draw a few key conclusions:
+
+- Chart type impacts accuracy and performance: Different chart types have varying levels of accuracy and performance when it comes to conveying data effectively. Some chart types are more prone to errors or misinterpretation than others.
+- Treemaps are effective: In the study being discussed, treemaps emerged as the most effective chart type, exhibiting the lowest error rate among the four visualization types evaluated. This suggests that treemaps are well-suited for accurately representing and communicating data.
+- Angular charts have moderate performance: Pie and donut charts, which use angles to represent data, demonstrated moderate performance.
+- Pie charts are less effective than donut charts: Interestingly, within the angular chart category, pie charts had the worst performance, while donut charts performed reasonably well, nearly matching the effectiveness of treemaps.
+
+Overall, the conclusions highlight the importance of carefully selecting appropriate chart types for data visualization, as different chart types can significantly impact the accuracy and effectiveness of communicating data.
+
+
 
 
 
@@ -136,3 +152,9 @@ It allows for flexibility in terms of data visualization where they can be anima
 
 - Many users thought the survey was easy
 - There were variations based on gender. Male participants found the donut harder than the treemap while women found the treemap harder than the donut.
+
+
+
+
+### Sources: 
+(*) Cleveland, W. S., & McGill, R. (1984). Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods. Journal of the American Statistical Association, 79(387), 531-554.
