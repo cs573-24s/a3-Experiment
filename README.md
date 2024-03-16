@@ -1,5 +1,6 @@
-# ReadMe
-https://amicarellade.github.io/study/
+# Assignment 3 - Data Visualization
+## Dante Amicarella & Mason Pernam
+Study: https://amicarellade.github.io/study/
 <br />
 In this experiment, we replicated the 1984 Cleveland-McGill study.
 We created four different visualizations for the same data.
@@ -205,8 +206,15 @@ CI: (4.769910072811927, 5.225612470938529)
 ![image](https://github.com/masonperham/study/assets/87674389/3783faeb-ceaf-48b2-afb0-6df5c4574e5d)
 
 
-# Technical + Design Achievemnets 
-- xxx
+# Technical Achievements 
+- Implemented a tree map into the study to further analyze the graphical perception of area in a new visualization. 
+- Were able to functionally recreate the Cleveland & McGill study by using reVISit (not too easy).
+- Analyzed our study on 20+ people to ensure robustness of responses. 
+
+# Design Achievements
+- We used the same 6 data points and the same dot points for each of the visualizations in order to see exactly which visualizations were the best at displaying each ratio
+- Kept each visualizatin design the same to ensure consistency throughout the study.
+
 
 # References
 To set up this experiment, we used the ReVISit tutorial: 
