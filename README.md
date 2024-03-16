@@ -90,9 +90,10 @@ It allows for flexibility in terms of data visualization where they can be anima
 
 #### Program to Retrieve Data from Firebase Using Python
 
-- This was used because Python easily establishes a connection to Firebase projection making it easy to retrieve data and incorporate it in a Python application for manipulation 
-- The use of Python in Firebase for data retrieval offers great scalability making it possible to handle large volumes of data with ease 
-- Python as a language offers a lot of flexibility in database manipulation as it can connect to any type of database like Object Oriented Relational Models or just SQL Queries it can handle it 
+- Firestore does not provide a direct download button. So, we use firebase_admin API to develop a program to retrieve and extract data from Firebase Firestore.
+- Python easily establishes a connection to Firebase projection making it easy to retrieve data and incorporate it in a Python application for manipulation and analysis.
+- The use of Python in Firebase for data retrieval offers great scalability making it possible to handle large volumes of data with ease.
+- Python as a language offers a lot of flexibility in data manipulation, exploratory data analysis, and data visualization.
 - Although using python can be a good and efficient way to retrieve data, security is always a concern as Python does not offer much flexibility in protecting data from things like SQL injections.
 
 #### Console Logging and Debugging
