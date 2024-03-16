@@ -156,5 +156,6 @@ It allows for flexibility in terms of data visualization where they can be anima
 
 
 
+
 ### Sources: 
 (*) Cleveland, W. S., & McGill, R. (1984). Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods. Journal of the American Statistical Association, 79(387), 531-554.
