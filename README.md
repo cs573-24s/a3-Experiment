@@ -89,7 +89,7 @@ In conclusion, data visualization practitioners can confidently employ any of th
 
 
 ### Cleveland & McGill experiment
-![](img/cleveland-results.png)
+<img src="img/cleveland-results.png" alt="drawing" width="500"/>
 We compared our findings with the experiments conducted in the Cleveland & McGill study (*) and more recent extensions of this experiment. The image depicts the outcomes of these studies, showcasing the performance of various chart types. Lower error rates indicate better performance, and the error bars represent bootstrapped 95% confidence intervals, similar to the boxplot in our study. In the crowdsourced results, charts displaying rectangular areas, such as bar charts, exhibited the highest error values. Conversely, in our study, among the four visualization types evaluated, the treemap demonstrated the best performance with the lowest error rate.
 
 Regarding angular graphs like pie and donut charts, their studies revealed an error range and a narrow confidence interval between 2 and 2.5, indicating lower performance compared to other chart types. In our study, the pie chart exhibited the worst performance, while the donut chart performed reasonably well, closely following the treemap.
@@ -153,6 +153,7 @@ It allows for flexibility in terms of data visualization where they can be anima
 - Many users thought the survey was easy
 - There were variations based on gender. Male participants found the donut harder than the treemap while women found the treemap harder than the donut.
 
+<img src="/Users/janet/Documents/_DS/_CS573_DV/HW/a3/a3-Experiment/post-survey-interview/user-pic-1.png" alt="drawing" width="250"/><img src="/Users/janet/Documents/_DS/_CS573_DV/HW/a3/a3-Experiment/post-survey-interview/user-pic-2.jpeg" alt="drawing" width="220"/><img src="/Users/janet/Documents/_DS/_CS573_DV/HW/a3/a3-Experiment/post-survey-interview/user-pic-3.jpeg" alt="drawing" width="400"/>
 
 
 
