@@ -12,9 +12,9 @@ Survey repository: https://github.com/jcai0o0/revisit-project
 
 Interview Questionnaire: [Post Survey Interview](https://github.com/jcai0o0/a3-Experiment/blob/main/post-survey-interview/post%20survey%20questionnaire.pdf)
 
-____
 
-### Introduction
+
+## Introduction
 Proportional graphs, also referred to as "percentage" or "parts-of-a-whole" graphs, visually represent the parts of a whole entity and illustrate the proportion or percentage each part contributes to the total.
 
 Understanding the effectiveness of different visualization techniques is pivotal for conveying complex data insights accurately and intuitively. In this study, we delve into the realm of parts-of-a-whole graphs, investigating the ease of comprehension and accuracy across four distinct chart types: treemap, pie chart, stacked bar chart, and donut chart.
@@ -25,7 +25,7 @@ In our project, we conducted 60 individual surveys, and we measured accuracy in 
 
 The findings of this research hold significant implications for data visualization practitioners. By unveiling the comparative effectiveness of parts-of-a-whole graphs, we can inform best practices in chart selection, ultimately enhancing the clarity and impact of data-driven communication strategies.
 
----
+
 
 ### Understanding Different Visualizations
 - Pie Chart: Common for showing proportions within a whole, pie charts are intuitive for some comparisons but can be challenging for precise quantitative comparisons.
@@ -33,16 +33,16 @@ The findings of this research hold significant implications for data visualizati
 - Treemap: Treemaps are useful for displaying hierarchical data and proportions within a whole, offering a different spatial representation than pie charts.
 - Donut Chart: Similar to a pie chart, but with a blank center, a donut chart is used to display proportions or percentages of a whole.
 
----
+
 ### Hypothesis
 - Users may find pie charts most intuitive for understanding general proportions but struggle with precise comparisons.
 - Stacked bar charts may facilitate better quantitative analysis and comparison across categories than pie charts.
 - Treemaps, while effective for displaying large datasets, may require more cognitive effort to interpret than pie or stacked bar charts.
 - Donut charts with multiple concentric rings or hierarchical data may require more cognitive effort to interpret compared to simple pie charts or stacked bar charts.
 
----
 
 
+## The Study
 ### Survey screenshots
 #### Landing page of the experiment
 ![](img/revisit-landing-page.png)
@@ -58,6 +58,19 @@ The findings of this research hold significant implications for data visualizati
 
 #### Visualization: Treemap
 ![](img/revisit-treemap.png)
+
+----
+
+
+### Interview Design
+
+Understanding users' experiences and perceptions is significant in designing effective experiments and improving data interpretation processes. We conducted a post-survey face-to-face interview with some of our participants to gather qualitative insights regarding their experiences with our experiment.
+
+
+The interview aimed to delve deeper into participants' thoughts, challenges, and suggestions encountered during the experiment, with a specific focus on the clarity of instructions, ease of data interpretation, confidence in estimations, and suggestions for experiment improvement. By engaging participants in a dialogue, we sought to unearth nuanced insights that quantitative survey data alone may not capture.
+
+The design of the interview was guided by the feedback loop principle, which emphasizes the importance of continuous improvement through iterative feedback collection and analysis. Recognizing the potential limitations of quantitative data in fully elucidating user experiences, we adopted a qualitative approach to complement our understanding and provide actionable insights for enhancing future experiments (e.g., for our final project ;)
+
 
 
 
@@ -75,21 +88,11 @@ Considering the minimal variation in error rates among the four visualization ty
 In conclusion, data visualization practitioners can confidently employ any of these formats knowing that they all similarly support accurate parts-of-a-whole interpretations.
 
 
----
-### Interview Design
-
-Understanding users' experiences and perceptions is significant in designing effective experiments and improving data interpretation processes. We conducted a post-survey face-to-face interview with some of our participants to gather qualitative insights regarding their experiences with our experiment.
 
 
-The interview aimed to delve deeper into participants' thoughts, challenges, and suggestions encountered during the experiment, with a specific focus on the clarity of instructions, ease of data interpretation, confidence in estimations, and suggestions for experiment improvement. By engaging participants in a dialogue, we sought to unearth nuanced insights that quantitative survey data alone may not capture.
-
-The design of the interview was guided by the feedback loop principle, which emphasizes the importance of continuous improvement through iterative feedback collection and analysis. Recognizing the potential limitations of quantitative data in fully elucidating user experiences, we adopted a qualitative approach to complement our understanding and provide actionable insights for enhancing future experiments (e.g., for our final project ;)
 
 
----
-
-
-### Design and Technical Achievements
+## Design and Technical Achievements
 
 #### Visualization Types Used (D3)
 
