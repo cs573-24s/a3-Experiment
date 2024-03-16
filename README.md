@@ -66,8 +66,16 @@ The findings of this research hold significant implications for data visualizati
 
 Understanding users' experiences and perceptions is significant in designing effective experiments and improving data interpretation processes. We conducted a post-survey face-to-face interview with some of our participants to gather qualitative insights regarding their experiences with our experiment.
 
-
 The interview aimed to delve deeper into participants' thoughts, challenges, and suggestions encountered during the experiment, with a specific focus on the clarity of instructions, ease of data interpretation, confidence in estimations, and suggestions for experiment improvement. By engaging participants in a dialogue, we sought to unearth nuanced insights that quantitative survey data alone may not capture.
+
+Our approach to the interview process was meticulously crafted to ensure comprehensive insights and effective experiment design.
+
+- Introduction to the Interview Process: We begin by detailing our approach to interviews, prioritizing clarity and transparency to foster understanding and cooperation among participants.
+- Obtaining Participant Consent: Prior to the interview, we actively seek explicit consent from participants, respecting their autonomy and willingness to engage in the process.
+- Introducing the Experiment: Clear communication is key. We ensure that participants are fully informed about the purpose and scope of the experiment, fostering collaboration and engagement from the outset.
+- Facilitating Platform Access: Emphasizing accessibility, we encourage participants to utilize the reVISit platform on computers, while accommodating those who prefer mobile devices for convenience.
+- Providing Information Support: Equipping participants with necessary information and resources enhances the quality of their responses, promoting accuracy and depth in their contributions.
+- Monitoring Participant Progress: Throughout the interview, we continuously monitor participants' engagement and comfort, ensuring a supportive environment conducive to meaningful participation.
 
 The design of the interview was guided by the feedback loop principle, which emphasizes the importance of continuous improvement through iterative feedback collection and analysis. Recognizing the potential limitations of quantitative data in fully elucidating user experiences, we adopted a qualitative approach to complement our understanding and provide actionable insights for enhancing future experiments (e.g., for our final project ;)
 
@@ -152,6 +160,8 @@ It allows for flexibility in terms of data visualization where they can be anima
 
 - Many users thought the survey was easy
 - There were variations based on gender. Male participants found the donut harder than the treemap while women found the treemap harder than the donut.
+- Depending on the platform, some users who received the survey on their mobile devices have suggested that we enhance its functionality specifically for mobile users in the future.
+
 
 <img src="img/user-pic-1.png" alt="drawing" width="250"/><img src="img/user-pic-2.jpeg" alt="drawing" width="220"/><img src="img/user-pic-3.jpeg" alt="drawing" width="400"/>
 
