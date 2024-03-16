@@ -116,7 +116,3 @@ It allows for flexibility in terms of data visualization where they can be anima
 - This allows for the implementation of random data manipulation as in the case where graphs and or questions are randomly generated 
 - The ability to easily handle errors like using try catch has been implemented well in the application.
 
-#### User Feedback
-
-There were variations based on gender. Male participants found the donut harder than the treemap while women found the treemap harder than the donut.
-
