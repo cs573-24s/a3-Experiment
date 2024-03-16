@@ -139,7 +139,7 @@ It allows for flexibility in terms of data visualization where they can be anima
 
 - The simple and flexible layout of the experiment made it easy for users to quickly finish their surveys 
 - The user interface had CSS applied to make the rendering appealing to the users 
-- Although the design could display on both mobile and computer devices, uses on mobile devices had some challenges compared to those who used laptops.
+- Although the design could be displayed on both mobile and computer devices, users on mobile devices had some challenges compared to those who used laptops.
 
 #### Dynamic Data Binding & Interaction Handling
 
